@@ -32,7 +32,7 @@
       });
 
       await login(email, password);
-      goto("/dashboard");
+      goto("/app");
     } catch (err) {
       result = "";
       error = true;

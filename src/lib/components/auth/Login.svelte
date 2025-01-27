@@ -18,7 +18,7 @@
     try {
       await login(email, password);
       localStorage.setItem("email", email);
-      goto("/dashboard");
+      goto("/app");
     } catch (err) {
       error = err.message;
     }

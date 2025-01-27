@@ -32,9 +32,9 @@
     <div class="flex flex-row justify-between items-center gap-10 py-0 px-5 border-b border-1">
         <img src="/logo.svg" alt="Google" class="h-7 mr-2" />
         <div class="h-full flex flex-row justify-end items-center gap-10">
-            <a class="text-sm font-medium { page.url.pathname === '/dashboard' ? 'text-primary-default' : '' }" href="/dashboard">Dashboard</a>
-            <a class="text-sm font-medium { page.url.pathname === '/dashboard/profile' ? 'text-primary-default' : '' }" href="/dashboard/profile">Profile</a>
-            <a class="text-sm font-medium { page.url.pathname === '/dashboard/inbox' ? 'text-primary-default' : '' }" href="/dashboard/inbox">Inbox</a>
+            <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-primary-default' : '' }" href="/app">Home</a>
+            <a class="text-sm font-medium { page.url.pathname === '/app/page-2' ? 'text-primary-default' : '' }" href="/app/page-2">Page 2</a>
+            <a class="text-sm font-medium { page.url.pathname === '/app/page-3' ? 'text-primary-default' : '' }" href="/app/page-3">Page 3</a>
         </div>
         <div style="min-width: 12rem;" class="flex flex-col items-end border-l border-1 py-3 px-5">
             {#if firstName}

@@ -20,7 +20,7 @@
         email: email
       }, { merge: true }); 
 
-      goto("/dashboard");
+      goto("/app");
     } catch (err) {
       console.error(err.message);
     }
