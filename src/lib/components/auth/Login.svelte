@@ -2,7 +2,10 @@
   import { login } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
   import { fade } from "svelte/transition";
-
+  import Label from '$lib/components/ui/Label.svelte';
+  import Input from '$lib/components/ui/Input.svelte';
+  import TextLink from '$lib/components/ui/TextLink.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
   let email = $state("");
   let password = $state("");
   let error = $state("");
@@ -32,14 +35,15 @@
 {/if}
 
 <form onsubmit={e => { e.preventDefault(); handleLogin(); }}>
-  <label for="email" class="block text-sm mb-1 font-medium">Email</label>
-  <input name="email" class="shadow-sm block w-full text-md py-2 px-4 mb-3 border border-1 border-gray-300 rounded-md transition focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:border-gray-400" type="email" bind:value={email} />
-  <label for="password" class="block text-sm mb-1 font-medium">Password</label>
-  <input name="password" class="shadow-sm block w-full text-md py-2 px-4 mb-3 border border-1 border-gray-300 rounded-md transition focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:border-gray-400" type="password" bind:value={password} />
-  
-  <div class="flex justify-between align-middle mb-8">
-    <a class="text-primary-default hover:text-primary-hover hover:underline text-sm transition" href="/reset-password">Forgot Password?</a>
+  <Label for="email" label="Email" />
+  <Input name="email" type="email" bind:value={email} />
+
+  <Label for="password" label="Password" />
+  <Input name="password" type="password" bind:value={password} />
+
+  <div class="mb-8">
+    <TextLink href="/reset-password" text="Forgot Password?" />
   </div>
   
-  <button class="shadow-md hover:shadow-sm py-2 block text-md bg-primary-default hover:bg-primary-hover text-white w-full mb-5 rounded-lg transition focus:bg-primary-hover focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:outline-none" type="submit">Sign in</button>
+  <Button type="submit">Submit</Button>
 </form>
