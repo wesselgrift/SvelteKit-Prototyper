@@ -4,6 +4,7 @@
     import { logout } from "$lib/firebase/auth";
     import { getAuth, onAuthStateChanged } from "firebase/auth";
     import { doc, getDoc, getFirestore } from "firebase/firestore";
+    import Logo from '$lib/components/ui/Logo.svelte';
 
     let firstName = $state('');
     const db = getFirestore();
@@ -26,8 +27,10 @@
 </script>
 
 <div class="flex flex-col h-screen justify-between items-center py-0">
-    <img src="/logo.svg" alt="Google" class="h-7 mr-2" />
-    <div class="p-4 h-full w-full flex flex-col justify-start gap-5 outline outline-1 outline-gray-200">
+    <div class="block w-full p-4">
+       <Logo />
+    </div>    
+    <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
         <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-primary-default' : '' }" href="/app">Home</a>
         <a class="text-sm font-medium { page.url.pathname === '/app/page-2' ? 'text-primary-default' : '' }" href="/app/page-2">Page 2</a>
         <a class="text-sm font-medium { page.url.pathname === '/app/page-3' ? 'text-primary-default' : '' }" href="/app/page-3">Page 3</a>

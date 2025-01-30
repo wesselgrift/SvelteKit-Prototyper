@@ -3,11 +3,12 @@
   import ContinueWithGoogle from "$lib/components/auth/ContinueWithGoogle.svelte";
   import TextLink from '$lib/components/ui/TextLink.svelte';
   import Separator from '$lib/components/ui/Separator.svelte';
+  import Logo from '$lib/components/ui/Logo.svelte';
 </script>
 
 <div class="flex flex-col justify-center items-center" style="padding-top: 120px;">
   <div style="max-width: 470px;" class="p-5 w-full">
-    <img src="/logo.svg" alt="Google" class="h-8 mb-10" />
+    <Logo className="mb-10" />
       <h2 class="text-3xl font-semibold mb-9 leading-tight">Sign in</h2>
       <EmailPasswordSignin />
       <div class="flex items-center gap-2 mb-5">
