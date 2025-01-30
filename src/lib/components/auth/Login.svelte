@@ -45,5 +45,7 @@
     <TextLink href="/reset-password" text="Forgot Password?" />
   </div>
   
-  <Button type="submit">Submit</Button>
+  <Button type="submit">
+    Submit
+  </Button>
 </form>

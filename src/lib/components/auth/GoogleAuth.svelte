@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { db } from "$lib/firebase/firebase"; 
   import { setDoc, doc } from "firebase/firestore";
+  import Button from '$lib/components/ui/Button.svelte';
 
 
   async function handleGoogleLogin() {
@@ -28,8 +29,8 @@
 </script>
 
 <div>
-  <button class="flex items-center justify-center py-2 block text-md text-md block border border-slate-300 hover:border-slate-300 hover:bg-slate-50 text-black w-full rounded-lg transition focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 focus:border-gray-400 focus:outline-none shadow-sm" on:click={handleGoogleLogin}>
+  <Button variant="secondary" onclick={handleGoogleLogin}>
     <img src="/google-icon.svg" alt="Google" class="w-5 h-5 mr-2" />
     Continue with Google
-  </button>
+  </Button>
 </div>
