@@ -1,6 +1,8 @@
 <script>
   import { resetPassword } from "$lib/firebase/auth";
-
+  import Label from '$lib/components/ui/Label.svelte';
+  import Input from '$lib/components/ui/Input.svelte';
+  import Button from '$lib/components/ui/Button.svelte';
   let email = $state("");
   let message = $state("");
 
@@ -19,10 +21,11 @@
   {#if message}
     <p class=" text-sm bg-orange-50 text-orange-800 p-5 mb-3 rounded-md">{message}</p>
   {/if}
-  <label for="resetPassword" class="block text-sm mb-1 font-medium">Email</label>
-  <input name="resetPassword" class="shadow-sm block w-full text-md py-2 px-4 mb-2 border border-1 border-gray-300 rounded-md transition focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:border-gray-400" type="email" bind:value={email} />
+  <Label for="resetPassword" label="Email" />
+  <Input name="resetPassword" type="email" bind:value={email} />
   <p class="h-9 text-xs mb-2 bloc text-gray-400 text-left">Fill in your email address and we'll send you a link to reset your password.</p>
-  <button class="shadow-md hover:shadow-sm py-2 block text-md bg-primary-default hover:bg-primary-hover text-white w-full mb-5 rounded-lg transition focus:bg-primary-hover focus:ring-2 focus:ring-primary-hover focus:ring-offset-2 focus:outline-none" onclick={handleReset}>Reset Password</button>
+
+  <Button onclick={handleReset}>Reset Password</Button>
 
 
 

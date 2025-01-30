@@ -1,6 +1,8 @@
 <script>
   import Login from "$lib/components/auth/Login.svelte";
   import GoogleAuth from "$lib/components/auth/GoogleAuth.svelte";
+  import TextLink from '$lib/components/ui/TextLink.svelte';
+  import Separator from '$lib/components/ui/Separator.svelte';
 </script>
 
 <div class="flex flex-col justify-center items-center" style="padding-top: 120px;">
@@ -9,11 +11,11 @@
       <h2 class="text-3xl font-semibold mb-9 leading-tight">Sign in</h2>
       <Login />
       <div class="flex items-center gap-2 mb-5">
-        <hr class="w-full">
+        <Separator />
         <span class="text-xs text-gray-400">OR</span>
-        <hr class="w-full">
+        <Separator />
       </div>
       <GoogleAuth />
-      <p class="w-full text-center text-sm mt-5">No account yet? <a class="text-primary-default hover:text-primary-hover hover:underline text-sm" href="/account">Create account</a></p>
+      <p class="w-full text-center text-sm mt-5">No account yet? <TextLink href="/account" text="Create account" /></p>
   </div>
 </div>

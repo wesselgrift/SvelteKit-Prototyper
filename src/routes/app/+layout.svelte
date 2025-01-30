@@ -1,7 +1,7 @@
 <script>
 	import '$src/app.css';
     import Protected from "$lib/components/auth/Protected.svelte";
-    import TopNavigation from "$lib/components/auth/navigation/TopNavigation.svelte";
+    import TopNavigation from "$lib/components/ui/TopNavigation.svelte";
 	
     let { children } = $props();
 
