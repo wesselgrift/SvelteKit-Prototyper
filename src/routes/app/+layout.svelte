@@ -1,16 +1,21 @@
 <script>
 	import '$src/app.css';
     import Protected from "$lib/components/auth/Protected.svelte";
-    import TopNavigation from "$lib/components/ui/TopNavigation.svelte";
+    import Sidebar from "$lib/components/ui/Sidebar.svelte";
 	
     let { children } = $props();
 
 </script>
 
 <Protected>
-    <TopNavigation />
-
-    <div class="p-5">
-        {@render children()}
+    <div class="flex min-h-screen">
+        <aside class="w-64 bg-gray-50">
+            <Sidebar />
+        </aside>
+        <main class="flex-1">
+            <div class="p-5">
+                {@render children()}
+            </div>
+        </main>
     </div>
 </Protected>
