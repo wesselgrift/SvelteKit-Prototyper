@@ -1,14 +1,6 @@
 <script>
-  import { run } from 'svelte/legacy';
-
-  /**
-   * @typedef {Object} Props
-   * @property {string} [password]
-   */
-
-  /** @type {Props} */
   let { password = "" } = $props();
-    let passwordStrength = $state(0);
+  let passwordStrength = $state(0);
   
   
     function calculatePasswordStrength(password) {
@@ -20,8 +12,8 @@
       if (/[^A-Za-z0-9]/.test(password)) strength++;
       return strength;
     }
-      // Calculate password strength whenever the password changes
-    run(() => {
+
+  $effect(() => {
     passwordStrength = calculatePasswordStrength(password);
   });
 </script>
