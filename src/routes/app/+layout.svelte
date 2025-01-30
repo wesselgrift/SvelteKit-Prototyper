@@ -13,7 +13,7 @@
             <Sidebar />
         </aside>
         <main class="flex-1">
-            <div class="p-5">
+            <div class="p-8">
                 {@render children()}
             </div>
         </main>

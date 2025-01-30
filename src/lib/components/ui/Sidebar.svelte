@@ -5,6 +5,8 @@
     import { getAuth, onAuthStateChanged } from "firebase/auth";
     import { doc, getDoc, getFirestore } from "firebase/firestore";
     import Logo from '$lib/components/ui/Logo.svelte';
+    import Button from '$lib/components/ui/Button.svelte';
+    import { Mic } from 'lucide-svelte';
 
     let firstName = $state('');
     const db = getFirestore();
@@ -28,14 +30,18 @@
 
 <div class="flex flex-col h-screen justify-between items-center py-0">
     <div class="block w-full p-4">
-       <Logo />
+       <Logo className="mb-4" />
+       <Button variant="secondary">
+        <Mic strokeWidth={2.3} size={16} class="mr-2" />
+            Nieuwe notule
+        </Button>
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
         <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-primary-default' : '' }" href="/app">Home</a>
         <a class="text-sm font-medium { page.url.pathname === '/app/page-2' ? 'text-primary-default' : '' }" href="/app/page-2">Page 2</a>
         <a class="text-sm font-medium { page.url.pathname === '/app/page-3' ? 'text-primary-default' : '' }" href="/app/page-3">Page 3</a>
     </div>
-    <div class="w-full flex flex-col p-4 border-t border-1">
+    <div class="w-full flex flex-col p-4">
         {#if firstName}
             <p class="text-sm text-gray-400">Signed in as {firstName}</p>
         {:else}

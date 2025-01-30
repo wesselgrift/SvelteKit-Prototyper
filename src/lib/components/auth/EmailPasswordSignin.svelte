@@ -46,6 +46,6 @@
   </div>
   
   <Button type="submit">
-    Submit
+    Sign in
   </Button>
 </form>
