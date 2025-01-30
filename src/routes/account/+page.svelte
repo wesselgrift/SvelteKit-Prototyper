@@ -1,6 +1,6 @@
 <script>
-  import CreateAccount from "$lib/components/auth/CreateAccount.svelte";
-  import GoogleAuth from "$lib/components/auth/GoogleAuth.svelte";
+  import EmailPasswordSignup from "$lib/components/auth/EmailPasswordSignup.svelte";
+  import ContinueWithGoogle from "$lib/components/auth/ContinueWithGoogle.svelte";
   import TextLink from '$lib/components/ui/TextLink.svelte';
   import Separator from '$lib/components/ui/Separator.svelte';
 </script>
@@ -10,13 +10,13 @@
   <div style="max-width: 470px;" class="p-5 w-full">
     <img src="/logo.svg" alt="Google" class="h-8 mb-10" />
     <h2 class="text-3xl font-semibold mb-9 leading-tight">Create Account</h2>
-    <CreateAccount />      
+    <EmailPasswordSignup />      
     <div class="flex items-center gap-2 mb-5">
       <Separator />
       <span class="text-xs text-gray-400">OR</span>
       <Separator />
     </div>
-    <GoogleAuth />
+    <ContinueWithGoogle />
     <p class="w-full text-center text-sm mt-5">Already signed up? <TextLink href="/login" text="Log in" /></p>
   </div>
 </div>
