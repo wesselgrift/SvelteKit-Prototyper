@@ -1,5 +1,4 @@
 <script>
-    import Card from "$lib/components/ui/Card.svelte";
     import Button from "$lib/components/ui/Button.svelte";
 
     function handleClick() {
@@ -7,7 +6,7 @@
     }
 </script>
 
-<h1 class="text-3xl font-semibold mb-5 text-color-foreground">Page 3</h1>
+<h1 class="text-2xl font-semibold mb-5 text-color-foreground">Page 3</h1>
 <div class="w-64">
     <Button variant="secondary" onclick={handleClick}>Click me</Button>
 </div>

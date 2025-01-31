@@ -37,7 +37,7 @@
     </div>
     <div class="w-full flex flex-col p-4">
         {#if firstName}
-            <p class="text-sm text-color-muted-foreground">Signed in as {firstName}</p>
+            <p class="text-sm mb-1 text-color-muted-foreground">Signed in as {firstName}</p>
         {:else}
             <div class="h-[1.25rem] w-32 bg-gray-200 animate-pulse rounded"></div>
         {/if}
