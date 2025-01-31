@@ -4,13 +4,15 @@
 - Sign up
 - Protected page (for logged in users)
 - Logout
+- A couple of basic components
+- TailwindCSS and semantic theme
 
-_Install with_
+**Install with**
 ```
 npm install
 ```
 
-_Add your Firebase credentials to the .env file_
+**Add your Firebase credentials to the .env file**
 
 ```
 VITE_FIREBASE_API_KEY=YourKey
@@ -22,12 +24,12 @@ VITE_FIREBASE_APP_ID=YourAppId
 VITE_FIREBASE_MEASUREMENT_ID=YourMeasurementId
 ```
 
-_Run with_
+**Run with**
 ```
 npm run dev
 ```
 
-_Build with_
+**Build with**
 ```
 npm run build
 ```
