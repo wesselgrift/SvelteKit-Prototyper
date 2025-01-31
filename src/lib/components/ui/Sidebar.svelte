@@ -31,10 +31,6 @@
 <div class="flex flex-col h-screen justify-between items-center py-0">
     <div class="block w-full p-4">
        <Logo className="mb-4" />
-       <Button variant="secondary">
-        <Mic strokeWidth={2.3} size={16} class="mr-2" />
-            Nieuwe notule
-        </Button>
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
         <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-primary-default' : '' }" href="/app">Home</a>
