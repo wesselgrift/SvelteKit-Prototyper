@@ -1,16 +1,16 @@
-# Simple Svelte App with Firebase Auth and Firestore for user data.
+## Simple Svelte App with Firebase Auth and Firestore for user data.
 
 - Sign in (and reset password)
 - Sign up
 - Protected page (for logged in users)
 - Logout
 
-*Install with*
+_Install with_
 ```
 npm install
 ```
 
-*Add your Firebase credentials to the .env file*
+_Add your Firebase credentials to the .env file_
 
 ```
 VITE_FIREBASE_API_KEY=YourKey
@@ -22,12 +22,12 @@ VITE_FIREBASE_APP_ID=YourAppId
 VITE_FIREBASE_MEASUREMENT_ID=YourMeasurementId
 ```
 
-*Run with*
+_Run with_
 ```
 npm run dev
 ```
 
-*Build with*
+_Build with_
 ```
 npm run build
 ```
