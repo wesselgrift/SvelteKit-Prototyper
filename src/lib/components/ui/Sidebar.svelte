@@ -2,23 +2,19 @@
     import { page } from "$app/state";
     import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
-    import { getAuth, onAuthStateChanged } from "firebase/auth";
+    import { getAuth } from "firebase/auth";
     import { doc, getDoc, getFirestore } from "firebase/firestore";
     import Logo from '$lib/components/ui/Logo.svelte';
 
     let firstName = $state('');
     const db = getFirestore();
 
-    $effect(() => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                const userDoc = await getDoc(doc(db, 'users', user.uid));
-                if (userDoc.exists()) {
-                    firstName = userDoc.data().firstName;
-                }
-            }
-        });
+    $effect(async () => {
+        const user = getAuth().currentUser;
+        if (user) {
+            const userDoc = await getDoc(doc(db, 'users', user.uid));
+            firstName = userDoc.exists() ? userDoc.data().firstName : 'Unknown';
+        }
     });
 
     async function handleLogout() {
