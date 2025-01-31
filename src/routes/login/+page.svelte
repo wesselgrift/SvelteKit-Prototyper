@@ -25,7 +25,7 @@
 </script>
 
 {#if $loading}
-  <div role="status" class="flex flex-row justify-center items-center gap-2 h-screen">
+  <div role="status" class="flex flex-row justify-center items-center h-screen">
     <Spinner />
   </div>
 {:else if !$loading && !currentUser}
