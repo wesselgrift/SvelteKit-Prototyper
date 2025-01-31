@@ -29,18 +29,18 @@
     <Spinner />
   </div>
 {:else if !$loading && !currentUser}
-  <div class="flex flex-col justify-center items-center" style="padding-top: 120px;">
-    <div style="max-width: 470px;" class="p-5 w-full">
-      <Logo className="mb-10" />
-        <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Sign in</h2>
-        <EmailPasswordSignin />
-        <div class="flex items-center gap-2 mb-5">
-          <Separator />
-          <span class="text-xs text-color-muted-foreground">OR</span>
-          <Separator />
-        </div>
-        <ContinueWithGoogle />
-        <p class="w-full text-center text-sm mt-5 text-color-foreground">No account yet? <TextLink href="/account" text="Create account" /></p>
+    <div class="flex h-screen flex-col justify-center items-center">
+      <div style="max-width: 470px;" class="p-5 w-full">
+        <Logo className="mb-10" />
+          <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Sign in</h2>
+          <EmailPasswordSignin />
+          <div class="flex items-center gap-2 mb-5">
+            <Separator />
+            <span class="text-xs text-color-muted-foreground">OR</span>
+            <Separator />
+          </div>
+          <ContinueWithGoogle />
+          <p class="w-full text-center text-sm mt-5 text-color-foreground">No account yet? <TextLink href="/account" text="Create account" /></p>
+      </div>
     </div>
-  </div>
 {/if}

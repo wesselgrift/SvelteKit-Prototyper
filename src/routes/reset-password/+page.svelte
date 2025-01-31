@@ -6,7 +6,7 @@
   
   
   
-<div class="flex justify-center" style="padding-top: 120px;">
+<div class="flex h-screen justify-center items-center">
   <div style="max-width: 470px;" class="p-5 w-full">
     <Logo className="mb-10" />
     <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Reset Password</h2>
