@@ -29,8 +29,8 @@ VITE_FIREBASE_MEASUREMENT_ID=YourMeasurementId
 npm run dev
 ```
 
-**Customize theme**
+**Customize theme**<br>
 Go into tailwind.config.js and change the semantic theme colors.
 
-**Deployment**
+**Deployment**<br>
 Adapter for Vercel installed. Import repo in Vercel and deploy (use `dist` as build folder). For more info and other adapters, see [SvelteKit Adapters](https://svelte.dev/docs/kit/adapters).
