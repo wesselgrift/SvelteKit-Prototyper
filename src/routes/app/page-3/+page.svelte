@@ -7,7 +7,7 @@
     }
 </script>
 
-<h1 class="text-3xl font-semibold mb-5">Page 3</h1>
+<h1 class="text-3xl font-semibold mb-5 text-color-foreground">Page 3</h1>
 <div class="w-64">
     <Button variant="secondary" onclick={handleClick}>Click me</Button>
 </div>

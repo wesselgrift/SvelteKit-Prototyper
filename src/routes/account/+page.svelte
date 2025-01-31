@@ -10,14 +10,14 @@
 <div class="flex flex-col justify-center items-center" style="padding-top: 120px;">
   <div style="max-width: 470px;" class="p-5 w-full">
     <Logo className="mb-10" />
-    <h2 class="text-3xl font-semibold mb-9 leading-tight">Create Account</h2>
+    <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Create Account</h2>
     <EmailPasswordSignup />      
     <div class="flex items-center gap-2 mb-5">
       <Separator />
-      <span class="text-xs text-gray-400">OR</span>
+      <span class="text-xs text-color-muted-foreground">OR</span>
       <Separator />
     </div>
     <ContinueWithGoogle />
-    <p class="w-full text-center text-sm mt-5">Already signed up? <TextLink href="/login" text="Log in" /></p>
+    <p class="w-full text-center text-sm mt-5 text-color-foreground">Already signed up? <TextLink href="/login" text="Log in" /></p>
   </div>
 </div>
