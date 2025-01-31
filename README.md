@@ -6,6 +6,7 @@
 - Logout
 - A couple of basic components
 - TailwindCSS and semantic theme
+- Vercel adapter
 
 **Install with**
 ```
