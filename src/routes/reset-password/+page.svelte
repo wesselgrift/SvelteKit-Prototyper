@@ -1,5 +1,5 @@
 <script>
-  import ResetPassword from "../../lib/components/auth/ResetPassword.svelte";
+  import ResetPassword from "$lib/components/auth/ResetPassword.svelte";
   import { ChevronLeft } from 'lucide-svelte';
   import Logo from '$lib/components/ui/Logo.svelte';
 </script>

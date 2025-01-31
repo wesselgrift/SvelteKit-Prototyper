@@ -4,7 +4,7 @@
   import { db } from "$lib/firebase/firebase";
   import { setDoc, doc } from "firebase/firestore";
   import { fade } from "svelte/transition";
-  import StrengthIndicator from './passwordstrength/Indicator.svelte';
+  import StrengthIndicator from '$lib/components/auth/passwordstrength/Indicator.svelte';
   import Button from '$lib/components/ui/Button.svelte';
   import Label from '$lib/components/ui/Label.svelte';
   import Input from '$lib/components/ui/Input.svelte';

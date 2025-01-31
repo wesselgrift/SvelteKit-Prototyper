@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 import { getAuth, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
-import app from "../firebase/firebase";
+import app from "$lib/firebase/firebase";
 import { goto } from "$app/navigation";
 
 const auth = getAuth(app);
