@@ -7,10 +7,10 @@
 </script>
 
 
-<div class="flex h-screen">
-  <div class="w-1/2 flex flex-col justify-center items-center">
+<div class="flex flex-col lg:flex-row h-screen">
+  <div class="w-full lg:w-1/2 flex flex-col justify-center items-center">
     <div class="flex flex-col justify-center items-center w-full">
-      <div style="max-width: 470px;" class="p-5 w-full">
+      <div class="p-5 w-full max-w-md">
         <Logo className="mb-10" />
         <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Create Account</h2>
         <EmailPasswordSignup />      
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="w-1/2 bg-color-primary p-8 flex items-end justify-start sign-up-img">
+  <div class="w-full lg:w-1/2 bg-color-primary p-8 flex items-end justify-start sign-up-img">
     <!-- Promo space -->
   </div>
 </div>
