@@ -9,8 +9,8 @@
 
 <div class="w-full lg:flex lg:h-screen">
   <div class="w-full flex items-start lg:w-1/2 lg:items-center justify-center">
-    <div class="w-full max-w-md py-[100px] px-5 lg:p-5">
-      <Logo className="mb-10" />
+    <div class="w-full max-w-md py-[80px] px-5 lg:p-5">
+      <Logo className="mb-[80px] lg:mb-10" />
       <h2 class="mb-9 text-3xl font-semibold leading-tight text-color-foreground">Create Account</h2>
       <EmailPasswordSignup />      
       <div class="mb-5 flex items-center gap-3">
