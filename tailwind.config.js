@@ -9,6 +9,9 @@ export default {
 
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ['Figtree','system-ui', 'sans-serif'],
+			},
 			colors: {
 				'color-background': {
 					DEFAULT: colors.white
@@ -35,8 +38,8 @@ export default {
 					DEFAULT: colors.black
 				},
 				'color-primary': {
-					DEFAULT: colors.blue[600],
-					hover: colors.blue[700],
+					DEFAULT: colors.gray[950],
+					hover: colors.gray[800],
 				},
 				'color-primary-foreground': {
 					DEFAULT: colors.white
@@ -49,11 +52,11 @@ export default {
 					DEFAULT: colors.black
 				},
 				'color-muted': {
-					DEFAULT: colors.gray[200],
-					hover: colors.gray[300],
+					DEFAULT: colors.gray[100],
+					hover: colors.gray[200],
 				},
 				'color-muted-foreground': {
-					DEFAULT: colors.gray[500],
+					DEFAULT: colors.gray[400],
 				},
 				'color-accent': {
 					DEFAULT: colors.gray[200],
@@ -80,7 +83,7 @@ export default {
 					DEFAULT: colors.gray[200],
 				},
 				'color-input': {
-					DEFAULT: colors.gray[200],
+					DEFAULT: colors.gray[300],
 				},
 				'color-ring': {
 					DEFAULT: colors.blue[600],

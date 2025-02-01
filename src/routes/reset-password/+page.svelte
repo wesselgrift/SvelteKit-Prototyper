@@ -1,7 +1,7 @@
 <script>
   import ResetPassword from "$lib/components/auth/ResetPassword.svelte";
-  import { ChevronLeft } from 'lucide-svelte';
   import Logo from '$lib/components/ui/Logo.svelte';
+  import TextLink from '$lib/components/ui/TextLink.svelte';
 </script>
   
   
@@ -11,9 +11,8 @@
     <Logo className="mb-10" />
     <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Reset Password</h2>
     <ResetPassword />
-    <a href="/login" class="flex items-center justify-center gap-1 mt-5 text-sm text-color-muted-foreground hover:text-color-foreground transition">
-      <ChevronLeft size={20} strokeWidth={2} />
-      Back to sign in
-    </a>
+    <div class="flex flex-row justify-center items-center gap-2 mt-5">
+      <TextLink href="/login" text="Back to log in" variant="muted" />
+    </div>
   </div>
 </div>

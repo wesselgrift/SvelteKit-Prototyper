@@ -36,7 +36,7 @@
         </div>
   
         <!-- Password strength text -->
-        <p class="text-xs block text-left"
+        <p class="text-sm block text-left"
           class:text-red-500={passwordStrength === 1}
           class:text-orange-500={passwordStrength === 2}
           class:text-yellow-500={passwordStrength === 3}
@@ -50,6 +50,6 @@
       </div>
     {/if}
     {#if !password}
-      <p class="h-9 text-xs mb-6 bloc text-color-muted-foreground text-left">Use a password with at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.</p>
+      <p class="h-9 text-sm mb-8 bloc text-color-muted-foreground text-left">Use a password with at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character.</p>
     {/if}
   </div>

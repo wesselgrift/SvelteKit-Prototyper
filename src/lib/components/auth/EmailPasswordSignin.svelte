@@ -38,12 +38,12 @@
   <Label for="email" label="Email" />
   <Input name="email" type="email" bind:value={email} />
 
-  <Label for="password" label="Password" />
-  <Input name="password" type="password" bind:value={password} />
-
-  <div class="mb-8">
-    <TextLink href="/reset-password" text="Forgot Password?" />
+  <div class="flex flex-row justify-between">
+    <Label for="password" label="Password" />
+    <TextLink variant="muted" href="/reset-password" text="Forgot?" />
   </div>
+
+  <Input name="password" type="password" bind:value={password} />
   
   <Button type="submit">
     Sign in

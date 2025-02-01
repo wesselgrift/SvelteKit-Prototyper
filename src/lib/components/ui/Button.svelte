@@ -6,9 +6,11 @@
         variant = 'primary',
     } = $props();
 
+    const defaultClasses = 'w-full flex items-center justify-center py-3.5 mb-5 text-base font-medium rounded-lg transition focus:ring-2 focus:ring-color-ring focus:ring-offset-2 focus:outline-none';
+
     const variants = {
-        primary: 'flex items-center justify-center shadow-md py-2 block text-md bg-color-primary hover:bg-color-primary-hover text-color-primary-foreground w-full mb-5 rounded-lg transition focus:bg-color-primary-hover focus:ring-2 focus:ring-color-ring focus:ring-offset-2 focus:outline-none',
-        secondary: 'flex items-center justify-center py-2 block text-md text-md mb-5 block border border-color-border bg-color-secondary hover:bg-color-secondary-hover text-color-secondary-foreground w-full rounded-lg transition focus:ring-2 focus:ring-color-ring focus:ring-offset-2 focus:outline-none shadow-sm'
+        primary: `${defaultClasses} bg-color-primary hover:bg-color-primary-hover text-color-primary-foreground  focus:bg-color-primary-hover`,
+        secondary: `${defaultClasses} border border-color-border bg-color-secondary hover:bg-color-secondary-hover text-color-secondary-foreground`
     }
 </script>
   

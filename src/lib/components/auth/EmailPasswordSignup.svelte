@@ -68,7 +68,7 @@
   <Input name="email" type="email" bind:value={email} />
 
   <Label for="password" label="Password" />
-  <Input name="password" type="password" bind:value={password} />
+  <Input name="password" type="password" marginBottom="mb-2" bind:value={password} />
 
   <StrengthIndicator {password} {passwordStrength} />
 

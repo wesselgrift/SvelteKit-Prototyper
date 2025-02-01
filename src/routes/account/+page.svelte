@@ -14,13 +14,15 @@
         <Logo className="mb-10" />
         <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Create Account</h2>
         <EmailPasswordSignup />      
-        <div class="flex items-center gap-2 mb-5">
+        <div class="flex items-center gap-3 mb-5">
           <Separator />
-          <span class="text-xs text-color-muted-foreground">OR</span>
+          <span class="text-sm text-color-muted-foreground">OR</span>
           <Separator />
         </div>
         <ContinueWithGoogle />
-        <p class="w-full text-center text-sm mt-5 text-color-foreground">Already signed up? <TextLink href="/login" text="Log in" /></p>
+        <div class="flex flex-row justify-center items-center gap-2 mt-5">
+          <TextLink href="/login" text="Log in" variant="muted" />
+        </div>
       </div>
     </div>
   </div>

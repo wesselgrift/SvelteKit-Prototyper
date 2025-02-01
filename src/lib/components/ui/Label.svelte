@@ -1,5 +1,9 @@
 <script>
-    let { name, label } = $props();
+    let { 
+        name, 
+        label,
+        marginBottom = 'mb-2',
+    } = $props();
 </script>
   
-<label for={name} class="block text-sm mb-1 font-medium text-color-foreground">{label}</label>
+<label for={name} class="block text-base font-medium text-color-foreground {marginBottom}">{label}</label>

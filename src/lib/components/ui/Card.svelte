@@ -2,7 +2,7 @@
     let { children } = $props();
 </script>
   
-<div class="card border border-color-border rounded-lg p-4 bg-color-card">
+<div class="card border border-color-border rounded-xl p-4 bg-color-card">
     {#if children}
         {@render children()}
     {:else}

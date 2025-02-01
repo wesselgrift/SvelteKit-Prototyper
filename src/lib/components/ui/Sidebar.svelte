@@ -27,9 +27,9 @@
        <Logo className="mb-4" />
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
-        <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-color-primary' : '' }" href="/app">Home</a>
-        <a class="text-sm font-medium { page.url.pathname === '/app/page-2' ? 'text-color-primary' : '' }" href="/app/page-2">Page 2</a>
-        <a class="text-sm font-medium { page.url.pathname === '/app/page-3' ? 'text-color-primary' : '' }" href="/app/page-3">Page 3</a>
+        <a class="text-sm font-medium { page.url.pathname === '/app' ? 'text-color-primary underline' : '' }" href="/app">Page 1</a>
+        <a class="text-sm font-medium { page.url.pathname === '/app/page-2' ? 'text-color-primary underline' : '' }" href="/app/page-2">Page 2</a>
+        <a class="text-sm font-medium { page.url.pathname === '/app/page-3' ? 'text-color-primary underline' : '' }" href="/app/page-3">Page 3</a>
     </div>
     <div class="w-full flex flex-col p-4">
         {#if firstName}
