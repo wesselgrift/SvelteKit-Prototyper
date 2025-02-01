@@ -30,7 +30,7 @@
   </div>
 {:else if !$loading && !currentUser}
     <div class="flex justify-center lg:h-screen lg:items-center">
-      <div class="w-full max-w-md p-5">
+      <div class="w-full max-w-md p-5 animate-fade-in-zoom">
         <Logo className="mb-[80px] lg:mb-10" />
           <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Log in</h2>
           <EmailPasswordSignin />

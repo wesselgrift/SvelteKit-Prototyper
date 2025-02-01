@@ -4,10 +4,8 @@
   import TextLink from '$lib/components/ui/TextLink.svelte';
 </script>
   
-  
-  
 <div class="flex lg:h-screen justify-center lg:items-center">
-  <div class="p-5 w-full max-w-md">
+  <div class="p-5 w-full max-w-md animate-fade-in-zoom">
     <Logo className="mb-[80px] lg:mb-10" />
     <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Reset Password</h2>
     <ResetPassword />

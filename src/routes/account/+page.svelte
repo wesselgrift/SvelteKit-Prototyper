@@ -8,7 +8,7 @@
 
 
 <div class="w-full lg:flex lg:h-screen">
-  <div class="w-full flex items-start lg:w-1/2 lg:items-center justify-center">
+  <div class="w-full flex items-start lg:w-1/2 lg:items-center justify-center animate-fade-in-zoom">
     <div class="w-full max-w-md p-5">
       <Logo className="mb-[80px] lg:mb-10" />
       <h2 class="mb-9 text-3xl font-semibold leading-tight text-color-foreground">Create Account</h2>
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="w-full flex bg-color-primary p-8 sign-up-img h-[200px] lg:h-auto lg:w-1/2">
+  <div class="w-full flex bg-color-primary p-8 sign-up-img h-[200px] lg:h-auto lg:w-1/2 animate-fade-in">
     <!-- Promo space -->
   </div>
 </div>
