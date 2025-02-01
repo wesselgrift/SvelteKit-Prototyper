@@ -7,26 +7,24 @@
 </script>
 
 
-<div class="flex flex-col lg:flex-row h-screen">
-  <div class="w-full lg:w-1/2 flex flex-col justify-center items-center">
-    <div class="flex flex-col justify-center items-center w-full">
-      <div class="p-5 w-full max-w-md">
-        <Logo className="mb-10" />
-        <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Create Account</h2>
-        <EmailPasswordSignup />      
-        <div class="flex items-center gap-3 mb-5">
-          <Separator />
-          <span class="text-sm text-color-muted-foreground">OR</span>
-          <Separator />
-        </div>
-        <ContinueWithGoogle />
-        <div class="flex flex-row justify-center items-center pb-10 lg:pb-0">
-          <TextLink href="/login" text="Log in" variant="muted" />
-        </div>
+<div class="w-full lg:flex lg:h-screen">
+  <div class="w-full flex items-start lg:w-1/2 lg:items-center justify-center">
+    <div class="w-full max-w-md py-[100px] px-5 lg:p-5">
+      <Logo className="mb-10" />
+      <h2 class="mb-9 text-3xl font-semibold leading-tight text-color-foreground">Create Account</h2>
+      <EmailPasswordSignup />      
+      <div class="mb-5 flex items-center gap-3">
+        <Separator />
+        <span class="text-sm text-color-muted-foreground">OR</span>
+        <Separator />
+      </div>
+      <ContinueWithGoogle />
+      <div class="flex justify-center">
+        <TextLink href="/login" text="Log in" variant="muted" />
       </div>
     </div>
   </div>
-  <div class="w-full lg:w-1/2 bg-color-primary p-8 flex items-end justify-start sign-up-img">
+  <div class="w-full flex bg-color-primary p-8 sign-up-img h-[200px] lg:h-auto lg:w-1/2">
     <!-- Promo space -->
   </div>
 </div>
