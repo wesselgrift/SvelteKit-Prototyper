@@ -26,9 +26,9 @@
 
 
   {#if message}
-    <p class=" text-sm bg-color-success text-color-success-foreground p-5 mb-3 rounded-md">{message}</p>
+    <p class=" text-base bg-color-success text-color-success-foreground p-5 mb-3 rounded-lg">{message}</p>
   {:else if messageError}
-    <p class=" text-sm bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-md">{messageError}</p>
+    <p class=" text-base bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-lg">{messageError}</p>
   {/if}
 
   <Label for="resetPassword" label="Email" />

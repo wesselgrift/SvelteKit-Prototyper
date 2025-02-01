@@ -35,7 +35,7 @@
 </script>
 
 {#if error}
-  <p class="text-sm bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-md" in:fade={{ duration: 400 }} out:fade={{ duration: 400 }}>
+  <p class="text-base bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-lg" in:fade={{ duration: 400 }} out:fade={{ duration: 400 }}>
     Whoops, that didn't work. Please check if you filled in both email and password correctly.
   </p>
 {/if}
