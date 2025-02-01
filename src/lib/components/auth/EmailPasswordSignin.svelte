@@ -6,9 +6,11 @@
   import Input from '$lib/components/ui/Input.svelte';
   import TextLink from '$lib/components/ui/TextLink.svelte';
   import Button from '$lib/components/ui/Button.svelte';
+  import Spinner from '$lib/components/ui/Spinner.svelte';
   let email = $state("");
   let password = $state("");
   let error = $state("");
+  let showLoading = $state(false);
 
   $effect(() => {
     const savedEmail = localStorage.getItem("email");
@@ -19,11 +21,15 @@
 
   async function handleLogin() {
     try {
+      showLoading = true;
       await login(email, password);
       localStorage.setItem("email", email);
       goto("/app");
     } catch (err) {
       error = err.message;
+      showLoading = false;
+    } finally {
+      showLoading = false;
     }
   }
 </script>
@@ -46,6 +52,9 @@
   <Input name="password" type="password" bind:value={password} />
   
   <Button type="submit">
-    Sign in
+    {#if showLoading}
+      <Spinner className="w-6 h-6 mr-3" spinColor="fill-color-primary-foreground" pathColor="text-color-primary-hover" />
+    {/if}
+      Log in
   </Button>
 </form>

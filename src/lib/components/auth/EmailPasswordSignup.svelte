@@ -8,7 +8,8 @@
   import Button from '$lib/components/ui/Button.svelte';
   import Label from '$lib/components/ui/Label.svelte';
   import Input from '$lib/components/ui/Input.svelte';
-  
+  import Spinner from '$lib/components/ui/Spinner.svelte';
+
   let firstName = $state("");
   let lastName = $state("");
   let email = $state("");
@@ -16,9 +17,11 @@
   let result = $state("");
   let error = $state("");
   let passwordStrength = $state(0);
+  let showLoading = $state(false);
 
   async function handleRegister() {
     try {
+      showLoading = true;
       const userCredential = await register(email, password);
       const userId = userCredential.user.uid;
 
@@ -38,6 +41,9 @@
     } catch (err) {
       result = "";
       error = true;
+      showLoading = false;
+    } finally {
+      showLoading = false;
     }
   }  
 </script>
@@ -72,6 +78,11 @@
 
   <StrengthIndicator {password} {passwordStrength} />
 
-  <Button type="submit">Get Started</Button>
+  <Button type="submit">
+    {#if showLoading}
+      <Spinner className="w-6 h-6 mr-3" spinColor="fill-color-primary-foreground" pathColor="text-color-primary-hover" />
+    {/if}
+    Get Started
+  </Button>
 </form>
 
