@@ -29,9 +29,9 @@
     <Spinner />
   </div>
 {:else if !$loading && !currentUser}
-    <div class="flex h-screen flex-col justify-center items-center">
-      <div class="p-5 w-full max-w-md">
-        <Logo className="mb-10" />
+    <div class="flex justify-center lg:h-screen lg:items-center">
+      <div class="w-full max-w-md p-5">
+        <Logo className="mb-[80px] lg:mb-10" />
           <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Log in</h2>
           <EmailPasswordSignin />
           <div class="flex items-center gap-3 mb-5">
@@ -40,7 +40,7 @@
             <Separator />
           </div>
           <ContinueWithGoogle />
-          <div class="flex flex-row justify-center items-center gap-2 mt-5">
+          <div class="flex justify-center mb-8 lg:mb-0">
             <TextLink href="/account" text="Create account" variant="muted" />
           </div>
       </div>

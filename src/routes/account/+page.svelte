@@ -19,7 +19,7 @@
         <Separator />
       </div>
       <ContinueWithGoogle />
-      <div class="flex justify-center">
+      <div class="flex justify-center mb-8 lg:mb-0">
         <TextLink href="/login" text="Log in" variant="muted" />
       </div>
     </div>
