@@ -9,7 +9,7 @@
 
 <div class="flex h-screen">
   <div class="w-1/2 flex flex-col justify-center items-center">
-    <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center w-full">
       <div style="max-width: 470px;" class="p-5 w-full">
         <Logo className="mb-10" />
         <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Create Account</h2>

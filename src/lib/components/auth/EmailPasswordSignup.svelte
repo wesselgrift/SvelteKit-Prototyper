@@ -51,7 +51,7 @@
   <p class=" text-sm bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-md" in:fade={{ duration: 400 }} out:fade={{ duration: 400 }}>Whoops, that didn't work. Please check if you filled in all the fields correctly.</p>
 {/if}
 
-<form onsubmit={e => { e.preventDefault(); handleRegister(); }}>
+<form class="w-full" onsubmit={e => { e.preventDefault(); handleRegister(); }}>
   
   <div class="flex gap-4">
     <div class="w-full">

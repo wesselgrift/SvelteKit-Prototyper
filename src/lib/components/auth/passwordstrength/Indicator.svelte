@@ -18,9 +18,9 @@
   });
 </script>
   
-  <div class="mb-6">
+  <div class="mb-6 w-full">
     {#if password}
-      <div class="mb-8">
+      <div class="mb-8 pt-1">
         <!-- Password strength bar -->
         <div class="flex gap-2 mb-1">
           {#each Array(5) as _, i}
