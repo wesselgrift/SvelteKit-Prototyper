@@ -54,7 +54,7 @@
 
 <form class="w-full" onsubmit={e => { e.preventDefault(); handleRegister(); }}>
   
-  <div class="flex gap-4">
+  <div class="flex flex-col lg:flex-row lg:gap-4">
     <div class="w-full">
       <Label for="firstName" label="First name" />
       <Input name="firstName" type="text" bind:value={firstName} />
