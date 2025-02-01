@@ -26,7 +26,16 @@
       </div>
     </div>
   </div>
-  <div class="w-1/2 bg-color-primary p-8 flex items-end justify-start">
+  <div class="w-1/2 bg-color-primary p-8 flex items-end justify-start sign-up-img">
     <!-- Promo space -->
   </div>
 </div>
+
+<style>
+  .sign-up-img {
+    background-image: url('/abstract-img.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
