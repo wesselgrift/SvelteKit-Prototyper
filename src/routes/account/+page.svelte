@@ -20,7 +20,7 @@
           <Separator />
         </div>
         <ContinueWithGoogle />
-        <div class="flex flex-row justify-center items-center gap-2 mt-5">
+        <div class="flex flex-row justify-center items-center pb-10 lg:pb-0">
           <TextLink href="/login" text="Log in" variant="muted" />
         </div>
       </div>
