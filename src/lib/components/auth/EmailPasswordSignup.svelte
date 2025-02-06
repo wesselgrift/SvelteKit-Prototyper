@@ -1,8 +1,7 @@
 <script>
   import { register, login } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
-  import db from "$lib/firebase/firestore";
-  import { setDoc, doc } from "firebase/firestore";
+  import { setDocument } from "$lib/firebase/firestore";
   import { fade } from "svelte/transition";
   import StrengthIndicator from '$lib/components/auth/passwordstrength/Indicator.svelte';
   import Button from '$lib/components/ui/Button.svelte';
@@ -21,7 +20,9 @@
 
   async function handleRegister() {
     try {
+
       showLoading = true;
+      
       const userCredential = await register(email, password);
       const userId = userCredential.user.uid;
 
@@ -30,20 +31,26 @@
 
       localStorage.setItem("email", email);
 
-      await setDoc(doc(db, "users", userId), {
+      await setDocument("users", userId, {
         firstName,
         lastName,
         email
       });
 
       await login(email, password);
+
       goto("/app");
+
     } catch (err) {
+
       result = "";
       error = true;
       showLoading = false;
+
     } finally {
+
       showLoading = false;
+
     }
   }  
 </script>
