@@ -2,22 +2,23 @@
     import { page } from "$app/state";
     import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
-    import { getAuth } from "firebase/auth";
+    import { user } from "$lib/stores/userStore";
     import { getDocument } from "$lib/firebase/firestore";
     import Logo from '$lib/components/ui/Logo.svelte';
 
     let firstName = $state('');
 
     $effect(async () => {
-        // Get the current user
-        const user = getAuth().currentUser;
 
-        // If the user is logged in, get the user document and name from Firestore
-        if (user) {
-            const userDoc = await getDocument("users", user.uid);
+        // Get first name from Firestore based on user id
+        if ($user) {
+            const userDoc = await getDocument("users", $user.uid);
 
             // Set the first name
             firstName = userDoc.firstName;
+        } else {
+            // If user is not logged in, set first name to 'Unknown'
+            firstName = 'Unknown';
         }
     });
 
