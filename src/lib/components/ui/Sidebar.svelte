@@ -3,11 +3,11 @@
     import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
     import { getAuth } from "firebase/auth";
-    import { doc, getDoc, getFirestore } from "firebase/firestore";
+    import db from "$lib/firebase/firestore";
+    import { doc, getDoc } from "firebase/firestore";
     import Logo from '$lib/components/ui/Logo.svelte';
 
     let firstName = $state('');
-    const db = getFirestore();
 
     $effect(async () => {
         const user = getAuth().currentUser;

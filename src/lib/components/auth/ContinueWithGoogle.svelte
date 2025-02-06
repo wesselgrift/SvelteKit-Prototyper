@@ -1,7 +1,7 @@
 <script>
   import { loginWithGoogle } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
-  import { db } from "$lib/firebase/firebase"; 
+  import db from "$lib/firebase/firestore";
   import { setDoc, doc } from "firebase/firestore";
   import Button from '$lib/components/ui/Button.svelte';
 

@@ -1,7 +1,7 @@
 <script>
   import { register, login } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
-  import { db } from "$lib/firebase/firebase";
+  import db from "$lib/firebase/firestore";
   import { setDoc, doc } from "firebase/firestore";
   import { fade } from "svelte/transition";
   import StrengthIndicator from '$lib/components/auth/passwordstrength/Indicator.svelte';
