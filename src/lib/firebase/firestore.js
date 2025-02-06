@@ -25,7 +25,7 @@ export async function setDocument(collectionName, docId, data) {
             ...data,
             updatedAt: serverTimestamp(),
             createdAt: serverTimestamp()
-        });
+        }, { merge: true });
         return { success: true, id: docId };
     } catch (error) {
         console.error('Error setting document:', error);

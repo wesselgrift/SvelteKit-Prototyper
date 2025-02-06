@@ -20,16 +20,29 @@
   });
 
   async function handleLogin() {
-    try {
+    try { 
+
+      // Show loading indicator
       showLoading = true;
+
+      // Login the user
       await login(email, password);
+
+      // Store the email in local storage
       localStorage.setItem("email", email);
+      
+      // Redirect to the app
       goto("/app");
+
     } catch (err) {
+
       error = err.message;
       showLoading = false;
+
     } finally {
+
       showLoading = false;
+
     }
   }
 </script>
