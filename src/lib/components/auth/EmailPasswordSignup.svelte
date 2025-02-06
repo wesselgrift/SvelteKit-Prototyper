@@ -23,6 +23,7 @@
 
       showLoading = true;
       
+      // Register the user and get the user id
       const userCredential = await register(email, password);
       const userId = userCredential.user.uid;
 
@@ -31,14 +32,17 @@
 
       localStorage.setItem("email", email);
 
+      // Set the user document in Firestore
       await setDocument("users", userId, {
         firstName,
         lastName,
         email
       });
 
+      // Login the user
       await login(email, password);
 
+      // Redirect to the app
       goto("/app");
 
     } catch (err) {
