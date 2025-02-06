@@ -3,8 +3,7 @@
     import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
     import { getAuth } from "firebase/auth";
-    import db from "$lib/firebase/firestore";
-    import { doc, getDoc } from "firebase/firestore";
+    import { getDocument } from "$lib/firebase/firestore";
     import Logo from '$lib/components/ui/Logo.svelte';
 
     let firstName = $state('');
@@ -12,8 +11,8 @@
     $effect(async () => {
         const user = getAuth().currentUser;
         if (user) {
-            const userDoc = await getDoc(doc(db, 'users', user.uid));
-            firstName = userDoc.exists() ? userDoc.data().firstName : 'Unknown';
+            const userDoc = await getDocument("users", user.uid);
+            firstName = userDoc.firstName;
         }
     });
 
