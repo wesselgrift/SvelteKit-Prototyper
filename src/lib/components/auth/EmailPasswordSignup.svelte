@@ -2,12 +2,12 @@
   import { register, login } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
   import { setDocument } from "$lib/firebase/firestore";
-  import { fade } from "svelte/transition";
   import StrengthIndicator from '$lib/components/auth/passwordstrength/Indicator.svelte';
   import Button from '$lib/components/ui/Button.svelte';
   import Label from '$lib/components/ui/Label.svelte';
   import Input from '$lib/components/ui/Input.svelte';
   import Spinner from '$lib/components/ui/Spinner.svelte';
+  import Card from '$lib/components/ui/Card.svelte';
 
   let firstName = $state("");
   let lastName = $state("");
@@ -60,7 +60,11 @@
 </script>
 
 {#if error}
-  <p class=" text-base bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-lg" in:fade={{ duration: 400 }} out:fade={{ duration: 400 }}>Whoops, that didn't work. Please check if you filled in all the fields correctly.</p>
+  <div class="mb-5">
+    <Card variant="danger" borderRadius="rounded-lg">
+      Whoops, that didn't work. Please check if you filled in all the fields correctly.
+    </Card>
+  </div>
 {/if}
 
 <form class="w-full" onsubmit={e => { e.preventDefault(); handleRegister(); }}>

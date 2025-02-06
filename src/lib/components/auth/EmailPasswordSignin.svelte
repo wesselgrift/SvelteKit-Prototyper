@@ -7,6 +7,7 @@
   import TextLink from '$lib/components/ui/TextLink.svelte';
   import Button from '$lib/components/ui/Button.svelte';
   import Spinner from '$lib/components/ui/Spinner.svelte';
+  import Card from '$lib/components/ui/Card.svelte';
   let email = $state("");
   let password = $state("");
   let error = $state("");
@@ -48,9 +49,11 @@
 </script>
 
 {#if error}
-  <p class="text-base bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-lg" in:fade={{ duration: 400 }} out:fade={{ duration: 400 }}>
-    Whoops, that didn't work. Please check if you filled in both email and password correctly.
-  </p>
+  <div class="mb-5">
+    <Card variant="danger" borderRadius="rounded-lg">
+      Whoops, that didn't work. Please check if you filled in both email and password correctly.
+    </Card>
+  </div>
 {/if}
 
 <form onsubmit={e => { e.preventDefault(); handleLogin(); }}>

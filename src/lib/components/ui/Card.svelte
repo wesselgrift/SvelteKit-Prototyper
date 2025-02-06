@@ -1,8 +1,19 @@
 <script>
-    let { children } = $props();
+    let { 
+        children,
+        variant = 'default',
+        borderRadius = 'rounded-xl',
+    } = $props();
+
+    const defaultClasses = 'card border p-4';
+
+    const variants = {
+        default: `${defaultClasses} border-color-border bg-color-card text-color-card-foreground`,
+        danger: `${defaultClasses} border-color-destructive bg-color-destructive text-color-destructive-foreground`,
+    }
 </script>
   
-<div class="card border border-color-border rounded-xl p-4 bg-color-card">
+<div class={variants[variant] + ' ' + borderRadius}>
     {#if children}
         {@render children()}
     {:else}

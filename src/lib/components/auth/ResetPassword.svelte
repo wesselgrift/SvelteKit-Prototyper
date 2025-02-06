@@ -4,6 +4,7 @@
   import Input from '$lib/components/ui/Input.svelte';
   import Button from '$lib/components/ui/Button.svelte';
   import Spinner from '$lib/components/ui/Spinner.svelte';
+  import Card from '$lib/components/ui/Card.svelte';
   let email = $state("");
   let message = $state("");
   let messageError = $state("");
@@ -26,9 +27,17 @@
 
 
   {#if message}
-    <p class=" text-base bg-color-success text-color-success-foreground p-5 mb-3 rounded-lg">{message}</p>
+    <div class="mb-5">
+      <Card borderRadius="rounded-lg">
+        {message}
+      </Card>
+    </div>
   {:else if messageError}
-    <p class=" text-base bg-color-destructive text-color-destructive-foreground p-5 mb-3 rounded-lg">{messageError}</p>
+    <div class="mb-5">
+      <Card variant="danger" borderRadius="rounded-lg">
+        {messageError}
+      </Card>
+    </div>
   {/if}
 
   <Label for="resetPassword" label="Email" />
