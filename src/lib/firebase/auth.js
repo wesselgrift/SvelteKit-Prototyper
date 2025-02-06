@@ -41,7 +41,7 @@ export function initializeAuth() {
         .then(() => {
             unsubscribe = onAuthStateChanged(auth, (currentUser) => {
                 user.set(currentUser);
-                
+
                 if (currentUser) {
                   console.log("Auth state changed: user is signed in");
                 // If user is not signed in, redirect to login page
