@@ -9,9 +9,14 @@
     let firstName = $state('');
 
     $effect(async () => {
+        // Get the current user
         const user = getAuth().currentUser;
+
+        // If the user is logged in, get the user document and name from Firestore
         if (user) {
             const userDoc = await getDocument("users", user.uid);
+
+            // Set the first name
             firstName = userDoc.firstName;
         }
     });
