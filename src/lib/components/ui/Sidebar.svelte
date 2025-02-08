@@ -12,7 +12,12 @@
 
         // Get first name from Firestore based on user id
         if ($user) {
+            console.log('user in store is', $user);
+            console.log('user ID in store is', $user.uid);
+
             const userDoc = await getDocument("users", $user.uid);
+
+            console.log('userDoc is', userDoc);
 
             // Set the first name
             firstName = userDoc.firstName;
