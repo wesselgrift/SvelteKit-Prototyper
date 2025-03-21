@@ -1,8 +1,11 @@
 <script>
+	// Svelte, Auth and user store
     import { page } from "$app/state";
-    import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
     import { firstName } from "$lib/stores/userStore";
+
+	// Components
+    import { LogOut } from "lucide-svelte";
     import Logo from '$lib/components/parts/Logo.svelte';
 
     async function handleLogout() {

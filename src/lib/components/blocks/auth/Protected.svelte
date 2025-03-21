@@ -1,28 +1,32 @@
 <script>
-  import { onDestroy } from "svelte";
-  import { user, loading } from "$lib/stores/userStore";
-  import Spinner from "$lib/components/parts/Spinner.svelte";
+	// Svelte
+	import { onDestroy } from 'svelte';
 
-  let { children } = $props();
-  let currentUser = $state();
+	// Stores
+	import { user, loading } from '$lib/stores/userStore';
 
-  const unsubscribe = user.subscribe((val) => {
-    currentUser = val;
-  });
+	// Components
+	import Spinner from '$lib/components/parts/Spinner.svelte';
 
-  onDestroy(() => {
-    unsubscribe();
-  });
+	// Variables
+	let { children } = $props();
+	let currentUser = $state();
 
+	const unsubscribe = user.subscribe((val) => {
+		currentUser = val;
+	});
+
+	onDestroy(() => {
+		unsubscribe();
+	});
 </script>
 
-
 {#if $loading}
-  <div role="status" class="flex flex-row justify-center items-center h-screen">
-    <Spinner />
-  </div>
+	<div role="status" class="flex h-screen flex-row items-center justify-center">
+		<Spinner />
+	</div>
 {:else if currentUser}
-  <div>
-    {@render children?.()}
-  </div>
+	<div>
+		{@render children?.()}
+	</div>
 {/if}
