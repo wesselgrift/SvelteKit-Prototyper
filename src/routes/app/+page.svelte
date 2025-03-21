@@ -1,1 +1,1 @@
-<h2 class="text-2xl font-semibold text-color-foreground">Page 1</h2>
+<h2 class="text-xl font-medium text-color-foreground">Page 1</h2>

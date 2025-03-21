@@ -32,7 +32,7 @@
     <div class="flex justify-center lg:h-screen lg:items-center">
       <div class="w-full max-w-md p-5 animate-fade-in-zoom">
         <Logo className="mb-[80px] lg:mb-10" />
-          <h2 class="text-3xl font-semibold mb-9 leading-tight text-color-foreground">Log in</h2>
+          <h2 class="text-2xl font-medium mb-9 leading-tight text-color-foreground">Log in</h2>
           <EmailPasswordSignin />
           <div class="flex items-center gap-3 mb-5">
             <Separator />

@@ -6,7 +6,7 @@
     } = $props();
 
 
-    const defaultClasses = 'text-base transition';
+    const defaultClasses = 'text-sm transition';
 
     const variants = {
         primary: `${defaultClasses} text-color-primary hover:text-color-primary-hover hover:underline`,

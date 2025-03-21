@@ -11,7 +11,7 @@
   <div class="w-full flex items-start lg:w-1/2 lg:items-center justify-center animate-fade-in-zoom">
     <div class="w-full max-w-md p-5">
       <Logo className="mb-[80px] lg:mb-10" />
-      <h2 class="mb-9 text-3xl font-semibold leading-tight text-color-foreground">Create Account</h2>
+      <h2 class="mb-9 text-2xl font-medium leading-tight text-color-foreground">Create Account</h2>
       <EmailPasswordSignup />      
       <div class="mb-5 flex items-center gap-3">
         <Separator />
