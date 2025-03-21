@@ -1,8 +1,9 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence, onAuthStateChanged } from "firebase/auth";
 import app from "$lib/firebase/firebase";
-import { user, loading } from "$lib/stores/userStore";
+import { user, loading, firstName, lastName, userEmail } from "$lib/stores/userStore";
 import { goto } from "$app/navigation";
 import { browser } from "$app/environment";
+import { getDocument } from "$lib/firebase/firestore";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -44,6 +45,7 @@ export function initializeAuth() {
 
                 if (currentUser) {
                   console.log("Auth state changed: user is signed in");
+                  setUserProfileData(currentUser);
                 // If user is not signed in, redirect to login page
                 } else {
                   console.log("Auth state changed: no user is signed in");
@@ -68,6 +70,14 @@ export function initializeAuth() {
         }
     };
 
+}
+
+// Set the user profile data in the stores on auth state change
+async function setUserProfileData(user) {
+    const userDoc = await getDocument("users", user.uid);
+    firstName.set(userDoc.firstName);
+    lastName.set(userDoc.lastName);
+    userEmail.set(userDoc.email);
 }
 
 export default auth;
