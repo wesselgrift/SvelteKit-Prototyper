@@ -10,7 +10,7 @@
 	import Label from '$lib/components/parts/Label.svelte';
 	import Input from '$lib/components/parts/Input.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Card from '$lib/components/parts/Card.svelte';
+	import Dialog from '$lib/components/parts/Dialog.svelte';
 
 	// Variables
 	let firstName = $state('');
@@ -59,9 +59,9 @@
 
 {#if error}
 	<div class="mb-5">
-		<Card variant="danger" borderRadius="rounded-lg">
+		<Dialog variant="error">
 			Whoops, that didn't work. Please check if you filled in all the fields correctly.
-		</Card>
+		</Dialog>
 	</div>
 {/if}
 

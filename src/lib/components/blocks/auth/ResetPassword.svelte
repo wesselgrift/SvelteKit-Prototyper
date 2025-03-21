@@ -7,7 +7,7 @@
 	import Input from '$lib/components/parts/Input.svelte';
 	import Button from '$lib/components/parts/Button.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Card from '$lib/components/parts/Card.svelte';
+	import Dialog from '$lib/components/parts/Dialog.svelte';
 
 	// Variables
 	let email = $state('');
@@ -31,15 +31,15 @@
 
 {#if message}
 	<div class="mb-5">
-		<Card borderRadius="rounded-lg">
-			<p class="text-sm">{message}</p>
-		</Card>
+		<Dialog variant="success">
+			{message}
+		</Dialog>
 	</div>
 {:else if messageError}
 	<div class="mb-5">
-		<Card variant="danger" borderRadius="rounded-lg">
-			<p class="text-sm">{messageError}</p>
-		</Card>
+		<Dialog variant="error">
+			{messageError}
+		</Dialog>
 	</div>
 {/if}
 
