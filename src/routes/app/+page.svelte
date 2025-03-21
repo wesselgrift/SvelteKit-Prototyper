@@ -3,7 +3,7 @@
     import Card from "$lib/components/parts/Card.svelte";
 </script>
 
-<h2 class="text-xl font-medium text-color-foreground mb-4">Welcome!</h2>
+<h2 class="text-xl font-medium text-color-foreground mb-4">Hello world!</h2>
 
 <Card>
     <p class="font-medium mb-3 text-base">You signed in with the following profile, stored in the Svelte store:</p>
