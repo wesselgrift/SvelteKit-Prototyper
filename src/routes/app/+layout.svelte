@@ -1,7 +1,7 @@
 <script>
 	import '$src/app.css';
-    import Protected from "$lib/components/auth/Protected.svelte";
-    import Sidebar from "$lib/components/ui/Sidebar.svelte";
+    import Protected from "$lib/components/blocks/auth/Protected.svelte";
+    import Sidebar from "$lib/components/blocks/Sidebar.svelte";
 	
     let { children } = $props();
 </script>

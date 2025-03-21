@@ -3,11 +3,11 @@
 	import { resetPassword } from '$lib/firebase/auth';
 
 	// Components
-	import Label from '$lib/components/ui/Label.svelte';
-	import Input from '$lib/components/ui/Input.svelte';
-	import Button from '$lib/components/ui/Button.svelte';
-	import Spinner from '$lib/components/ui/Spinner.svelte';
-	import Card from '$lib/components/ui/Card.svelte';
+	import Label from '$lib/components/parts/Label.svelte';
+	import Input from '$lib/components/parts/Input.svelte';
+	import Button from '$lib/components/parts/Button.svelte';
+	import Spinner from '$lib/components/parts/Spinner.svelte';
+	import Card from '$lib/components/parts/Card.svelte';
 
 	// Variables
 	let email = $state('');

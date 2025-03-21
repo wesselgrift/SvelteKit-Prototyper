@@ -3,7 +3,7 @@
     import { LogOut } from "lucide-svelte";
     import { logout } from "$lib/firebase/auth";
     import { firstName } from "$lib/stores/userStore";
-    import Logo from '$lib/components/ui/Logo.svelte';
+    import Logo from '$lib/components/parts/Logo.svelte';
 
     async function handleLogout() {
         await logout();

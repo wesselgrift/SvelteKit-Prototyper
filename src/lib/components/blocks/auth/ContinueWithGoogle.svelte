@@ -2,7 +2,7 @@
   import { loginWithGoogle } from "$lib/firebase/auth";
   import { goto } from "$app/navigation";
   import { setDocument } from "$lib/firebase/firestore";
-  import Button from '$lib/components/ui/Button.svelte';
+  import Button from '$lib/components/parts/Button.svelte';
 
 
   async function handleGoogleLogin() {
