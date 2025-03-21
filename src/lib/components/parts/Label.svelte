@@ -6,4 +6,4 @@
     } = $props();
 </script>
   
-<label for={name} class="block text-sm font-medium text-color-foreground {marginBottom}">{label}</label>
+<label for={name} class="block font-medium text-color-foreground {marginBottom}">{label}</label>

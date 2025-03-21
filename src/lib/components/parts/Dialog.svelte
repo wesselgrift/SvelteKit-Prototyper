@@ -4,7 +4,7 @@
         variant = 'default'
     } = $props();
 
-    const defaultClasses = 'dialog border p-4 text-sm rounded-lg';
+    const defaultClasses = 'dialog border p-4 rounded-lg';
 
     const variants = {
         default: `${defaultClasses} border-color-border bg-color-card text-color-card-foreground`,

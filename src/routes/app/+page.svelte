@@ -6,8 +6,8 @@
 <h2 class="text-xl font-medium text-color-foreground mb-4">Welcome!</h2>
 
 <Card>
-    <p class="font-semibold mb-2">You signed in with the following data:</p>
-    <p>First name: {$firstName}</p>
-    <p>Last name: {$lastName}</p>
-    <p>Email: {$userEmail}</p>
+    <p class="font-medium mb-3 text-base">You signed in with the following profile, stored in the Svelte store:</p>
+    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">First name:</span> {$firstName}</p>
+    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">Last name:</span> {$lastName}</p>
+    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">Email:</span> {$userEmail}</p>
 </Card>
