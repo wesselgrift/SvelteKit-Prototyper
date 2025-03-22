@@ -2,7 +2,7 @@
 	// Svelte, Auth and user store
     import { page } from "$app/state";
     import { logout } from "$lib/firebase/auth";
-    import { firstName } from "$lib/stores/userStore";
+    import { userProfile } from "$lib/stores/userStore";
 
 	// Components
     import { LogOut } from "lucide-svelte";
@@ -18,13 +18,13 @@
        <Logo className="mb-4" />
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
-        <a class="font-medium { page.url.pathname === '/app' ? 'text-color-primary underline' : '' }" href="/app">Page 1</a>
-        <a class="font-medium { page.url.pathname === '/app/page-2' ? 'text-color-primary underline' : '' }" href="/app/page-2">Page 2</a>
-        <a class="font-medium { page.url.pathname === '/app/page-3' ? 'text-color-primary underline' : '' }" href="/app/page-3">Page 3</a>
+        <a class="font-medium { page.url.pathname === '/app' ? 'text-color-primary underline' : '' }" href="/app">Hello World</a>
+        <a class="font-medium { page.url.pathname === '/app/page-2' ? 'text-color-primary underline' : '' }" href="/app/page-2">Components</a>
+        <a class="font-medium { page.url.pathname === '/app/page-3' ? 'text-color-primary underline' : '' }" href="/app/page-3">Theme</a>
     </div>
     <div class="w-full flex flex-col p-4">
-        {#if $firstName}
-            <p class="mb-1 text-color-muted-foreground">Signed in as {$firstName}</p>
+        {#if $userProfile.firstName}
+            <p class="mb-1 text-color-muted-foreground">Signed in as {$userProfile.firstName}</p>
         {:else}
             <div class="h-[1.25rem] w-32 bg-gray-200 animate-pulse rounded"></div>
         {/if}

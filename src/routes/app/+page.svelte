@@ -1,13 +1,11 @@
 <script>
-    import { firstName, lastName, userEmail } from "$lib/stores/userStore";
+    import { userProfile } from "$lib/stores/userStore";
     import Card from "$lib/components/parts/Card.svelte";
 </script>
 
-<h2 class="text-xl font-medium text-color-foreground mb-4">Hello world!</h2>
+<h2 class="text-xl font-medium mb-4">Hello world!</h2>
+<p class="mb-4">This small boilerplate uses SvelteKit, Firebase and Firestore to serve up an empty web app with auth.</p>
 
-<Card>
-    <p class="font-medium mb-3 text-base">You signed in with the following profile, stored in the Svelte store:</p>
-    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">First name:</span> {$firstName}</p>
-    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">Last name:</span> {$lastName}</p>
-    <p class="mb-1"><span class="font-medium w-24 inline-block text-color-muted-foreground">Email:</span> {$userEmail}</p>
-</Card>
+<p class="mb-1"><span class="w-48 inline-block text-color-muted-foreground">$userProfile.firstName:</span> {$userProfile.firstName}</p>
+<p class="mb-1"><span class="w-48 inline-block text-color-muted-foreground">$userProfile.lastName:</span> {$userProfile.lastName}</p>
+<p class="mb-1"><span class="w-48 inline-block text-color-muted-foreground">$userProfile.email:</span> {$userProfile.email}</p>
