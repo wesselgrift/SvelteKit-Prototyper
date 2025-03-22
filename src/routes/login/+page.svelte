@@ -30,18 +30,22 @@
 {:else if !$loading && !currentUser}
 	<div class="flex justify-center lg:h-screen lg:items-center">
 		<div class="animate-fade-in-zoom w-full max-w-md p-5">
-			<Logo className="mb-[80px] lg:mb-10" />
+			<div class="mb-[80px] lg:mb-10">
+			    <Logo/>
+            </div>
 			<h2 class="mb-9 text-2xl font-medium leading-tight text-color-foreground">Log in</h2>
-			<EmailPasswordSignin />
-			<div class="mb-5 flex items-center gap-3">
-				<Separator />
-				<span class="text-sm text-color-muted-foreground">OR</span>
-				<Separator />
-			</div>
-			<ContinueWithGoogle />
-			<div class="mb-8 flex justify-center lg:mb-0">
-				<TextLink href="/account" text="Create account" variant="muted" />
-			</div>
+            <div class="flex flex-col gap-5">
+                <EmailPasswordSignin />
+                <div class="flex items-center gap-3">
+                    <Separator />
+                    <span class="text-sm text-color-muted-foreground">OR</span>
+                    <Separator />
+                </div>
+                <ContinueWithGoogle />
+                <div class="mb-8 flex justify-center lg:mb-0">
+                    <TextLink href="/account" text="Create account" variant="muted" />
+                </div>
+            </div>
 		</div>
 	</div>
 {/if}

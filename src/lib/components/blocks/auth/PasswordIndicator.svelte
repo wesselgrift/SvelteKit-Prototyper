@@ -20,7 +20,7 @@
 
 <div class="mb-6 w-full">
 	{#if password}
-		<div class="mb-8 pt-1">
+		<div class="pt-1">
             
 			<!-- Password strength bar -->
 			<div class="mb-1 flex gap-2">
@@ -54,7 +54,7 @@
 		</div>
 	{/if}
 	{#if !password}
-		<p class="bloc mb-8 h-9 text-left text-sm text-color-muted-foreground">
+		<p class="bloc h-9 text-left text-sm text-color-muted-foreground">
 			Use a password with at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number
 			and 1 special character.
 		</p>

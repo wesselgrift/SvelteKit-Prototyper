@@ -29,34 +29,36 @@
 	}
 </script>
 
-{#if message}
-	<div class="mb-5">
-		<Dialog variant="success">
-			{message}
-		</Dialog>
-	</div>
-{:else if messageError}
-	<div class="mb-5">
-		<Dialog variant="error">
-			{messageError}
-		</Dialog>
-	</div>
-{/if}
+<div class="flex flex-col gap-5">
 
-<Label for="resetPassword" label="Email" />
-<Input name="resetPassword" type="email" bind:value={email} marginBottom="mb-2" />
+    {#if message}
+        <Dialog variant="success">
+            {message}
+        </Dialog>
+    {:else if messageError}
+        <Dialog variant="error">
+            {messageError}
+        </Dialog>
+    {/if}
 
-<p class="bloc mb-8 text-left text-color-muted-foreground">
-	Fill in your email address and we'll send you a link to reset your password.
-</p>
+    <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2">
+            <Label for="resetPassword" label="Email" />
+            <Input name="resetPassword" type="email" bind:value={email} marginBottom="mb-2" />
+        </div>
+        <p class="block text-left text-color-muted-foreground">
+            Fill in your email address and we'll send you a link to reset your password.
+        </p>
+    </div>
 
-<Button onclick={handleReset}>
-	{#if showLoading}
-		<Spinner
-			className="w-5 h-5 mr-3"
-			spinColor="fill-color-primary-foreground"
-			pathColor="text-color-primary-hover"
-		/>
-	{/if}
-	Reset Password
-</Button>
+    <Button onclick={handleReset}>
+        {#if showLoading}
+            <Spinner
+                className="w-5 h-5 mr-3"
+                spinColor="fill-color-primary-foreground"
+                pathColor="text-color-primary-hover"
+            />
+        {/if}
+        Reset Password
+    </Button>
+</div>

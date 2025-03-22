@@ -9,18 +9,22 @@
 <div class="w-full lg:flex lg:h-screen">
 	<div class="animate-fade-in-zoom flex w-full items-start justify-center lg:w-1/2 lg:items-center">
 		<div class="w-full max-w-md p-5">
-			<Logo className="mb-[80px] lg:mb-10" />
+            <div class="mb-[80px] lg:mb-10">
+			    <Logo/>
+            </div>
 			<h2 class="mb-9 text-2xl font-medium leading-tight text-color-foreground">Create Account</h2>
-			<EmailPasswordSignup />
-			<div class="mb-5 flex items-center gap-3">
-				<Separator />
-				<span class="text-sm text-color-muted-foreground">OR</span>
-				<Separator />
-			</div>
-			<ContinueWithGoogle />
-			<div class="mb-8 flex justify-center lg:mb-0">
-				<TextLink href="/login" text="Log in" variant="muted" />
-			</div>
+            <div class="flex flex-col gap-5">
+                <EmailPasswordSignup />
+                <div class="flex items-center gap-3">
+                    <Separator />
+                    <span class="text-sm text-color-muted-foreground">OR</span>
+                    <Separator />
+                </div>
+                <ContinueWithGoogle />
+                <div class="mb-8 flex justify-center lg:mb-0">
+                    <TextLink href="/login" text="Log in" variant="muted" />
+                </div>
+            </div>
 		</div>
 	</div>
 	<div

@@ -47,11 +47,9 @@
 </script>
 
 {#if error}
-	<div class="mb-5">
-		<Dialog variant="error">
-			Whoops, that didn't work. Please check if you filled in both email and password correctly.
-		</Dialog>
-	</div>
+    <Dialog variant="error">
+        Whoops, that didn't work. Please check if you filled in both email and password correctly.
+    </Dialog>
 {/if}
 
 <form
@@ -60,24 +58,31 @@
 		handleLogin();
 	}}
 >
-	<Label for="email" label="Email" />
-	<Input name="email" type="email" bind:value={email} />
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <Label for="email" label="Email" />
+            <Input name="email" type="email" bind:value={email} />
+        </div>
 
-	<div class="flex flex-row justify-between">
-		<Label for="password" label="Password" />
-		<TextLink variant="muted" href="/reset-password" text="Forgot?" />
-	</div>
+    
+        <div class="flex flex-col gap-2">
+            <div class="flex flex-row justify-between">
+                <Label for="password" label="Password" />
+                <TextLink variant="muted" href="/reset-password" text="Forgot?" />
+            </div>
 
-	<Input name="password" type="password" bind:value={password} />
+            <Input name="password" type="password" bind:value={password} />
+        </div>
 
-	<Button type="submit">
-		{#if showLoading}
-			<Spinner
-				className="w-5 h-5 mr-3"
-				spinColor="fill-color-primary-foreground"
-				pathColor="text-color-primary-hover"
-			/>
-		{/if}
-		Log in
-	</Button>
+        <Button type="submit">
+            {#if showLoading}
+                <Spinner
+                    className="w-5 h-5 mr-3"
+                    spinColor="fill-color-primary-foreground"
+                    pathColor="text-color-primary-hover"
+                />
+            {/if}
+            Log in
+        </Button>
+    </div>
 </form>

@@ -72,33 +72,45 @@
 		handleRegister();
 	}}
 >
-	<div class="flex flex-row gap-4">
-		<div class="w-full">
-			<Label for="firstName" label="First name" />
-			<Input name="firstName" type="text" bind:value={firstName} />
-		</div>
-		<div class="w-full">
-			<Label for="lastName" label="Last name" />
-			<Input name="lastName" type="text" bind:value={lastName} />
-		</div>
-	</div>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-row gap-4">
+            <div class="w-full">
+                <div class="flex flex-col gap-2">
+                    <Label for="firstName" label="First name" />
+                    <Input name="firstName" type="text" bind:value={firstName} />
+                </div>
+            </div>
+            <div class="w-full">
+                <div class="flex flex-col gap-2">
+                    <Label for="lastName" label="Last name" />
+                    <Input name="lastName" type="text" bind:value={lastName} />
+                </div>
+            </div>
+        </div>
 
-	<Label for="email" label="Email" />
-	<Input name="email" type="email" bind:value={email} />
+        <div class="flex flex-col gap-2">
+            <Label for="email" label="Email" />
+            <Input name="email" type="email" bind:value={email} />
+        </div>
 
-	<Label for="password" label="Password" />
-	<Input name="password" type="password" marginBottom="mb-2" bind:value={password} />
+        <div class="flex flex-col gap-2">
+            <div class="flex flex-col gap-2">
+                <Label for="password" label="Password" />
+                <Input name="password" type="password" bind:value={password} />
+            </div>
 
-	<PasswordIndicator {password} {passwordStrength} />
+            <PasswordIndicator {password} {passwordStrength} />
+        </div>
 
-	<Button type="submit">
-		{#if showLoading}
-			<Spinner
-				className="w-5 h-5 mr-3"
-				spinColor="fill-color-primary-foreground"
-				pathColor="text-color-primary-hover"
-			/>
-		{/if}
-		Get Started
-	</Button>
+        <Button type="submit">
+            {#if showLoading}
+                <Spinner
+                    className="w-5 h-5 mr-3"
+                    spinColor="fill-color-primary-foreground"
+                    pathColor="text-color-primary-hover"
+                />
+            {/if}
+            Get Started
+        </Button>
+    </div>
 </form>

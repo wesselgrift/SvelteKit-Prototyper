@@ -1,9 +1,8 @@
 <script>
     let { 
         name, 
-        label,
-        marginBottom = 'mb-2',
+        label
     } = $props();
 </script>
   
-<label for={name} class="block font-medium text-color-foreground {marginBottom}">{label}</label>
+<label for={name} class="block font-medium text-color-foreground">{label}</label>

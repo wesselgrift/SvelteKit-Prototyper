@@ -17,10 +17,12 @@ export default {
 
                 // Background
 				'color-background': {
-					DEFAULT: colors.white
+					DEFAULT: colors.white,
+                    hover: colors.gray[50]
 				},
                 'color-background-dark': {
-					DEFAULT: colors.black
+					DEFAULT: colors.black,
+                    hover: colors.gray[800]
 				},
 
                 // Foreground (has subdued variant)
@@ -110,8 +112,8 @@ export default {
 
 				// Secondary (has hover variant)
 				'color-secondary': {
-					DEFAULT: colors.white,
-					hover: colors.gray[50],
+					DEFAULT: colors.gray[100],
+					hover: colors.gray[200],
 				},
                 'color-secondary-dark': {
 					DEFAULT: colors.black,
