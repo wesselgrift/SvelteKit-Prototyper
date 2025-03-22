@@ -5,8 +5,8 @@
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
-    import { AccountButton } from '$lib/components/blocks/sidebar/AccountButton.svelte';
-    import { SidebarContent } from '$lib/components/blocks/sidebar/SidebarContent.svelte';
+    import AccountButton from '$lib/components/blocks/sidebar/AccountButton.svelte';
+    import SidebarContent from '$lib/components/blocks/sidebar/SidebarContent.svelte';
 
     async function handleLogout() {
         await logout();
