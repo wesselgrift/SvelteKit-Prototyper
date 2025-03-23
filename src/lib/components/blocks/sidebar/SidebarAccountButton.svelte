@@ -7,25 +7,25 @@
 	import SidebarAccountMenu from './SidebarAccountMenu.svelte';
 
 	// State
-	let isSidebarAccountMenuOpen = $state(false);
-	let profileMenu = $state(null);
+	let AccountMenuOpen = $state(false);
+	let accountMenu = $state(null);
 
 	// Open profile menu
 	function openSidebarMenu(event) {
 		event.stopPropagation();
-		isSidebarAccountMenuOpen = !isSidebarAccountMenuOpen;
+		AccountMenuOpen = !AccountMenuOpen;
 	}
 
 	// Close profile menu when clicking outside
 	function handleClickOutside(event) {
-		if (profileMenu && !profileMenu.contains(event.target) && isSidebarAccountMenuOpen) {
-			isSidebarAccountMenuOpen = false;
+		if (accountMenu && !accountMenu.contains(event.target) && AccountMenuOpen) {
+			AccountMenuOpen = false;
 		}
 	}
 
 	// Effect to handle click outside listener when menu is open
 	$effect(() => {
-		if (isSidebarAccountMenuOpen) {
+		if (AccountMenuOpen) {
 			setTimeout(() => {
 				document.addEventListener('click', handleClickOutside);
 			}, 0);
@@ -34,14 +34,10 @@
 	});
 </script>
 
-<button
-	onclick={openSidebarMenu}
-	class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground hover:bg-gray-200 hover:text-color-foreground"
->
+<!-- Account Menu Button -->
+<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground hover:bg-gray-200 hover:text-color-foreground">
 	<div class="flex flex-row items-center justify-start gap-3">
-		<div
-			class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr from-sky-500 to-fuchsia-500 text-white"
-		>
+		<div class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr from-sky-500 to-fuchsia-500 text-white">
 			{$userProfile.firstName[0]}
 		</div>
 		<span>{$userProfile.firstName}</span>
@@ -49,6 +45,7 @@
 	<Ellipsis size={20} strokeWidth={2} />
 </button>
 
-{#if isSidebarAccountMenuOpen}
-	<SidebarAccountMenu bind:profileMenu />
+<!-- Account Menu that opens when the button is clicked -->
+{#if AccountMenuOpen}
+	<SidebarAccountMenu bind:menuWrapper={accountMenu} />
 {/if}
