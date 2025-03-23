@@ -1,6 +1,5 @@
 <script>
 	// Svelte, Auth and user store
-    
     import { userProfile } from "$lib/stores/userStore";
 
 	// Components

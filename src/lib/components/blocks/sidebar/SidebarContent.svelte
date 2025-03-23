@@ -1,4 +1,5 @@
 <script>
+	// Navigation
     import { page } from "$app/state";
 </script>
 
