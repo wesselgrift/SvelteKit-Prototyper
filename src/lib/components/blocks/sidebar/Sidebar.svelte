@@ -5,7 +5,7 @@
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
-    import AccountButton from '$lib/components/blocks/sidebar/AccountButton.svelte';
+    import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import SidebarContent from '$lib/components/blocks/sidebar/SidebarContent.svelte';
 
     async function handleLogout() {
@@ -22,7 +22,7 @@
     </div>
     <div class="w-full flex flex-col p-4">
         {#if $userProfile.firstName}
-            <AccountButton onclick={handleLogout}/>
+            <SidebarAccountButton onclick={handleLogout}/>
         {:else}
             <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
         {/if}
