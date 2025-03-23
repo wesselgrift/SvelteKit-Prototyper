@@ -1,18 +1,54 @@
 <script>
-    import { userProfile } from "$lib/stores/userStore";
-    import { LogOut, Ellipsis } from "lucide-svelte";
-    
-    let {
-        onclick = () => {}
-    } = $props();
+	// Svelte, Auth and user store
+	import { userProfile } from '$lib/stores/userStore';
+	import { Ellipsis } from 'lucide-svelte';
+
+	// Components
+	import SidebarAccountMenu from './SidebarAccountMenu.svelte';
+
+	// State
+	let isSidebarAccountMenuOpen = $state(false);
+	let profileMenu = $state(null);
+
+	// Open profile menu
+	function openSidebarMenu(event) {
+		event.stopPropagation();
+		isSidebarAccountMenuOpen = !isSidebarAccountMenuOpen;
+	}
+
+	// Close profile menu when clicking outside
+	function handleClickOutside(event) {
+		if (profileMenu && !profileMenu.contains(event.target) && isSidebarAccountMenuOpen) {
+			isSidebarAccountMenuOpen = false;
+		}
+	}
+
+	// Effect to handle click outside listener when menu is open
+	$effect(() => {
+		if (isSidebarAccountMenuOpen) {
+			setTimeout(() => {
+				document.addEventListener('click', handleClickOutside);
+			}, 0);
+			return () => document.removeEventListener('click', handleClickOutside);
+		}
+	});
 </script>
 
-<button onclick={onclick} class="flex flex-row justify-between items-center p-2 pr-3 -m-2 rounded-xl text-color-muted-foreground hover:text-color-foreground hover:bg-gray-200">
-    <div class="flex flex-row gap-3 items-center justify-start">
-        <div class="size-8 rounded-full bg-gradient-to-tr from-sky-500 to-fuchsia-500 flex items-center justify-center text-white">
-            {$userProfile.firstName[0]}
-        </div>
-        <span>{$userProfile.firstName}</span>
-    </div>
-    <Ellipsis size={20} strokeWidth={2} />
+<button
+	onclick={openSidebarMenu}
+	class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground hover:bg-gray-200 hover:text-color-foreground"
+>
+	<div class="flex flex-row items-center justify-start gap-3">
+		<div
+			class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr from-sky-500 to-fuchsia-500 text-white"
+		>
+			{$userProfile.firstName[0]}
+		</div>
+		<span>{$userProfile.firstName}</span>
+	</div>
+	<Ellipsis size={20} strokeWidth={2} />
 </button>
+
+{#if isSidebarAccountMenuOpen}
+	<SidebarAccountMenu bind:profileMenu />
+{/if}
