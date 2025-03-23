@@ -27,9 +27,7 @@
             </div>
 		</div>
 	</div>
-	<div
-		class="sign-up-img animate-fade-in flex h-[200px] w-full bg-color-primary p-8 lg:h-auto lg:w-1/2"
-	>
+	<div class="sign-up-img animate-fade-in flex h-[200px] w-full bg-color-primary p-8 lg:h-auto lg:w-1/2">
 		<!-- Promo space -->
 	</div>
 </div>
