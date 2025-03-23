@@ -1,11 +1,11 @@
 <script>
 	// Svelte, Auth and user store
 	import { userProfile } from '$lib/stores/userStore';
-	import { LogOut } from 'lucide-svelte';
 	import { logout } from '$lib/firebase/auth';
 
 	// Components
 	import Separator from '$lib/components/parts/Separator.svelte';
+    import { LogOut } from 'lucide-svelte';
 
 	// Transition
 	import { fly } from 'svelte/transition';
