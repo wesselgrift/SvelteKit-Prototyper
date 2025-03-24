@@ -78,7 +78,7 @@ export default {
 					DEFAULT: colors.white
 				},
                 'color-popover-dark': {
-					DEFAULT: colors.white
+					DEFAULT: colors.zinc[950]
 				},
 
                 // Pop-over Foreground (has subdued variant)
@@ -87,7 +87,7 @@ export default {
                     subdued: colors.zinc[500]
 				},
                 'color-popover-foreground-dark': {
-					DEFAULT: colors.black,
+					DEFAULT: colors.white,
                     subdued: colors.zinc[500]
 				},
 
