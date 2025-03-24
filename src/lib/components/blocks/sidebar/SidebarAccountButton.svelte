@@ -36,7 +36,7 @@
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground hover:bg-gray-200 hover:text-color-foreground">
+<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground transition-all hover:bg-gray-200 hover:text-color-foreground active:bg-color-accent-hover focus:text-color-foreground">
 	<div class="flex flex-row items-center justify-start gap-3">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
