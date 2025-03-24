@@ -8,7 +8,7 @@
 
 <Protected>
     <div class="flex min-h-screen animate-fade-in">
-        <aside class="w-64 bg-color-navbar dark:bg-color-navbar-dark">
+        <aside class="w-64">
             <Sidebar />
         </aside>
         <main class="flex-1">

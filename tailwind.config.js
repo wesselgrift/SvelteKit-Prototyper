@@ -18,21 +18,23 @@ export default {
                 // Background
 				'color-background': {
 					DEFAULT: colors.white,
-                    hover: colors.gray[50]
+                    hover: colors.zinc[50],
+                    pressed: colors.zinc[100]
 				},
                 'color-background-dark': {
-					DEFAULT: colors.black,
-                    hover: colors.gray[800]
+					DEFAULT: colors.zinc[900],
+                    hover: colors.zinc[800],
+                    pressed: colors.zinc[700]
 				},
 
                 // Foreground (has subdued variant)
 				'color-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-foreground-dark': {
 					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Card
@@ -40,35 +42,35 @@ export default {
 					DEFAULT: colors.white
 				},
                 'color-card-dark': {
-					DEFAULT: colors.white
+					DEFAULT: colors.zinc[950]
 				},
 
                 // Card Foreground (has subdued variant)
 				'color-card-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-card-foreground-dark': {
 					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Navbar
 				'color-navbar': {
-					DEFAULT: colors.gray[50]
+					DEFAULT: colors.zinc[50]
 				},
                 'color-navbar-dark': {
-					DEFAULT: colors.gray[50]
+					DEFAULT: colors.zinc[950]
 				},
 
                 // Navbar Foreground (has subdued variant)
 				'color-navbar-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-navbar-foreground-dark': {
 					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Pop-over
@@ -82,90 +84,94 @@ export default {
                 // Pop-over Foreground (has subdued variant)
 				'color-popover-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-popover-foreground-dark': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Primary (has hover variant)
 				'color-primary': {
-					DEFAULT: colors.gray[950],
-					hover: colors.gray[800],
+					DEFAULT: colors.zinc[950],
+					hover: colors.zinc[900],
+                    pressed: colors.zinc[800]
 				},
                 'color-primary-dark': {
-					DEFAULT: colors.gray[950],
-					hover: colors.gray[800],
+					DEFAULT: colors.zinc[100],
+					hover: colors.zinc[300],
+                    pressed: colors.zinc[400]
 				},
 
                 // Primary Foreground (has subdued variant)
 				'color-primary-foreground': {
 					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-primary-foreground-dark': {
-					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+					DEFAULT: colors.zinc[950],
+                    subdued: colors.zinc[500]
 				},
 
 
 				// Secondary (has hover variant)
 				'color-secondary': {
-					DEFAULT: colors.gray[100],
-					hover: colors.gray[200],
+					DEFAULT: colors.zinc[100],
+					hover: colors.zinc[200],
+                    pressed: colors.zinc[300]
 				},
                 'color-secondary-dark': {
-					DEFAULT: colors.black,
-					hover: colors.gray[950],
+					DEFAULT: colors.zinc[800],
+					hover: colors.zinc[900],
+                    pressed: colors.zinc[950]
 				},
 
                 // Secondary (has subdued variant)
 				'color-secondary-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-secondary-foreground-dark': {
 					DEFAULT: colors.white,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Muted
 				'color-muted': {
-					DEFAULT: colors.gray[100]
+					DEFAULT: colors.zinc[100]
 				},
                 'color-muted-dark': {
-					DEFAULT: colors.gray[100]
+					DEFAULT: colors.zinc[100]
 				},
 
                 // Muted Foreground (has subdued variant)
 				'color-muted-foreground': {
-					DEFAULT: colors.gray[400],
-                    subdued: colors.gray[200]
+					DEFAULT: colors.zinc[400],
+                    subdued: colors.zinc[200]
 				},
                 'color-muted-foreground-dark': {
-					DEFAULT: colors.gray[400],
-                    subdued: colors.gray[200]
+					DEFAULT: colors.zinc[400],
+                    subdued: colors.zinc[200]
 				},
 
                 // Accent (has hover variant)
 				'color-accent': {
-					DEFAULT: colors.gray[200],
-					hover: colors.gray[300]
+					DEFAULT: colors.zinc[200],
+					hover: colors.zinc[300]
 				},
                 'color-accent-dark': {
-					DEFAULT: colors.gray[200],
-					hover: colors.gray[300]
+					DEFAULT: colors.zinc[200],
+					hover: colors.zinc[300]
 				},
 
                 // Accent Foreground (has subdued variant)
 				'color-accent-foreground': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
                 'color-accent-foreground-dark': {
 					DEFAULT: colors.black,
-                    subdued: colors.gray[500]
+                    subdued: colors.zinc[500]
 				},
 
                 // Success (has hover variant)
@@ -250,18 +256,18 @@ export default {
 
                 // Border
 				'color-border': {
-					DEFAULT: colors.gray[200]
+					DEFAULT: colors.zinc[200]
 				},
                 'color-border-dark': {
-					DEFAULT: colors.gray[200]
+					DEFAULT: colors.zinc[800]
 				},
 
                 // Input
 				'color-input': {
-					DEFAULT: colors.gray[300]
+					DEFAULT: colors.zinc[300]
 				},
                 'color-input-dark': {
-					DEFAULT: colors.gray[300]
+					DEFAULT: colors.zinc[300]
 				},
 
                 // Ring
