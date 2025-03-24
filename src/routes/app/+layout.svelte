@@ -11,7 +11,7 @@
         <aside class="w-64">
             <Sidebar />
         </aside>
-        <main class="flex-1">
+        <main class="flex-1 h-screen overflow-y-auto">
             <div class="p-10">
                 {@render children()}
             </div>
