@@ -46,7 +46,7 @@
             <Label for="resetPassword" label="Email" />
             <Input name="resetPassword" type="email" bind:value={email} marginBottom="mb-2" />
         </div>
-        <p class="block text-left text-color-muted-foreground">
+        <p class="block text-left text-muted-foreground">
             Fill in your email address and we'll send you a link to reset your password.
         </p>
     </div>

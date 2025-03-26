@@ -17,7 +17,7 @@
                 <EmailPasswordSignup />
                 <div class="flex items-center gap-3">
                     <Separator />
-                    <span class="text-sm text-color-muted-foreground">OR</span>
+                    <span class="text-sm text-muted-foreground">OR</span>
                     <Separator />
                 </div>
                 <ContinueWithGoogle />
@@ -27,7 +27,7 @@
             </div>
 		</div>
 	</div>
-	<div class="sign-up-img animate-fade-in flex h-[200px] w-full bg-color-primary p-8 lg:h-auto lg:w-1/2">
+	<div class="sign-up-img animate-fade-in flex h-[200px] w-full bg-zinc-950 p-8 lg:h-auto lg:w-1/2">
 		<!-- Promo space -->
 	</div>
 </div>

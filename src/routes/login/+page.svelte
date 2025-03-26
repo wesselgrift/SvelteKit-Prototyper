@@ -38,7 +38,7 @@
                 <EmailPasswordSignin />
                 <div class="flex items-center gap-3">
                     <Separator />
-                    <span class="text-sm text-color-muted-foreground">OR</span>
+                    <span class="text-sm text-muted-foreground">OR</span>
                     <Separator />
                 </div>
                 <ContinueWithGoogle />
