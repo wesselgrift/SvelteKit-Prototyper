@@ -1,8 +1,8 @@
 <script>
 	let {
 		className = 'w-8 h-8',
-		spinColor = 'fill-color-primary',
-		pathColor = 'text-color-muted'
+		spinColor = 'fill-primary',
+		pathColor = 'text-accent'
 	} = $props();
 </script>
 

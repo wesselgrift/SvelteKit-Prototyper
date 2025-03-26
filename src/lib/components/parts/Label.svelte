@@ -5,4 +5,4 @@
     } = $props();
 </script>
   
-<label for={name} class="block font-medium text-color-foreground">{label}</label>
+<label for={name} class="block font-medium text-foreground">{label}</label>

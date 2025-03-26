@@ -21,7 +21,7 @@
 </script>
 
 
-<div class="absolute bottom-12 left-2 z-10 mb-2 flex w-[calc(100%-1rem)] flex-col gap-1 rounded-xl border border-color-border bg-color-background p-1 shadow-md"
+<div class="absolute bottom-12 left-2 z-10 mb-2 flex w-[calc(100%-1rem)] flex-col gap-1 rounded-xl border border-border bg-card p-1 shadow-md"
 	transition:fly={{
 		duration: 150,
 		y: 10,
@@ -31,11 +31,11 @@
 	bind:this={menuWrapper}
 >
 	<!-- Menu links -->
-	<span class="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-color-muted-foreground">
+	<span class="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-muted-foreground">
 		{$userProfile.email}
 	</span>
 
-	<button class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-color-accent active:bg-color-accent-hover">
+	<button class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-accent active:bg-accent-foreground/10">
 		Settings
 	</button>
 
@@ -43,7 +43,7 @@
 	<div class="px-3"><Separator /></div>
 
 	<!-- Logout button -->
-	<button onclick={handleLogout} class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-color-accent active:bg-color-accent-hover">
+	<button onclick={handleLogout} class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-accent active:bg-accent-foreground/10">
 		Uitloggen
 		<LogOut size={18} strokeWidth={2} />
 	</button>

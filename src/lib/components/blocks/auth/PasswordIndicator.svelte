@@ -54,7 +54,7 @@
 		</div>
 	{/if}
 	{#if !password}
-		<p class="bloc h-9 text-left text-sm text-color-muted-foreground">
+		<p class="bloc h-9 text-left text-sm text-muted-foreground">
 			Use a password with at least 8 characters, 1 uppercase letter, 1 lowercase letter, 1 number
 			and 1 special character.
 		</p>

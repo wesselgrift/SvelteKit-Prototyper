@@ -4,12 +4,11 @@
         variant = 'default'
     } = $props();
 
-    const defaultClasses = 'dialog border p-4 rounded-lg';
+    const defaultClasses = 'dialog border p-5 rounded-lg';
 
     const variants = {
-        default: `${defaultClasses} border-color-border bg-color-card text-color-card-foreground`,
-        success: `${defaultClasses} border-color-success bg-color-success text-color-success-foreground`,
-        error: `${defaultClasses} border-color-destructive bg-color-destructive text-color-destructive-foreground`,
+        default: `${defaultClasses} border-border bg-card text-color-card-foreground`,
+        error: `${defaultClasses} border-destructive bg-destructive text-destructive-foreground`
     }
 </script>
   

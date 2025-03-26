@@ -9,8 +9,8 @@
     const defaultClasses = 'transition';
 
     const variants = {
-        primary: `${defaultClasses} text-color-primary hover:text-color-primary-hover hover:underline`,
-        muted: `${defaultClasses} text-color-muted-foreground hover:text-color-foreground`
+        primary: `${defaultClasses} text-primary hover:underline`,
+        muted: `${defaultClasses} text-muted-foreground hover:text-foreground`
     }
 </script>
 

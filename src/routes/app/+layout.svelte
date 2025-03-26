@@ -7,11 +7,11 @@
 </script>
 
 <Protected>
-    <div class="flex min-h-screen animate-fade-in">
+    <div class="flex animate-fade-in">
         <aside class="w-64">
             <Sidebar />
         </aside>
-        <main class="flex-1 h-screen overflow-y-auto">
+        <main class="flex-1">
             <div class="p-10">
                 {@render children()}
             </div>

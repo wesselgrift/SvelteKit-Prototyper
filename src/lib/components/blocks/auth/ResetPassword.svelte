@@ -32,7 +32,7 @@
 <div class="flex flex-col gap-5">
 
     {#if message}
-        <Dialog variant="success">
+        <Dialog>
             {message}
         </Dialog>
     {:else if messageError}

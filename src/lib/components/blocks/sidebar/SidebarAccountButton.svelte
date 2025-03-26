@@ -36,8 +36,8 @@
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-color-muted-foreground transition-all hover:bg-gray-200 hover:text-color-foreground active:bg-color-accent-hover focus:text-color-foreground">
-	<div class="flex flex-row items-center justify-start gap-3">
+<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-sidebar-foreground/50 transition-all hover:bg-sidebar-accent hover:text-sidebar-foreground active:bg-sidebar-accent-foreground/10 focus:text-sidebar-foreground focus:outline-none focus:ring-2 focus:ring-sidebar-ring focus:ring-offset-2">
+	<div class="flex flex-row items-center justify-start gap-3 mr-4">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
 	</div>

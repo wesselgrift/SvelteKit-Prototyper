@@ -4,12 +4,9 @@
   
 <div class="
     card p-6 rounded-xl shadow-sm border 
-    border-color-border
-    dark:border-color-border-dark
-    text-color-card-foreground
-    dark:text-color-card-foreground-dark 
-    bg-color-card 
-    dark:bg-color-card-dark 
+    border-border dark:border-border/60
+    text-card-foreground
+    bg-card
 ">
     {@render children()}
 </div>
