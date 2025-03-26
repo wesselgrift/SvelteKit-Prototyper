@@ -1,14 +1,12 @@
 <script>
+
     let { 
       name, 
       value = $bindable(), 
       type = 'text'
     } = $props();
+
+    const defaultClasses = "block w-full text-base lg:text-sm py-2 px-3.5 lg:py-3 lg:px-4 border border-border focus:border-border bg-background rounded-lg ring transition-all";
 </script>
   
-  <input
-    {name}
-    {type}
-    class="block w-full text-base lg:text-sm py-2 px-3.5 lg:py-3 lg:px-4 border border-border bg-background focus:ring-offset-background focus:border-border focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-lg transition"
-    bind:value
-  />
+<input {name} {type} class={defaultClasses} bind:value />

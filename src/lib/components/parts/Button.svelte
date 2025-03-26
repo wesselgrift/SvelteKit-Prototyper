@@ -9,7 +9,7 @@
     } = $props();
 
     const defaultClasses = 
-        'inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 transition-all';
+    "inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ring transition-all";
 
     const widthType = {
         fill: "w-full",

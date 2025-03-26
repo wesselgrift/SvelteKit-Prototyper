@@ -33,10 +33,14 @@
 			return () => document.removeEventListener('click', handleClickOutside);
 		}
 	});
+
+    const defaultClasses = 
+    "-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 font-medium transition-all bg-sidebar hover:bg-sidebar-accent text-sidebar-foreground/50 hover:text-sidebar-foreground focus:text-sidebar-foreground active:bg-sidebar-foreground/15 ring";
+
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={openSidebarMenu} class="-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 text-sidebar-foreground/50 transition-all hover:bg-sidebar-accent hover:text-sidebar-foreground active:bg-sidebar-accent-foreground/10 focus:text-sidebar-foreground focus:outline-none focus:ring-2 focus:ring-sidebar-ring focus:ring-offset-2 focus:ring-offset-sidebar">
+<button onclick={openSidebarMenu} class={defaultClasses}>
 	<div class="flex flex-row items-center justify-start gap-3 mr-4">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}

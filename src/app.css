@@ -94,6 +94,24 @@
 	}
 }
 
+@layer utilities {
+    .ring {
+        @apply 
+            outline-none
+            ring-0 
+            ring-ring 
+            ring-offset-0 
+            ring-offset-sidebar;
+    }
+    
+    .ring:focus-visible {
+        @apply 
+            ring-2 
+            ring-ring 
+            ring-offset-2 
+            ring-offset-sidebar;
+    }
+}
 
 @keyframes fadeInZoom {
     from {

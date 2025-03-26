@@ -1,4 +1,5 @@
 <script>
+
     let { 
         href, 
         text,
@@ -6,7 +7,7 @@
     } = $props();
 
 
-    const defaultClasses = 'transition';
+    const defaultClasses = 'transition rounded ring';
 
     const variants = {
         primary: `${defaultClasses} text-primary hover:underline`,
