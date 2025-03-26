@@ -1,5 +1,5 @@
 <script>
-    import { userProfile } from "$lib/stores/userStore.js"
+    import { userProfile } from "$lib/stores/userStore";
 
     import Button from "$lib/components/parts/Button.svelte"
     import Card from "$lib/components/parts/Card.svelte"
@@ -42,7 +42,11 @@
 
     <h3 class="text-lg text-muted-foreground">Avatar</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Avatar userName={$userProfile.firstName}/>
+        {#if $userProfile.firstName}
+            <Avatar userName={$userProfile.firstName}/>
+        {:else}
+            <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
+        {/if}
     </div>
 
     <h3 class="text-lg text-muted-foreground">Dialog</h3>
@@ -88,6 +92,10 @@
 
     <h3 class="text-lg text-muted-foreground">Accountbutton with menu for sidebar</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4 relative">
-        <SidebarAccountButton/>
+        {#if $userProfile.firstName}
+            <SidebarAccountButton/>
+        {:else}
+            <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
+        {/if}
     </div>
 </div>
