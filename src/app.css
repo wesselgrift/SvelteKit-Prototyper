@@ -1,6 +1,0 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import '$lib/styles/theme.css';
-@import '$lib/styles/interaction.css';
-@import '$lib/styles/animation.css';

@@ -1,5 +1,4 @@
 <script>
-	import '$src/app.css';
     import Protected from "$lib/components/blocks/auth/Protected.svelte";
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
 	

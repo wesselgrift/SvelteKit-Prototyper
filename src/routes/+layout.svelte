@@ -1,5 +1,5 @@
 <script>
-	import '$src/app.css';
+	import '$src/app.scss';
 	import { browser } from '$app/environment';
 	import { initializeAuth } from '$lib/firebase/auth';
 
