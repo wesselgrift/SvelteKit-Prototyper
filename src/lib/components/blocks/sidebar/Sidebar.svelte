@@ -9,7 +9,7 @@
 
 </script>
 
-<div class="flex flex-col h-screen justify-between items-center py-0 bg-sidebar">
+<div class="w-64 flex flex-col h-screen justify-between items-start bg-sidebar">
     <div class="block w-full p-4">
        <Logo/>
     </div>    

@@ -7,10 +7,8 @@
 
 <Protected>
     <div class="flex animate-fade-in">
-        <aside class="w-64">
-            <Sidebar />
-        </aside>
-        <main class="flex-1">
+        <Sidebar />
+        <main class="flex-1 overflow-y-scroll max-h-screen">
             <div class="p-10">
                 {@render children()}
             </div>
