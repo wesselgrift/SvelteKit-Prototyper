@@ -17,7 +17,7 @@
             ring-offset-sidebar;
     }
 
-    // Hover effects
+    // Hover effects with pseudo-element
     %hover-effect {
         @apply relative;
         &::after {

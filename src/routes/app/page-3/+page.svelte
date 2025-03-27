@@ -1,1 +1,0 @@
-<h1 class="text-xl font-medium mb-5 text-color-foreground">Page 3</h1>
