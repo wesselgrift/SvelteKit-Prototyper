@@ -11,6 +11,10 @@ export default {
 			fontFamily: {
 				sans: ['Geist','system-ui', 'sans-serif'],
 			},
+            borderRadius: {
+                card: 'var(--card-radius)',
+                interactive: 'var(--interactive-radius)'
+            },
 			colors: {
 				accent: {
 					DEFAULT: 'hsl(var(--accent))',
@@ -58,7 +62,7 @@ export default {
                     },
                     border: 'hsl(var(--sidebar-border))',
                     ring: 'hsl(var(--sidebar-ring))'
-                }
+                },
 			},
 		}
 	},

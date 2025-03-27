@@ -9,7 +9,7 @@
     } = $props();
 
     const defaultClasses = 
-    "inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ring transition-all";
+    "relative overflow-hidden inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ring transition-all";
 
     const widthType = {
         fill: "w-full",
@@ -22,15 +22,15 @@
     }
 
     const variants = {
-        primary: `${defaultClasses} bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary`,
-        secondary: `${defaultClasses} bg-secondary text-secondary-foreground hover:bg-secondary/80 active:bg-secondary`,
-        outline: `${defaultClasses} border border-border bg-background hover:bg-accent/70 active:bg-background hover:text-accent-foreground`
+        primary: `bg-primary text-primary-foreground hover-on-primary hover-on-primary`,
+        secondary: `bg-secondary text-secondary-foreground hover-on-secondary`,
+        outline: `border border-border bg-background hover-on-background`
     }
 
     
 </script>
   
-<button {type} onclick={onclick} class={variants[variant] + ' ' + sizes[size] +' '+ widthType[width]}>
+<button {type} onclick={onclick} class={variants[variant] + ' ' + sizes[size] +' '+ widthType[width] + ' ' + defaultClasses}>
     {#if children}
         {@render children()}
     {/if}

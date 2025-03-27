@@ -7,7 +7,7 @@
     } = $props();
 
 
-    const defaultClasses = 'transition rounded ring';
+    const defaultClasses = 'transition rounded ring outline-none';
 
     const variants = {
         primary: `${defaultClasses} text-primary hover:underline`,

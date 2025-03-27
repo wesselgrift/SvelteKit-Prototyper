@@ -4,4 +4,7 @@
     } = $props();
 </script>
 
-<img src="/logo.svg" alt="logo" class="{size}"/>
+<picture>
+  <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
+  <img src="/logo.svg" alt="logo" class="{size}"/>
+</picture>

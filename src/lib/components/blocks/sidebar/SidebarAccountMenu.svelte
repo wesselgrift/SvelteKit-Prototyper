@@ -3,7 +3,7 @@
 	import { userProfile } from '$lib/stores/userStore';
 	import { logout } from '$lib/firebase/auth';
 
-	// Components
+	// Components & styles
 	import Separator from '$lib/components/parts/Separator.svelte';
     import { LogOut } from 'lucide-svelte';
 
@@ -21,7 +21,7 @@
 </script>
 
 
-<div class="absolute bottom-12 left-2 z-10 mb-2 flex w-[calc(100%-1rem)] flex-col gap-1 rounded-xl border border-border bg-card p-1 shadow-md"
+<div class="absolute bottom-12 left-2 z-10 mb-2 flex w-[calc(100%-1rem)] flex-col gap-1 rounded-xl border border-border bg-popover p-1 shadow-md"
 	transition:fly={{
 		duration: 150,
 		y: 10,
@@ -31,11 +31,11 @@
 	bind:this={menuWrapper}
 >
 	<!-- Menu links -->
-	<span class="flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2 text-muted-foreground">
+	<span class="flex w-full items-center justify-between gap-2 px-3 py-2 text-muted-foreground">
 		{$userProfile.email}
 	</span>
 
-	<button class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-accent active:bg-accent-foreground/10">
+	<button class="flex w-full overflow-hidden rounded-lg cursor-pointer items-center justify-between gap-2 px-3 py-2 text-popover-foreground hover-on-popover">
 		Settings
 	</button>
 
@@ -43,7 +43,7 @@
 	<div class="px-3"><Separator /></div>
 
 	<!-- Logout button -->
-	<button onclick={handleLogout} class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-2 transition hover:bg-accent active:bg-accent-foreground/10">
+	<button onclick={handleLogout} class="flex w-full overflow-hidden rounded-lg cursor-pointer items-center justify-between gap-2 px-3 py-2 text-popover-foreground hover-on-popover">
 		Uitloggen
 		<LogOut size={18} strokeWidth={2} />
 	</button>

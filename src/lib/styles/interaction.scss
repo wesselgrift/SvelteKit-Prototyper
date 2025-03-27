@@ -1,4 +1,5 @@
 @layer utilities {
+    // Focus ring
     .ring {
         @apply 
             outline-none
@@ -15,4 +16,88 @@
             ring-offset-2 
             ring-offset-sidebar;
     }
+
+    // Hover effects
+    %hover-effect {
+        @apply relative;
+        &::after {
+            content: '';
+            @apply absolute top-0 left-0 w-full h-full z-[0];
+            @apply opacity-0 transition-all;
+        }
+        &:hover::after {
+            @apply opacity-10;
+        }
+        &:active::after {
+            @apply opacity-20;
+        }
+    }
+
+    .hover-on-background {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-foreground/30;
+        }
+    }
+    .hover-on-card {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-card-foreground;
+        }
+    }
+    .hover-on-popover {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-popover-foreground;
+        }
+    }
+    .hover-on-primary {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-primary-foreground;
+        }
+    }
+    .hover-on-secondary {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-secondary-foreground;
+        }
+    }
+    .hover-on-muted {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-muted-foreground;
+        }
+    }
+    .hover-on-accent {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-accent-foreground;
+        }
+    }
+    .hover-on-destructive {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-destructive-foreground;
+        }
+    }
+    .hover-on-sidebar-background {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-sidebar-foreground;
+        }
+    }
+    .hover-on-sidebar-primary {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-sidebar-primary-foreground;
+        }
+    }
+    .hover-on-sidebar-accent {
+        @extend %hover-effect;
+        &::after {
+            @apply bg-sidebar-accent-foreground;
+        }
+    }
+    
 }
