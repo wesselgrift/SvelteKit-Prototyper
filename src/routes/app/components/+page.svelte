@@ -12,6 +12,7 @@
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
+    import { X, Maximize2, Download } from "lucide-svelte";
 </script>
 
 <h1 class="text-2xl font-medium mb-6">Components</h1>
@@ -37,6 +38,11 @@
             <Button variant="primary" size="small" width="hug">Button Primary Small</Button>
             <Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
             <Button variant="outline" size="small" width="hug">Button Outline Small</Button>
+        </div>
+        <div class="flex gap-2 justify-center w-full">
+            <Button variant="primary" size="icon" width="hug"><X strokeWidth={2} size={20} /></Button>
+            <Button variant="secondary" size="icon" width="hug"><Maximize2 strokeWidth={2} size={20} /></Button>
+            <Button variant="outline" size="icon" width="hug"><Download strokeWidth={2} size={20} /></Button>
         </div>
     </div>
 

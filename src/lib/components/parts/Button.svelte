@@ -18,13 +18,14 @@
 
     const sizes = {
         default: "py-2.5 lg:py-3.5 px-4 lg:px-5",
-        small: "py-1 lg:py-1.5 px-2 lg:px-3"
+        small: "py-1 lg:py-1.5 px-2 lg:px-3",
+        icon: "p-1.5"
     }
 
     const variants = {
         primary: `bg-primary text-primary-foreground hover-on-primary hover-on-primary`,
         secondary: `bg-secondary text-secondary-foreground hover-on-secondary`,
-        outline: `border border-border bg-background hover-on-background`
+        outline: `border border-border bg-background hover-on-background`,
     }
 
     

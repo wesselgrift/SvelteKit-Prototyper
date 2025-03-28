@@ -7,3 +7,6 @@ export const loading = writable(true);
 
 // User profile data, is filled on auth state change
 export const userProfile = writable({});
+
+// Modal visibility
+export const settingsModal = writable(false);

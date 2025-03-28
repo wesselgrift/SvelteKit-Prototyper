@@ -1,6 +1,6 @@
 <script>
 	// Svelte, Auth and user store
-	import { userProfile } from '$lib/stores/userStore';
+	import { userProfile, settingsModal } from '$lib/stores/userStore';
 	import { logout } from '$lib/firebase/auth';
 
 	// Components & styles
@@ -35,7 +35,7 @@
 		{$userProfile.email}
 	</span>
 
-	<button class="flex w-full overflow-hidden rounded-lg cursor-pointer items-center justify-between gap-2 px-3 py-2 text-popover-foreground hover-on-popover">
+	<button class="flex w-full overflow-hidden rounded-lg cursor-pointer items-center justify-between gap-2 px-3 py-2 text-popover-foreground hover-on-popover" onclick={() => $settingsModal = true}>
 		Settings
 	</button>
 

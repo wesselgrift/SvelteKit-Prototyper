@@ -1,6 +1,6 @@
 <script>
 	// Svelte, Auth and user store
-	import { userProfile } from '$lib/stores/userStore';
+	import { userProfile, settingsModal } from '$lib/stores/userStore';
 
 	// Components
 	import SidebarAccountMenu from './SidebarAccountMenu.svelte';
@@ -49,6 +49,6 @@
 </button>
 
 <!-- Account Menu that opens when the button is clicked -->
-{#if AccountMenuOpen}
+{#if AccountMenuOpen && !$settingsModal}
 	<SidebarAccountMenu bind:menuWrapper={accountMenu} />
 {/if}
