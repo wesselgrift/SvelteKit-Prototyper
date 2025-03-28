@@ -1,5 +1,5 @@
 <script>
-	// Svelte, Auth and user store
+	// Auth and stores
 	import { userProfile } from '$lib/stores/userStore';
     import { accountPopup, settingsModal } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
@@ -63,7 +63,7 @@
 </button>
 
 <!-- Account Menu that opens when the button is clicked -->
-{#if $accountPopup && !$settingsModal}
+{#if $accountPopup }
 	<SidebarAccountMenu bind:wrapper={accountPopupWrapper}>
 		<SidebarMenuItem disabled={true}>
             {$userProfile.email}
