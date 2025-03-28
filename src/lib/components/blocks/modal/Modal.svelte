@@ -1,6 +1,6 @@
 <script>
     // Stores
-    import { settingsModal } from "$lib/stores/userStore";
+    import { settingsModal } from "$lib/stores/uiStore";
 
     // Components
     import Button from "$lib/components/parts/Button.svelte";
@@ -21,7 +21,7 @@
     }
 </script>
 
-<div role="presentation" class="absolute left-0 top-0 flex h-full w-full bg-sidebar/50 justify-center items-center z-50 p-5" 
+<div role="presentation" class="absolute left-0 top-0 flex h-full w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
     transition:fade={{
 		duration: 200,
 		opacity: 0,

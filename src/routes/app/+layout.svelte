@@ -2,7 +2,8 @@
     import Protected from "$lib/components/blocks/auth/Protected.svelte";
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
     import Modal from "$lib/components/blocks/modal/Modal.svelte";
-    import { userProfile, settingsModal } from "$lib/stores/userStore";
+    import { userProfile } from "$lib/stores/userStore";
+    import { settingsModal } from "$lib/stores/uiStore";
 	
     let { children } = $props();
 </script>
