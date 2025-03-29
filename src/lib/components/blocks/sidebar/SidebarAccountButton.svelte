@@ -12,9 +12,10 @@
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
     // Element states
+    let accountButton = $state();
     let accountPopup = $state(false);
     let popupWrapper = $state();
-    let accountButton = $state();
+    
 
 	// Open profile menu
 	function toggleAccountPopup(event) {
