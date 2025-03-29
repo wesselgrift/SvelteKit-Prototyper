@@ -1,7 +1,7 @@
 <script>
 	// Auth and stores
 	import { userProfile } from '$lib/stores/userStore';
-    import { settingsModal } from '$lib/stores/uiStore';
+    import { viewSettings } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
 
 	// Components
@@ -45,7 +45,7 @@
     // Handle Settings
     function handleSettings() {
         accountPopup = false;
-        $settingsModal = true;
+        $viewSettings = true;
     }
 
     const defaultClasses = 

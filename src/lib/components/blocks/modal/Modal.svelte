@@ -1,7 +1,4 @@
 <script>
-    // Stores
-    import { settingsModal } from "$lib/stores/uiStore";
-
     // Components
     import Button from "$lib/components/parts/Button.svelte";
     import { X } from "lucide-svelte";
@@ -11,12 +8,12 @@
 	import { cubicOut } from 'svelte/easing';
 
     // Props
-    let { children, title } = $props();
-    
-    // Functions
-    function closeModal() {
-        if ($settingsModal) {
-            $settingsModal = false;
+    let { children, title, closeModal = () => {} } = $props();
+
+    // Handle backdrop click
+    function handleBackdropClick(event) {
+        if (event.target === event.currentTarget) {
+            closeModal(event);
         }
     }
 </script>
@@ -27,7 +24,7 @@
 		opacity: 0,
 		easing: cubicOut
 	}}
-    onclick={closeModal}>
+    onclick={handleBackdropClick}>
     <div class="block flex-col justify-start items-start bg-popover rounded-xl w-full max-w-2xl border border-border shadow-2xl shadow-black/10" 
     transition:fly={{
 		duration: 200,
