@@ -1,49 +1,50 @@
 <script>
 	// Auth and stores
 	import { userProfile } from '$lib/stores/userStore';
-    import { accountPopup, settingsModal } from '$lib/stores/uiStore';
+    import { settingsModal } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
 
 	// Components
 	import SidebarAccountMenu from '$lib/components/blocks/sidebar/SidebarAccountMenu.svelte';
 	import SidebarMenuItem from '$lib/components/blocks/sidebar/SidebarMenuItem.svelte';
-    import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
     import Avatar from '$lib/components/parts/Avatar.svelte';
     import Separator from '$lib/components/parts/Separator.svelte';
+    import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
-    // Binding for the accountPopupWrapper
-    let accountPopupWrapper = $state();
+    // States
+    let accountPopup = $state(false);
+    let popupWrapper = $state();
 
 	// Open profile menu
 	function toggleAccountPopup(event) {
 		event.stopPropagation();
-		$accountPopup = !$accountPopup;
+		accountPopup = !accountPopup;
 	}
 
-    // Close profile menu when clicking outside of the accountPopupWrapper
-    function handleClickOutside() {
-        console.log('accountPopupWrapper:', accountPopupWrapper);
+    // Close profile menu when clicking outside of the popupWrapper
+    function handleClickOutside(event) {
+        if (popupWrapper && !popupWrapper.contains(event.target) && accountPopup) {
+            accountPopup = false;
+        }
     }
 
-    // Add event listener to close profile menu when clicking outside of the accountPopupWrapper
+    // Add event listener to close profile menu when clicking outside of the popupWrapper
     $effect(() => {
-        if ($accountPopup) {
-            setTimeout(() => {
-                window.addEventListener('mouseup', handleClickOutside);
-            }, 0);
+        if (accountPopup) {
+            window.addEventListener('mouseup', handleClickOutside);
             return () => window.removeEventListener('mouseup', handleClickOutside);
         }
     });
 
     // Handle Logout
 	async function handleLogout() {
-        $accountPopup = false
+        accountPopup = false
 		await logout();
 	}
 
     // Handle Settings
     function handleSettings() {
-        $accountPopup = false;
+        accountPopup = false;
         $settingsModal = true;
     }
 
@@ -63,8 +64,8 @@
 </button>
 
 <!-- Account Menu that opens when the button is clicked -->
-{#if $accountPopup }
-	<SidebarAccountMenu bind:wrapper={accountPopupWrapper}>
+{#if accountPopup }
+	<SidebarAccountMenu bind:element={popupWrapper}>
 		<SidebarMenuItem disabled={true}>
             {$userProfile.email}
         </SidebarMenuItem>
