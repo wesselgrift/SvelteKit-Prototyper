@@ -20,7 +20,7 @@
         {#if $userProfile.firstName}
             <SidebarAccountButton/>
         {:else}
-            <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
+            <div class="h-12 block -m-2 bg-background animate-pulse rounded-lg"></div>
         {/if}
     </div>
 </div>

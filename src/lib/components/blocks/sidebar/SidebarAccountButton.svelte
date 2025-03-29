@@ -36,6 +36,8 @@
     $effect(() => {
         if (accountPopup) {
             window.addEventListener('mouseup', handleClickOutside);
+
+            // Remove event listener when component is destroyed
             return () => window.removeEventListener('mouseup', handleClickOutside);
         }
     });
