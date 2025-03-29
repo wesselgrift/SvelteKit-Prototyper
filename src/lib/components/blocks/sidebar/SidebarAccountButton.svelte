@@ -11,20 +11,23 @@
     import Separator from '$lib/components/parts/Separator.svelte';
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
-    // States
+    // Element states
     let accountPopup = $state(false);
     let popupWrapper = $state();
+    let accountButton = $state();
 
 	// Open profile menu
 	function toggleAccountPopup(event) {
-		event.stopPropagation();
+        console.log('menu was...',$state.snapshot(accountPopup));
+        event.stopPropagation();
 		accountPopup = !accountPopup;
 	}
 
     // Close profile menu when clicking outside of the popupWrapper
     function handleClickOutside(event) {
-        if (popupWrapper && !popupWrapper.contains(event.target) && accountPopup) {
-            accountPopup = false;
+        console.log('menu was...',$state.snapshot(accountPopup));
+        if (popupWrapper && !popupWrapper.contains(event.target) && !accountButton.contains(event.target) && accountPopup) {
+            accountPopup = !accountPopup;
         }
     }
 
@@ -55,7 +58,7 @@
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={toggleAccountPopup} class={defaultClasses}>
+<button onclick={toggleAccountPopup} class={defaultClasses} bind:this={accountButton}>
 	<div class="flex flex-row items-center justify-start gap-3 mr-4">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
