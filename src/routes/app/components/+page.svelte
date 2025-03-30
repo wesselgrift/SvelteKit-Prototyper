@@ -30,15 +30,13 @@
 
     <h3 class="text-lg text-muted-foreground">Button</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <div class="flex gap-2 justify-center w-full">
-            <Button variant="primary" width="hug">
-                Button Primary
-            </Button>
+        <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
+            <Button variant="primary" width="hug">Button Primary</Button>
             <Button variant="secondary" width="hug">Button Secondary</Button>
             <Button variant="outline" width="hug">Button Outline</Button>
             <Button variant="ghost" width="hug">Button Ghost</Button>
         </div>
-        <div class="flex gap-2 justify-center w-full">
+        <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
             <Button variant="primary" size="small" width="hug">Button Primary Small</Button>
             <Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
             <Button variant="outline" size="small" width="hug">Button Outline Small</Button>
@@ -62,7 +60,7 @@
     </div>
 
     <h3 class="text-lg text-muted-foreground">Dialog</h3>
-    <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <Dialog variant="default">
             <h4 class="text-md font-medium mb-2">This is a dialog</h4>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates itaque nam provident! Consectetur optio mollitia quaerat, eveniet reprehenderit tempora?
