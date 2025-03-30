@@ -26,6 +26,7 @@
         primary: `bg-primary text-primary-foreground hover-on-primary hover-on-primary`,
         secondary: `bg-secondary text-secondary-foreground hover-on-secondary`,
         outline: `border border-border bg-background hover-on-background`,
+        ghost: `bg-transparent hover-on-background`,
     }
 
     
