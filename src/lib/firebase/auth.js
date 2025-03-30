@@ -73,7 +73,11 @@ export function initializeAuth() {
                     setUserProfileData(currentUser);
 
                     if (browser) {
-                        goto("/app");
+                        // Check if the user is already in the app route or a subpage
+                        const currentPath = window.location.pathname;
+                        if (!currentPath.startsWith('/app')) {
+                            goto("/app");
+                        }
                     }
                 } else if (currentUser && !currentUser.emailVerified) {
                     console.log("Auth state changed: user is signed in with unverified email.");
