@@ -19,14 +19,12 @@
 
 	// Open profile menu
 	function toggleAccountPopup(event) {
-        console.log('menu was...',$state.snapshot(accountPopup));
         event.stopPropagation();
 		accountPopup = !accountPopup;
 	}
 
     // Close profile menu when clicking outside of the popupWrapper
     function handleClickOutside(event) {
-        console.log('menu was...',$state.snapshot(accountPopup));
         if (popupWrapper && !popupWrapper.contains(event.target) && !accountButton.contains(event.target) && accountPopup) {
             accountPopup = !accountPopup;
         }
