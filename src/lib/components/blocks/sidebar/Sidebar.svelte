@@ -1,17 +1,27 @@
 <script>
 	// Svelte, Auth and user store
     import { userProfile } from "$lib/stores/userStore";
+    import { viewSidebar } from "$lib/stores/uiStore";
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import SidebarContent from '$lib/components/blocks/sidebar/SidebarContent.svelte';
+    import Button from '$lib/components/parts/Button.svelte';
+    import { PanelRight } from "lucide-svelte";
+
+    function toggleSidebar() {
+        $viewSidebar = !$viewSidebar;
+    }
 
 </script>
 
-<div class="w-64 flex flex-col h-screen justify-between items-start bg-sidebar">
-    <div class="block w-full p-4">
+<div class="sidebar { $viewSidebar ? 'sidebar-visible' : ' ' } w-64 flex flex-col h-screen justify-between items-start bg-sidebar">
+    <div class="flex justify-between items-center w-full p-4">
        <Logo/>
+        <span role="presentation" class="block md:hidden">
+            <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}><PanelRight size={20} /></Button>
+        </span>
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
         <SidebarContent/>
@@ -24,3 +34,16 @@
         {/if}
     </div>
 </div>
+
+<style lang="scss">
+    .sidebar {
+        @apply absolute top-0 -left-64 w-64 flex flex-col h-screen justify-between items-start bg-sidebar transition-all duration-300 z-10;
+        @media (min-width: 768px) {
+            @apply relative left-0;
+        }
+    }
+
+    .sidebar-visible {
+        @apply left-0;
+    }
+</style>

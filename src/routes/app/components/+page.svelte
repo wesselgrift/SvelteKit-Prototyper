@@ -1,6 +1,6 @@
 <script>
     import { userProfile } from "$lib/stores/userStore";
-
+    import { viewSidebar } from "$lib/stores/uiStore";
     import Button from "$lib/components/parts/Button.svelte"
     import Card from "$lib/components/parts/Card.svelte"
     import Avatar from "$lib/components/parts/Avatar.svelte"
@@ -12,10 +12,11 @@
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
-    import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
+    import PageTitle from '$lib/components/blocks/pagetitle/PageTitle.svelte';
+    import { X, Maximize2, Download, Ellipsis, PanelLeft } from "lucide-svelte";
 </script>
 
-<h1 class="text-2xl font-medium mb-6">Components</h1>
+<PageTitle title="Components" />
 
 <div class="flex flex-col gap-4 items-start">
 
