@@ -16,7 +16,7 @@
 <Protected>
     <div class="flex animate-fade-in">
         <Sidebar />
-        <main class="flex-1 p-10 overflow-y-scroll max-h-screen">
+        <main class="flex-1 p-5 md:p-10 overflow-y-scroll max-h-screen">
             {@render children()}
         </main>
         {#if $viewSettings}
