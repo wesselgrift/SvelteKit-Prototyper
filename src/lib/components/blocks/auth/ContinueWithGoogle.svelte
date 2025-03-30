@@ -26,8 +26,6 @@
 				email: email
 			});
 
-			// Redirect to the app
-			goto('/app');
 		} catch (err) {
 			console.error(err.message);
 		}

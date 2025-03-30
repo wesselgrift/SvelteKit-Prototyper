@@ -6,4 +6,4 @@
 
 <p class="text-muted-foreground mb-2">Signed in as:</p>
 <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
-<p class="mb-4">{$userProfile.email}</p>
+<p class="mb-1">{$userProfile.email}</p>

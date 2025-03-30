@@ -1,4 +1,16 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence, onAuthStateChanged } from "firebase/auth";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    sendPasswordResetEmail, 
+    signOut, 
+    signInWithPopup, 
+    GoogleAuthProvider, 
+    setPersistence, 
+    browserLocalPersistence, 
+    onAuthStateChanged,
+    sendEmailVerification
+    } from "firebase/auth";
 import app from "$lib/firebase/firebase";
 import { user, loading } from "$lib/stores/userStore";
 import { goto } from "$app/navigation";
@@ -12,6 +24,17 @@ let authInitialized = false;
 
 export async function register(email, password) {
     return await createUserWithEmailAndPassword(auth, email, password);
+}
+
+export async function sendVerificationEmail(user) {
+    return await sendEmailVerification(user);
+}
+
+export async function checkEmailVerified() {
+    if (auth.currentUser) {
+        await auth.currentUser.reload();
+        return auth.currentUser.emailVerified;
+    }
 }
 
 export async function login(email, password) {
@@ -43,13 +66,21 @@ export function initializeAuth() {
             unsubscribe = onAuthStateChanged(auth, (currentUser) => {
                 user.set(currentUser);
 
-                if (currentUser) {
-                    console.log("Auth state changed: user is signed in");
+                if (currentUser && currentUser.emailVerified) {
+                    console.log("Auth state changed: user is signed in with verified email.");
 
                     // Set the user profile data in the stores
                     setUserProfileData(currentUser);
 
-                // If user is not signed in, redirect to login page
+                    if (browser) {
+                        goto("/app");
+                    }
+                } else if (currentUser && !currentUser.emailVerified) {
+                    console.log("Auth state changed: user is signed in with unverified email.");
+                    
+                    if (browser) {
+                        goto("/verify-email");
+                    }
                 } else {
                     console.log("Auth state changed: no user is signed in");
                     if (browser) {

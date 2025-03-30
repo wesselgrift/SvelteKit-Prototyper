@@ -18,6 +18,7 @@
 	let showLoading = $state(false);
 
 	$effect(() => {
+        // Prefill email if it's in local storage
 		const savedEmail = localStorage.getItem('email');
 		if (savedEmail) {
 			email = savedEmail;
@@ -35,8 +36,6 @@
 			// Store the email in local storage
 			localStorage.setItem('email', email);
 
-			// Redirect to the app
-			goto('/app');
 		} catch (err) {
 			error = err.message;
 			showLoading = false;

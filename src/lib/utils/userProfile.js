@@ -8,7 +8,7 @@ export async function setUserProfileData(user) {
     let profileArray = {
         firstName: userDoc.firstName,
         lastName: userDoc.lastName,
-        email: userDoc.email,
+        email: userDoc.email
     }
 
     userProfile.set(profileArray)

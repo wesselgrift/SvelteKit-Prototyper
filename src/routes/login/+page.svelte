@@ -13,8 +13,10 @@
 	const unsubscribe = user.subscribe((val) => {
 		currentUser = val;
 
-		if (currentUser && typeof window !== 'undefined') {
+		if (currentUser && currentUser.emailVerified && typeof window !== 'undefined') {
 			goto('/app');
+		} else if (currentUser && !currentUser.emailVerified && typeof window !== 'undefined') {
+			goto('/verify-email');
 		}
 	});
 

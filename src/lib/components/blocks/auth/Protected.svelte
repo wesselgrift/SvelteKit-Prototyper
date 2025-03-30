@@ -28,7 +28,7 @@
 	<div role="status" class="flex h-screen flex-row items-center justify-center">
 		<Spinner />
 	</div>
-{:else if !$loading && $user}
+{:else if !$loading && $user && $user.emailVerified}
 	<div>
 		{@render children?.()}
 	</div>

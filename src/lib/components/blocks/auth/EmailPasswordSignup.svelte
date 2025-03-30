@@ -1,8 +1,7 @@
 <script>
 	// Auth, Database and Navigation
-	import { register, login } from '$lib/firebase/auth';
+	import { register, login, sendVerificationEmail } from '$lib/firebase/auth';
 	import { setDocument } from '$lib/firebase/firestore';
-	import { goto } from '$app/navigation';
 
 	// Components
 	import PasswordIndicator from '$lib/components/blocks/auth/PasswordIndicator.svelte';
@@ -42,11 +41,12 @@
 				email
 			});
 
+			// Send verification email
+			await sendVerificationEmail(userCredential.user);
+
 			// Login the user
 			await login(email, password);
 
-			// Redirect to the app
-			goto('/app');
 		} catch (err) {
 			result = '';
 			error = true;
