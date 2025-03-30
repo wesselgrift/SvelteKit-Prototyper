@@ -34,7 +34,7 @@
 
 <div>
 	<Button variant="outline" onclick={handleGoogleLogin}>
-		<img src="/google-icon.svg" alt="Google" class="mr-2 h-5 w-5" />
+		<img src="/google-icon.svg" alt="Google" class="size-5" />
 		Continue with Google
 	</Button>
 </div>

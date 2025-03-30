@@ -7,7 +7,7 @@
 	// Components
 	import Spinner from '$lib/components/parts/Spinner.svelte';
 
-	// Variables
+	// Props
 	let { children } = $props();
 
     // Add/remove class when protected content is shown

@@ -12,7 +12,7 @@
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
-    import { X, Maximize2, Download } from "lucide-svelte";
+    import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 </script>
 
 <h1 class="text-2xl font-medium mb-6">Components</h1>
@@ -30,19 +30,24 @@
     <h3 class="text-lg text-muted-foreground">Button</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="flex gap-2 justify-center w-full">
-            <Button variant="primary" width="hug">Button Primary</Button>
+            <Button variant="primary" width="hug">
+                Button Primary
+            </Button>
             <Button variant="secondary" width="hug">Button Secondary</Button>
             <Button variant="outline" width="hug">Button Outline</Button>
+            <Button variant="ghost" width="hug">Button Ghost</Button>
         </div>
         <div class="flex gap-2 justify-center w-full">
             <Button variant="primary" size="small" width="hug">Button Primary Small</Button>
             <Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
             <Button variant="outline" size="small" width="hug">Button Outline Small</Button>
+            <Button variant="ghost" size="small" width="hug">Button Ghost Small</Button>
         </div>
         <div class="flex gap-2 justify-center w-full">
-            <Button variant="primary" size="icon" width="hug"><X strokeWidth={2} size={20} /></Button>
-            <Button variant="secondary" size="icon" width="hug"><Maximize2 strokeWidth={2} size={20} /></Button>
-            <Button variant="outline" size="icon" width="hug"><Download strokeWidth={2} size={20} /></Button>
+            <Button variant="primary" size="icon" width="hug"><X size={20} /></Button>
+            <Button variant="secondary" size="icon" width="hug"><Maximize2 size={20} /></Button>
+            <Button variant="outline" size="icon" width="hug"><Download size={20} /></Button>
+            <Button variant="ghost" size="icon" width="hug"><Ellipsis size={20} /></Button>
         </div>
     </div>
 

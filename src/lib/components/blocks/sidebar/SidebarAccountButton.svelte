@@ -64,25 +64,25 @@
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
 	</div>
-	<Ellipsis size={20} strokeWidth={2} />
+	<Ellipsis size={20} />
 </button>
 
 <!-- Account Menu that opens when the button is clicked -->
 {#if accountPopup }
 	<SidebarAccountMenu bind:element={popupWrapper}>
 		<SidebarMenuItem disabled={true}>
-            {$userProfile.email}
+            <span class="truncate">{$userProfile.email}</span>
         </SidebarMenuItem>
 		<SidebarMenuItem onclick={handleSettings}>
-            Settings
-            <Settings size={18} strokeWidth={2} />
+            <span class="truncate">Settings</span>
+            <Settings size={18} />
         </SidebarMenuItem>
         <div class="px-3">
             <Separator />
         </div>
 		<SidebarMenuItem onclick={handleLogout}>
-            Log out
-            <LogOut size={18} strokeWidth={2} />
+            <span class="truncate">Log out</span>
+            <LogOut size={18} />
         </SidebarMenuItem>
 	</SidebarAccountMenu>
 {/if}

@@ -54,9 +54,9 @@
     <Button onclick={handleReset}>
         {#if showLoading}
             <Spinner
-                className="w-5 h-5 mr-3"
-                spinColor="fill-color-primary-foreground"
-                pathColor="text-color-primary-hover"
+                className="size-5"
+                spinColor="fill-primary-foreground"
+                pathColor="text-primary-foreground/10"
             />
         {/if}
         Reset Password

@@ -87,13 +87,13 @@
 					<Button width="hug" variant="outline" size="small" onclick={resendEmail}>
 						{#if showLoading}
 							<Spinner
-								className="w-5 h-5 mr-3"
+								className="size-5"
 								spinColor="fill-secondary-foreground"
 								pathColor="text-secondary-foreground/10"
 							/>
 							Resend email
 						{:else if emailResent}
-							<Check class="mr-2 h-5 w-5" />
+							<Check size={20} />
 							Email resent
 						{:else}
 							Resend email

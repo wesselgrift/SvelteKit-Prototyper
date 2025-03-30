@@ -36,7 +36,7 @@
         <div class="px-5 py-4 flex justify-between items-center border-b border-border">
             <h2 class="text-lg font-medium">{title}</h2>
             <Button variant="secondary" size="icon" width="hug" onclick={closeModal}>
-                <X strokeWidth={2} size={20} />
+                <X size={20} />
             </Button>
         </div>
         <div class="p-5 min-h-[400px] max-h-[80vh] overflow-y-auto">
