@@ -1,10 +1,15 @@
 <script>
-    let { title } = $props();
-
-    import Button from "$lib/components/parts/Button.svelte"
+    // Svelte, Auth and user store
     import { viewSidebar } from "$lib/stores/uiStore";
+    
+    // Components
+    import Button from "$lib/components/parts/Button.svelte"
     import { PanelLeft } from "lucide-svelte";
 
+    // Props
+    let { title } = $props();
+
+    // Toggle sidebar
     function toggleSidebar() {
         $viewSidebar = !$viewSidebar;
     }

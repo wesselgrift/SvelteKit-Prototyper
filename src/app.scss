@@ -4,8 +4,3 @@
 @use '$lib/styles/theme.scss';
 @use '$lib/styles/interaction.scss';
 @use '$lib/styles/animation.scss';
-
-body.logged-in {
-    overflow: hidden;
-    max-height: 100vh;
-}

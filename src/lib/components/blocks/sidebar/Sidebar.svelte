@@ -10,13 +10,14 @@
     import Button from '$lib/components/parts/Button.svelte';
     import { PanelRight } from "lucide-svelte";
 
+    // Toggle sidebar
     function toggleSidebar() {
         $viewSidebar = !$viewSidebar;
     }
 
 </script>
 
-<div class="sidebar { $viewSidebar ? 'sidebar-visible' : ' ' } w-64 flex flex-col h-screen justify-between items-start bg-sidebar">
+<div class="sidebar { $viewSidebar ? 'sidebar-visible' : ' ' }">
     <div class="flex justify-between items-center w-full p-4">
        <Logo/>
         <span role="presentation" class="block md:hidden">
@@ -37,13 +38,12 @@
 
 <style lang="scss">
     .sidebar {
-        @apply absolute top-0 -left-64 w-64 flex flex-col h-screen justify-between items-start bg-sidebar transition-all duration-300 z-10;
+        @apply fixed top-0 -left-64 w-64 flex flex-col h-screen justify-between items-start bg-sidebar transition-all duration-300 z-10;
         @media (min-width: 768px) {
-            @apply relative left-0;
+            @apply left-0;
         }
-    }
-
-    .sidebar-visible {
-        @apply left-0;
+        &.sidebar-visible {
+            @apply left-0;
+        }
     }
 </style>

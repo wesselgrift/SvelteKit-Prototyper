@@ -1,6 +1,6 @@
 <script>
     import { userProfile } from "$lib/stores/userStore";
-    import PageTitle from "$lib/components/blocks/pagetitle/PageTitle.svelte";
+    import PageTitle from "$lib/components/parts/PageTitle.svelte";
 </script>
 
 <PageTitle title="Hello world!" />
