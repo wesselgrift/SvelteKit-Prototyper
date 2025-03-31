@@ -10,4 +10,16 @@
 	}
 </script>
 
-{@render children()}
+<div class="page-wrapper">
+	{@render children()}
+</div>
+
+<style>
+    .page-wrapper {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+</style>
