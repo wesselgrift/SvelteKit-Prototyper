@@ -17,7 +17,7 @@
 
 </script>
 
-<div class="sidebar { $viewSidebar ? 'sidebar-visible' : ' ' }">
+<div class="sidebar flex flex-col fixed top-0 -left-64 {$viewSidebar ? 'left-0' : ' '} md:left-0 w-64  h-screen justify-between items-start bg-sidebar transition-all duration-300 z-10">
     <div class="flex justify-between items-center w-full p-4">
        <Logo/>
         <span role="presentation" class="block md:hidden">
@@ -35,15 +35,3 @@
         {/if}
     </div>
 </div>
-
-<style lang="scss">
-    .sidebar {
-        @apply fixed top-0 -left-64 w-64 flex flex-col h-screen justify-between items-start bg-sidebar transition-all duration-300 z-10;
-        @media (min-width: 768px) {
-            @apply left-0;
-        }
-        &.sidebar-visible {
-            @apply left-0;
-        }
-    }
-</style>
