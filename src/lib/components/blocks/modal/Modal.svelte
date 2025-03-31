@@ -18,7 +18,7 @@
     }
 </script>
 
-<div role="presentation" class="absolute left-0 top-0 flex h-full w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
+<div role="presentation" class="fixed left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
     transition:fade={{
 		duration: 200,
 		opacity: 0,
