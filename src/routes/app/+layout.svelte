@@ -14,12 +14,13 @@
 </script>
 
 <Protected>
-    <div class="flex relative h-full w-full flex-row overflow-hidden animate-fade-in">
+    <div class="flex animate-fade-in">
+
         <!-- Sidebar -->
         <Sidebar />
 
         <!-- Main content, has margin left (md:ml-64) on sizes larger than md to account for sidebar -->
-        <main class="p-5 md:p-10 md:ml-64 relative flex h-full max-w-full flex-1 flex-col overflow-hidden">
+        <main class="flex-1 p-5 md:p-10 md:ml-64">
             {@render children()}
         </main>
 
