@@ -8,16 +8,21 @@
 // Disabled scrolling on mobile for html and body
 html, body {
     overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 // Enable scrolling on desktop for html and body
 @media (min-width: 768px) {
     html, body {
         overflow: auto;
+        position: relative;
+        height: auto;
     }
 }
 
-// Disable scrolling when certain menu's are open
+// Disable scrolling when modals or sidebar are open
 .lock-scroll {
     overflow: hidden !important;
 }

@@ -14,16 +14,11 @@
     function toggleSidebar() {
         $viewSidebar = !$viewSidebar;
     }
-
-    // Handle backdrop click
-    function handleBackdropClick(event) {
-        $viewSidebar = false;
-    }
 </script>
 
 <!-- Backdrop -->
 {#if $viewSidebar}
-    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-30" onclick={handleBackdropClick}>
+    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-30" onclick={toggleSidebar()}>
     </div>
 {/if}
 
