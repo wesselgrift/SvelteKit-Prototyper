@@ -10,20 +10,6 @@
 	// Props
 	let { children } = $props();
 
-    // Add/remove class when protected content is shown
-	onMount(() => {
-        if (browser) {
-            document.body.classList.add('logged-in');
-            document.documentElement.classList.add('logged-in');
-        }
-	});
-	
-	onDestroy(() => {
-        if (browser) {
-            document.body.classList.remove('logged-in');
-            document.documentElement.classList.remove('logged-in');
-        }
-	});
 </script>
 
 {#if $loading}

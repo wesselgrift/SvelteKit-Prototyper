@@ -9,19 +9,40 @@
     import { viewSettings, viewSidebar } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
-    // Props
-    let { children } = $props();
-
     // Lifecycle
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
+
+    // Props & Derived
+    let { children } = $props();
+    let lockScroll = $derived($viewSettings || $viewSidebar);
+
+    // When the app layout is mounted add class to body and html
+	onMount(() => {
+        if (browser) {
+            document.body.classList.add('logged-in');
+            document.documentElement.classList.add('logged-in');
+        }
+	});
+	
+    // When the app layout is destroyed remove classes from body and html
+	onDestroy(() => {
+        if (browser) {
+            document.body.classList.remove('logged-in');
+            document.documentElement.classList.remove('logged-in');
+            document.body.classList.remove('lock-scroll');
+            document.documentElement.classList.remove('lock-scroll');
+
+            // Set modal and sidebar to false on mount to prevent them 
+            // from being open when the user logs back in
+            $viewSettings = false;
+            $viewSidebar = false;
+        }
+	});
 
     // Close settings modal
     function closeSettingsModal() {
         $viewSettings = false;
     }
-
-    // State for locking body when modal or sidebar is open
-    let lockScroll = $derived($viewSettings || $viewSidebar);
 
     // Update body and html class when lockScroll changes
     $effect(() => {
@@ -34,16 +55,6 @@
                 document.documentElement.classList.remove('lock-scroll');
             }
         }
-    });
-
-    // Clean up when component is destroyed
-    onMount(() => {
-        return () => {
-            if (browser) {
-                document.body.classList.remove('lock-scroll');
-                document.documentElement.classList.remove('lock-scroll');
-            }
-        };
     });
 
 </script>
