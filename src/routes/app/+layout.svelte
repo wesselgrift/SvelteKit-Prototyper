@@ -7,6 +7,7 @@
     // Stores
     import { userProfile } from "$lib/stores/userStore";
     import { viewSettings, viewSidebar } from "$lib/stores/uiStore";
+    import { browser } from '$app/environment';
 
     // Props
     let { children } = $props();
@@ -20,12 +21,12 @@
     }
 
     // State for locking body when modal or sidebar is open
-    let bodyLock = $derived($viewSettings || $viewSidebar);
+    let lockScroll = $derived($viewSettings || $viewSidebar);
 
-    // Update body and html class when bodyLock changes
+    // Update body and html class when lockScroll changes
     $effect(() => {
-        if (typeof document !== 'undefined') {
-            if (bodyLock) {
+        if (browser) {
+            if (lockScroll) {
                 document.body.classList.add('lock-scroll');
                 document.documentElement.classList.add('lock-scroll');
             } else {
@@ -38,7 +39,7 @@
     // Clean up when component is destroyed
     onMount(() => {
         return () => {
-            if (typeof document !== 'undefined') {
+            if (browser) {
                 document.body.classList.remove('lock-scroll');
                 document.documentElement.classList.remove('lock-scroll');
             }
@@ -48,7 +49,7 @@
 </script>
 
 <Protected>
-    <div class="overflow-y-scroll md:overflow-auto h-dvh md:h-auto {bodyLock ? 'lock-scroll' : ''}">
+    <div class="overflow-y-scroll md:overflow-auto h-dvh md:h-auto {lockScroll ? 'lock-scroll' : ''}">
         <div class="flex animate-fade-in">
 
             <!-- Sidebar -->
