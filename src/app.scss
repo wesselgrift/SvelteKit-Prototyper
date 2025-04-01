@@ -5,17 +5,17 @@
 @use '$lib/styles/interaction.scss';
 @use '$lib/styles/animation.scss';
 
-// Disabled scrolling on mobile for html and body
-html, body {
+// Disabled outerHTML scrolling on mobile for html and body when in app
+html.logged-in, body.logged-in {
     overflow: hidden;
     height: 100%;
     width: 100%;
     position: fixed;
 }
 
-// Enable scrolling on desktop for html and body
+// Enable outerHTML scrolling on desktop for html and body when in app
 @media (min-width: 768px) {
-    html, body {
+    html.logged-in, body.logged-in {
         overflow: auto;
         position: relative;
         height: auto;
