@@ -48,7 +48,7 @@
 </script>
 
 <Protected>
-    <div class="overflow-y-scroll md:overflow-auto h-svh md:h-auto {bodyLock ? 'lock-scroll' : ''}">
+    <div class="overflow-y-scroll md:overflow-auto h-dvh md:h-auto {bodyLock ? 'lock-scroll' : ''}">
         <div class="flex animate-fade-in">
 
             <!-- Sidebar -->
