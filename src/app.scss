@@ -5,12 +5,19 @@
 @use '$lib/styles/interaction.scss';
 @use '$lib/styles/animation.scss';
 
+// Disabled scrolling on mobile for html and body
 html, body {
     overflow: hidden;
 }
 
+// Enable scrolling on desktop for html and body
 @media (min-width: 768px) {
     html, body {
         overflow: auto;
     }
+}
+
+// Disable scrolling when certain menu's are open
+.lock-scroll {
+    overflow: hidden !important;
 }
