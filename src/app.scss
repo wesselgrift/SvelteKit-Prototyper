@@ -4,3 +4,13 @@
 @use '$lib/styles/theme.scss';
 @use '$lib/styles/interaction.scss';
 @use '$lib/styles/animation.scss';
+
+html, body {
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    html, body {
+        overflow: auto;
+    }
+}
