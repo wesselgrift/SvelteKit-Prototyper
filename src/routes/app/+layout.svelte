@@ -12,25 +12,56 @@
     // Lifecycle
     import { onMount, onDestroy } from "svelte";
 
-    // Props & Derived
+    // Prop: children
     let { children } = $props();
+
+    // Derived: lockScroll is true if viewSettings or viewSidebar is true
     let lockScroll = $derived($viewSettings || $viewSidebar);
+
+    // Document objects for class manipulation
+    let body;
+    let html;
 
     // When the app layout is mounted add class to body and html
 	onMount(() => {
         if (browser) {
-            document.body.classList.add('logged-in');
-            document.documentElement.classList.add('logged-in');
+            
+            // Initialize document objects
+            body = document.body;
+            html = document.documentElement;
+
+            // Add logged-in class to body and html
+            body.classList.add('logged-in');
+            html.classList.add('logged-in');
         }
 	});
+
+    // Update body and html class when lockScroll changes
+    $effect(() => {
+        if (browser) {
+            if (lockScroll) {
+                // Add lock-scroll class to body and html
+                body.classList.add('lock-scroll');
+                html.classList.add('lock-scroll');
+            } else {
+                // Remove lock-scroll class from body and html
+                body.classList.remove('lock-scroll');
+                html.classList.remove('lock-scroll');
+            }
+        }
+    });
 	
     // When the app layout is destroyed remove classes from body and html
 	onDestroy(() => {
         if (browser) {
-            document.body.classList.remove('logged-in');
-            document.documentElement.classList.remove('logged-in');
-            document.body.classList.remove('lock-scroll');
-            document.documentElement.classList.remove('lock-scroll');
+
+            // Remove logged-in class from body and html
+            body.classList.remove('logged-in');
+            html.classList.remove('logged-in');
+
+            // Remove lock-scroll class from body and html
+            body.classList.remove('lock-scroll');
+            html.classList.remove('lock-scroll');
 
             // Set modal and sidebar to false on mount to prevent them 
             // from being open when the user logs back in
@@ -44,18 +75,7 @@
         $viewSettings = false;
     }
 
-    // Update body and html class when lockScroll changes
-    $effect(() => {
-        if (browser) {
-            if (lockScroll) {
-                document.body.classList.add('lock-scroll');
-                document.documentElement.classList.add('lock-scroll');
-            } else {
-                document.body.classList.remove('lock-scroll');
-                document.documentElement.classList.remove('lock-scroll');
-            }
-        }
-    });
+
 
 </script>
 
