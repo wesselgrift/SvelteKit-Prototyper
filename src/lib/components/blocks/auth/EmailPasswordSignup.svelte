@@ -1,5 +1,5 @@
 <script>
-	// Auth, Database and Navigation
+	// Auth and Database
 	import { register, login, sendVerificationEmail } from '$lib/firebase/auth';
 	import { setDocument } from '$lib/firebase/firestore';
 

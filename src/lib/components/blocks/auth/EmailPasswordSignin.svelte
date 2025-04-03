@@ -1,7 +1,6 @@
 <script>
-	// Auth and Navigation
+	// Auth
 	import { login } from '$lib/firebase/auth';
-	import { goto } from '$app/navigation';
 
 	// Components
 	import Label from '$lib/components/parts/Label.svelte';

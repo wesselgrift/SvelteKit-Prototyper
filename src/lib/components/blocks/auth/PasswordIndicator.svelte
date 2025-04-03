@@ -3,6 +3,7 @@
 	let { password = '' } = $props();
 	let passwordStrength = $state(0);
 
+	// Calculate password strength
 	function calculatePasswordStrength(password) {
 		let strength = 0;
 		if (password.length >= 8) strength++;
@@ -13,6 +14,7 @@
 		return strength;
 	}
 
+	// Calculate password strength on password change
 	$effect(() => {
 		passwordStrength = calculatePasswordStrength(password);
 	});

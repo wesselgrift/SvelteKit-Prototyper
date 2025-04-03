@@ -1,8 +1,7 @@
 <script>
-	// Auth, Database and Navigation
+	// Auth and Firestore
 	import { loginWithGoogle } from '$lib/firebase/auth';
 	import { setDocument } from '$lib/firebase/firestore';
-	import { goto } from '$app/navigation';
 
 	// Components
 	import Button from '$lib/components/parts/Button.svelte';

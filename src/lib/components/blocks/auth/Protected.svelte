@@ -1,8 +1,6 @@
 <script>
 	// Stores
 	import { user, loading } from '$lib/stores/userStore';
-    import { onMount, onDestroy } from 'svelte';
-    import { browser } from '$app/environment';
 
 	// Components
 	import Spinner from '$lib/components/parts/Spinner.svelte';

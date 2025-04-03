@@ -15,6 +15,7 @@
 	let messageError = $state('');
 	let showLoading = $state(false);
 
+	// Reset password
 	async function handleReset() {
 		try {
 			showLoading = true;
