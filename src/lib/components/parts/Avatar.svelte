@@ -1,6 +1,8 @@
 <script>
+    // Props
     export let userName;
 
+    // Gradient colors
     const gradientColors = {
         1: 'from-sky-500 to-fuchsia-500',
         2: 'from-purple-500 to-indigo-500',
@@ -11,11 +13,13 @@
         7: 'from-blue-500 to-teal-400',
     }
 
+    // Get color index
     function getColorIndex(name) {
         const charSum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
         return (charSum % 7) + 1;       
     }
     
+    // Get color index
     const colorIndex = getColorIndex(userName);
 </script>
 

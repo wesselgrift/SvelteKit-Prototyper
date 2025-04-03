@@ -1,11 +1,14 @@
 <script>
+    // Props
     let { 
         children,
         variant = 'default'
     } = $props();
 
+    // Default classes
     const defaultClasses = 'dialog border p-5 rounded-lg';
 
+    // Variants
     const variants = {
         default: `${defaultClasses} border-border bg-card text-color-card-foreground`,
         error: `${defaultClasses} border-destructive bg-destructive text-destructive-foreground`

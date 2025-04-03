@@ -1,4 +1,5 @@
 <script>
+    // Props
     let { children } = $props();
 </script>
   

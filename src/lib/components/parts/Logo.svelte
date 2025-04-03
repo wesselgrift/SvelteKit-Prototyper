@@ -1,4 +1,5 @@
 <script>
+    // Props
     let {
         size = "w-28"
     } = $props();
