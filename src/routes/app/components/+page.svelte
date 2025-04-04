@@ -91,9 +91,11 @@
                 <Label for="myfiles" label="File" />
                 <FileInput name="myfiles" multiple="true"/>
             </div>
-            <div class="flex flex-row gap-2 items-center">
-                <Checkbox name="myCheckbox"/>
+            <div class="flex flex-col">
+                <Checkbox name="myCheckbox" label="This is a checkbox"/>
             </div>
+            ... radio group
+            ... select
         </div>
     </div>
 
