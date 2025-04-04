@@ -12,7 +12,7 @@
 
     // Default classes
     const defaultClasses = 
-    "relative overflow-hidden gap-2 inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 ring transition-all";
+    "relative overflow-hidden gap-2 inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 focus-ring transition-all";
 
     // Width types
     const widthType = {

@@ -10,9 +10,10 @@
     import Separator from '$lib/components/parts/Separator.svelte';
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
+    import FileInput from '$lib/components/parts/FileInput.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
-    import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
+    import { X, Maximize2, Download, Ellipsis, ArrowUpFromLine } from "lucide-svelte";
 </script>
 
 <PageTitle title="Components" />
@@ -72,9 +73,14 @@
 
     <h3 class="text-lg text-muted-foreground">Label and Input</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <div class="flex flex-col gap-1">
-            <Label for="email" label="Email" />
-            <Input name="email" type="email" />
+        <div class="w-full max-w-md flex flex-col gap-4">
+            <div class="flex flex-col gap-1 w-full">
+                <Label for="email" label="Email" />
+                <Input name="email" type="email" />
+            </div>
+            <div class="w-full">
+                <FileInput multiple={true}/>
+            </div>
         </div>
     </div>
 

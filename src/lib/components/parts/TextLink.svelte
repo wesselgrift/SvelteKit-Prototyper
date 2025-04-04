@@ -7,7 +7,7 @@
     } = $props();
 
     // Default classes
-    const defaultClasses = 'transition rounded ring outline-none';
+    const defaultClasses = 'transition rounded focus-ring outline-none';
 
     // Variants
     const variants = {
