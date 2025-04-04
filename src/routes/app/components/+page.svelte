@@ -11,9 +11,11 @@
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import FileInput from '$lib/components/parts/FileInput.svelte';
+    import Textarea from '$lib/components/parts/Textarea.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import { X, Maximize2, Download, Ellipsis, ArrowUpFromLine } from "lucide-svelte";
+
 </script>
 
 <PageTitle title="Components" />
@@ -75,11 +77,16 @@
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4">
             <div class="flex flex-col gap-1 w-full">
-                <Label for="email" label="Email" />
-                <Input name="email" type="email" />
+                <Label for="text" label="Text" />
+                <Input name="text" type="text" />
             </div>
-            <div class="w-full">
-                <FileInput multiple={true}/>
+            <div class="flex flex-col gap-1 w-full">
+                <Label for="myTextarea" label="Textarea" />
+                <Textarea name="myTextarea"/>
+            </div>
+            <div class="flex flex-col gap-1 w-full">
+                <Label for="myfiles" label="File" />
+                <FileInput name="myfiles" multiple="true"/>
             </div>
         </div>
     </div>

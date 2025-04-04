@@ -1,6 +1,8 @@
 <script>
 
     let {
+        name,
+        value = $bindable(),
         multiple = false
     } = $props();
 
@@ -9,4 +11,4 @@
 
 </script>
 
-<input type="file" class="{base} + ' ' + {button}" {multiple} />
+<input type="file" class="{base} + ' ' + {button}" name={name} {multiple} bind:value/>
