@@ -12,18 +12,21 @@
         &:focus {
             @apply 
                 ring-0
-                ring-offset-0; 
+                ring-offset-0 
+                ring-offset-sidebar;
             &[type="file"] {
                 @apply 
                     ring-2
-                    ring-offset-2;
+                    ring-offset-2
+                    ring-offset-sidebar;
             }
         }
 
         &:focus-visible {
             @apply 
                 ring-2 
-                ring-offset-2;
+                ring-offset-2
+                ring-offset-sidebar;
         }
     }
 

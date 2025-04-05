@@ -16,3 +16,12 @@
         </div>
     {/each}
 </div>
+
+<style>
+    /* Ensure dark radio dot */
+    @media (prefers-color-scheme: dark) {
+        input[type="radio"]:checked {
+            background-image: url("data:image/svg+xml,<svg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'><circle cx='8' cy='8' r='3'/></svg>");
+        }   
+    }
+</style>
