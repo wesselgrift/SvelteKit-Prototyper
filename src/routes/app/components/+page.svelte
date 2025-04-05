@@ -14,6 +14,7 @@
     import Textarea from '$lib/components/parts/Textarea.svelte';
     import Checkbox from '$lib/components/parts/Checkbox.svelte';
     import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
+    import Select from '$lib/components/parts/Select.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
@@ -23,7 +24,8 @@
         textarea: '',
         file: [],
         checkbox: [],
-        radiobutton: []
+        radiobutton: [],
+        select: ''
     });
 
     function handleSubmit() {
@@ -101,6 +103,10 @@
             <div class="flex flex-col w-full gap-1">
                 <Label for="myfiles" label="File" />
                 <FileInput name="myfiles" multiple="true" bind:value={formState.file}/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Label for="mySelect" label="Select" />
+                <Select name="mySelect" bind:value={formState.select} options={['Option 1', 'Option 2', 'Option 3']}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label for="myCheckbox" label="Checkboxes" />

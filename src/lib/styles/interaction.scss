@@ -9,10 +9,21 @@
             ring-offset-0 
             ring-offset-sidebar;
         
-        &:focus, :focus-visible {
+        &:focus {
+            @apply 
+                ring-0
+                ring-offset-0; 
+            &[type="file"] {
+                @apply 
+                    ring-2
+                    ring-offset-2;
+            }
+        }
+
+        &:focus-visible {
             @apply 
                 ring-2 
-                ring-offset-2 
+                ring-offset-2;
         }
     }
 
