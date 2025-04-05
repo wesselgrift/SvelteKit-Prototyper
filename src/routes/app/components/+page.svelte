@@ -15,6 +15,7 @@
     import Checkbox from '$lib/components/parts/Checkbox.svelte';
     import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
     import Select from '$lib/components/parts/Select.svelte';
+    import Toggle from '$lib/components/parts/Toggle.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
@@ -25,7 +26,8 @@
         file: [],
         checkbox: [],
         radiobutton: [],
-        select: ''
+        select: '',
+        toggle: false
     });
 
     function handleSubmit() {
@@ -116,8 +118,12 @@
                 <Label for="myRadiobutton" label="Radiobuttons" />
                 <Radiobutton options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
             </div>
+            <div class="flex flex-col w-full gap-1">
+                <Label label="Toggle" />
+                <Toggle label="This is a toggle" bind:toggle={formState.toggle}/>
+            </div>
             <Button variant="primary" width="hug" onclick={handleSubmit}>Submit</Button>
-            <p class="text-xs text-muted-foreground">check console to see output</p>
+            <p class="text-xs text-muted-foreground">Check console to see output on submit</p>
         </div>
     </div>
 
