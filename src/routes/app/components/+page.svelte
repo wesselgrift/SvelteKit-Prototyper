@@ -18,8 +18,17 @@
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 
-    let checkboxState = $state([]);
-    let radiobuttonState = $state([]);
+    let formState = $state({
+        textfield: '',
+        textarea: '',
+        file: [],
+        checkbox: [],
+        radiobutton: []
+    });
+
+    function handleSubmit() {
+        console.log($state.snapshot(formState));
+    }
 
 </script>
 
@@ -80,27 +89,29 @@
 
     <h3 class="text-lg text-muted-foreground">Form elements</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <div class="w-full max-w-md flex flex-col gap-4">
-            <div class="flex flex-col gap-1">
+        <div class="w-full max-w-md flex flex-col gap-4 items-start">
+            <div class="flex flex-col w-full gap-1">
                 <Label for="text" label="Text" />
-                <Input name="text" type="text" />
+                <Input name="text" type="text" bind:value={formState.textfield} />
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col w-full gap-1">
                 <Label for="myTextarea" label="Textarea" />
-                <Textarea name="myTextarea"/>
+                <Textarea name="myTextarea" bind:value={formState.textarea}/>
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col w-full gap-1">
                 <Label for="myfiles" label="File" />
-                <FileInput name="myfiles" multiple="true"/>
+                <FileInput name="myfiles" multiple="true" bind:value={formState.file}/>
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col w-full gap-1">
                 <Label for="myCheckbox" label="Checkboxes" />
-                <Checkbox options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={checkboxState}/>
+                <Checkbox options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
             </div>
-            <div class="flex flex-col gap-1">
+            <div class="flex flex-col w-full gap-1 mb-2">
                 <Label for="myRadiobutton" label="Radiobuttons" />
-                <Radiobutton options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={radiobuttonState}/>
+                <Radiobutton options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
             </div>
+            <Button variant="primary" width="hug" onclick={handleSubmit}>Submit</Button>
+            <p class="text-xs text-muted-foreground">check console to see output</p>
         </div>
     </div>
 
