@@ -12,12 +12,14 @@
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import FileInput from '$lib/components/parts/FileInput.svelte';
     import Textarea from '$lib/components/parts/Textarea.svelte';
-    import CheckboxGroup from '$lib/components/parts/CheckboxGroup.svelte';
+    import Checkbox from '$lib/components/parts/Checkbox.svelte';
+    import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 
     let checkboxState = $state([]);
+    let radiobuttonState = $state([]);
 
 </script>
 
@@ -91,8 +93,13 @@
                 <Label for="myfiles" label="File" />
                 <FileInput name="myfiles" multiple="true"/>
             </div>
-            <div class="flex flex-col">
-                <CheckboxGroup options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={checkboxState}/>
+            <div class="flex flex-col gap-1">
+                <Label for="myCheckbox" label="Checkboxes" />
+                <Checkbox options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={checkboxState}/>
+            </div>
+            <div class="flex flex-col gap-1">
+                <Label for="myRadiobutton" label="Radiobuttons" />
+                <Radiobutton options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={radiobuttonState}/>
             </div>
         </div>
     </div>
