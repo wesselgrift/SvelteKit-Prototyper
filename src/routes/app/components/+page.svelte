@@ -122,7 +122,7 @@
                 <Label label="Toggle" />
                 <Toggle label="This is a toggle" bind:toggle={formState.toggle}/>
             </div>
-            <Button variant="primary" width="hug" onclick={handleSubmit}>Submit</Button>
+            <Button variant="primary" width="hug" onclick={handleSubmit}>Submit form</Button>
             <p class="text-xs text-muted-foreground">Check console to see output on submit</p>
         </div>
     </div>
