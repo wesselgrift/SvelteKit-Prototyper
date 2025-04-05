@@ -12,12 +12,12 @@
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import FileInput from '$lib/components/parts/FileInput.svelte';
     import Textarea from '$lib/components/parts/Textarea.svelte';
-    import Checkbox from '$lib/components/parts/Checkbox.svelte';
+    import CheckboxGroup from '$lib/components/parts/CheckboxGroup.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
-    import { X, Maximize2, Download, Ellipsis, ArrowUpFromLine } from "lucide-svelte";
+    import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 
-    let checkedState = $state();
+    let checkboxState = $state([]);
 
 </script>
 
@@ -92,10 +92,8 @@
                 <FileInput name="myfiles" multiple="true"/>
             </div>
             <div class="flex flex-col">
-                <Checkbox name="myCheckbox" label="This is a checkbox"/>
+                <CheckboxGroup options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={checkboxState}/>
             </div>
-            ... radio group
-            ... select
         </div>
     </div>
 
