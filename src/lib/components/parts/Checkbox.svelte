@@ -8,23 +8,29 @@
         disabled = false,
     } = $props();
 
-    let boxClasses = "focus-ring border-input cursor-pointer rounded-md size-4 bg-background hover:bg-accent/80 checked:bg-primary checked:hover:bg-primary/80 checked:focus:bg-primary checked:active:bg-primary transition-all"
-    let labelClasses = "text-sm text-foreground cursor-pointer select-none"
+    const boxClasses = 
+        "focus-ring border-input cursor-pointer rounded-md size-4 bg-background hover:bg-accent/80 checked:bg-primary checked:hover:bg-primary/80 checked:focus:bg-primary checked:active:bg-primary transition-all"
+    
+    const labelClasses = 
+        "text-sm text-foreground cursor-pointer select-none"
+
+    const disabledClasses =
+        "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none file:disabled:bg-muted-foreground/10 file:disabled:text-muted-foreground/70";
 </script>
 
 <div class="flex flex-col gap-1">
     {#if options.length === 1}
         {#each options as option}
             <div class="flex flex-row gap-2 items-center">
-                <input {id} {name} type="checkbox" value={option} class={boxClasses} bind:checked={checked} {required} {disabled}>
-                <label for={id} class={labelClasses}>{option}</label>
+                <input {id} {name} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:checked={checked} {required} {disabled}>
+                <label for={id} class={labelClasses + ' ' + disabledClasses}>{option}</label>
             </div>
         {/each}
     {:else if options.length > 1}
         {#each options as option, index}
             <div class="flex flex-row gap-2 items-center">
-                <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={boxClasses} bind:group={checked} {required} {disabled}>
-                <label for={`${id}-${index}`} class={labelClasses}>{option}</label>
+                <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:group={checked} {required} {disabled}>
+                <label for={`${id}-${index}`} class={labelClasses + ' ' + disabledClasses}>{option}</label>
             </div>
         {/each}
     {/if}

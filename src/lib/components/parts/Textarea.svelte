@@ -13,6 +13,10 @@
     // Default classes
     const defaultClasses = 
     "block min-h-[100px] w-full text-base lg:text-sm py-2 px-3.5 lg:py-3 lg:px-4 border border-input focus:border-input bg-background rounded-lg focus-ring transition-all";
+
+    // Disabled classes
+    const disabledClasses =
+    "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none file:disabled:bg-muted-foreground/10 file:disabled:text-muted-foreground/70";
 </script>
   
-<textarea {id} {name} {type} {placeholder} {required} {disabled} class={defaultClasses} bind:value></textarea>
+<textarea {id} {name} {type} {placeholder} {required} {disabled} class={defaultClasses + ' ' + disabledClasses} bind:value></textarea>

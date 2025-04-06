@@ -24,7 +24,7 @@
         password: '',
         textarea: '',
         file: [],
-        checkbox: [],
+        checkbox: ['This is a checkbox'],
         radiobutton: [],
         select: '',
         toggle: false
@@ -104,7 +104,7 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="myTextarea" label="Textarea" />
-                <Textarea id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
+                <Textarea disabled id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="myfiles" label="File" />
@@ -112,11 +112,11 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="mySelect" label="Select" />
-                <Select id="mySelect" name="Select demo" options={['Option 1', 'Option 2', 'Option 3']} bind:value={formState.select}/>
+                <Select disabled id="mySelect" name="Select demo" options={['Option 1', 'Option 2', 'Option 3']} bind:value={formState.select}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Checkboxes" />
-                <Checkbox id="myCheckbox" name="Checkbox demo" options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
+                <Checkbox disabled id="myCheckbox" name="Checkbox demo" options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
             </div>
             <div class="flex flex-col w-full gap-1 mb-2">
                 <Label label="Radiobuttons" />
@@ -142,12 +142,6 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Input name="datetime-local" type="datetime-local"/>
-            </div>
-            <div class="flex flex-col w-full gap-1">
-                <Input name="email" type="email"/>
-            </div>
-            <div class="flex flex-col w-full gap-1">
-                <Input name="file" type="file"/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Input name="month" type="month"/>
