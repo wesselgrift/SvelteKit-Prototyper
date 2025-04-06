@@ -19,7 +19,7 @@
     "block overflow-hidden w-full text-base lg:text-sm border border-input focus:border-input bg-background rounded-lg cursor-pointer focus-ring transition-all file:font-medium file:cursor-pointer file:border-0 file:py-2 file:px-3.5 lg:file:py-3 lg:file:px-4 file:mr-4 file:bg-secondary hover:file:bg-secondary-foreground/10 file:text-secondary-foreground";
 
     const colorTypeClasses =
-    "inline-block lg:text-sm size-10 rounded-lg focus-ring transition-all";
+    "inline-block lg:text-sm size-10 rounded-full focus-ring transition-all";
 
     const rangeTypeClasses =
     "w-full cursor-pointer";
@@ -171,7 +171,7 @@
         }
     }
     input[type="color"]::-webkit-color-swatch-wrapper {
-        padding: 0;
+        padding: 0px;
     }
     input[type="color"]::-webkit-color-swatch {
         border: none;

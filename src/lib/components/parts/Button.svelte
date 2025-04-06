@@ -33,6 +33,7 @@
         secondary: `bg-secondary text-secondary-foreground hover-on-secondary`,
         outline: `border border-border bg-background hover-on-background`,
         ghost: `bg-transparent hover-on-background`,
+        disabled: `bg-muted text-muted-foreground/70 pointer-events-none`
     }
 
 </script>

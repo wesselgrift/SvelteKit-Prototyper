@@ -20,9 +20,8 @@
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 
     let formState = $state({
-        textfield: 'Hai',
-        password: 'olololol',
-        textarea: 'This is a test',
+        textfield: 'Hey this is some value',
+        textarea: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
         file: [],
         checkbox: ['This is a checkbox', 'This is another checkbox'],
         radiobutton: 'This is a radiobutton',
@@ -55,18 +54,21 @@
             <Button variant="secondary" width="hug">Button Secondary</Button>
             <Button variant="outline" width="hug">Button Outline</Button>
             <Button variant="ghost" width="hug">Button Ghost</Button>
+            <Button variant="disabled" width="hug">Button Disabled</Button>
         </div>
         <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
             <Button variant="primary" size="small" width="hug">Button Primary Small</Button>
             <Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
             <Button variant="outline" size="small" width="hug">Button Outline Small</Button>
             <Button variant="ghost" size="small" width="hug">Button Ghost Small</Button>
+            <Button variant="disabled" size="small" width="hug">Button Disabled Small</Button>
         </div>
         <div class="flex gap-2 justify-center w-full">
             <Button variant="primary" size="icon" width="hug"><X size={20} /></Button>
             <Button variant="secondary" size="icon" width="hug"><Maximize2 size={20} /></Button>
             <Button variant="outline" size="icon" width="hug"><Download size={20} /></Button>
             <Button variant="ghost" size="icon" width="hug"><Ellipsis size={20} /></Button>
+            <Button variant="disabled" size="icon" width="hug"><Ellipsis size={20} /></Button>
         </div>
     </div>
 
@@ -99,10 +101,6 @@
                 <Input id="textExample" name="Text input demo" type="text" bind:value={formState.textfield} />
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Label forId="passwordExample" label="Password" />
-                <Input id="passwordExample" name="Password input demo" type="password" bind:value={formState.password} />
-            </div>
-            <div class="flex flex-col w-full gap-1">
                 <Label forId="myTextarea" label="Textarea" />
                 <Textarea id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
             </div>
@@ -120,7 +118,7 @@
             </div>
             <div class="flex flex-col w-full gap-1 mb-2">
                 <Label label="Radiobuttons" />
-                <Radiobutton disabled id="myRadiobutton" name="Radiobutton demo" options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
+                <Radiobutton id="myRadiobutton" name="Radiobutton demo" options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Toggle" />
@@ -131,44 +129,56 @@
         </div>
     </div>
 
-    <h3 class="text-lg text-muted-foreground">All input types</h3>
+    <h3 class="text-lg text-muted-foreground">More input types</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4 items-start">
             <div class="flex flex-col w-full gap-1">
-                <Input name="color" type="color"/>
+                <Label forId="color" label="Color" />
+                <Input id="color" name="color" type="color"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="date" type="date"/>
+                <Label forId="date" label="Date" />
+                <Input id="date" name="date" type="date"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="datetime-local" type="datetime-local"/>
+                <Label forId="datetime-local" label="Datetime-local" />
+                <Input id="datetime-local" name="datetime-local" type="datetime-local"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="month" type="month"/>
+                <Label forId="month" label="Month" />
+                <Input id="month" name="month" type="month"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="number" type="number"/>
+                <Label forId="number" label="Number" />
+                <Input id="number" name="number" type="number"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="password" type="password"/>
+                <Label forId="password2" label="Password" />
+                <Input id="password2" name="password" type="password"/>
+            </div>
+            <div class="flex flex-col w-full gap-3">
+                <Label forId="range" label="Range" />
+                <Input id="range" name="range" type="range"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="range" type="range"/>
+                <Label forId="search" label="Search" />
+                <Input id="search" name="search" type="search"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="search" type="search"/>
+                <Label forId="tel" label="Tel" />
+                <Input id="tel" name="tel" type="tel"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="tel" type="tel"/>
+                <Label forId="time" label="Time" />
+                <Input id="time" name="time" type="time"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="time" type="time"/>
+                <Label forId="url" label="URL" />
+                <Input id="url" name="url" type="url"/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Input name="url" type="url"/>
-            </div>
-            <div class="flex flex-col w-full gap-1">
-                <Input name="week" type="week"/>
+                <Label forId="week" label="Week" />
+                <Input id="week" name="week" type="week"/>
             </div>
         </div>
     </div>
