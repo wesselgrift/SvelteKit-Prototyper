@@ -15,7 +15,7 @@
         "text-sm text-foreground cursor-pointer select-none"
 
     const disabledClasses =
-        "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none file:disabled:bg-muted-foreground/10 file:disabled:text-muted-foreground/70";
+        "disabled:cursor-default disabled:bg-primary/30 disabled:border-input/50 disabled:pointer-events-none";
 </script>
 
 <div class="flex flex-col gap-1">
@@ -23,14 +23,14 @@
         {#each options as option}
             <div class="flex flex-row gap-2 items-center">
                 <input {id} {name} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:checked={checked} {required} {disabled}>
-                <label for={id} class={labelClasses + ' ' + disabledClasses}>{option}</label>
+                <label for={id} class={labelClasses + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
             </div>
         {/each}
     {:else if options.length > 1}
         {#each options as option, index}
             <div class="flex flex-row gap-2 items-center">
                 <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:group={checked} {required} {disabled}>
-                <label for={`${id}-${index}`} class={labelClasses + ' ' + disabledClasses}>{option}</label>
+                <label for={`${id}-${index}`} class={labelClasses + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
             </div>
         {/each}
     {/if}

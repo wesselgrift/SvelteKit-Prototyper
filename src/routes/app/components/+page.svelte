@@ -20,13 +20,13 @@
     import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
 
     let formState = $state({
-        textfield: '',
-        password: '',
-        textarea: '',
+        textfield: 'Hai',
+        password: 'olololol',
+        textarea: 'This is a test',
         file: [],
-        checkbox: ['This is a checkbox'],
-        radiobutton: [],
-        select: '',
+        checkbox: ['This is a checkbox', 'This is another checkbox'],
+        radiobutton: 'This is a radiobutton',
+        select: 'Option 1',
         toggle: false
     });
 
@@ -116,11 +116,11 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Checkboxes" />
-                <Checkbox disabled id="myCheckbox" name="Checkbox demo" options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
+                <Checkbox id="myCheckbox" name="Checkbox demo" options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
             </div>
             <div class="flex flex-col w-full gap-1 mb-2">
                 <Label label="Radiobuttons" />
-                <Radiobutton id="myRadiobutton" name="Radiobutton demo" options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
+                <Radiobutton disabled id="myRadiobutton" name="Radiobutton demo" options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Toggle" />
@@ -190,8 +190,9 @@
 
     <h3 class="text-lg text-muted-foreground">Textlink</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <TextLink href="/app" text="This is a textlink" variant="primary" />
-        <TextLink href="/app" text="This is a textlink" variant="muted" />
+        <TextLink href="/app" text="This is a primary textlink" variant="primary" />
+        <TextLink href="/app" text="This is a muted textlink" variant="muted" />
+        <TextLink href="/app" text="This is a disabled textlink" variant="disabled" />
     </div>
 
     <h3 class="text-lg text-muted-foreground">Accountbutton with menu for sidebar</h3>

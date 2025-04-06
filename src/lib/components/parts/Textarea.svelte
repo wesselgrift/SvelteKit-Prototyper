@@ -16,7 +16,7 @@
 
     // Disabled classes
     const disabledClasses =
-    "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none file:disabled:bg-muted-foreground/10 file:disabled:text-muted-foreground/70";
+    "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none";
 </script>
   
 <textarea {id} {name} {type} {placeholder} {required} {disabled} class={defaultClasses + ' ' + disabledClasses} bind:value></textarea>
