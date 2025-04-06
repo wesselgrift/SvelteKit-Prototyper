@@ -122,7 +122,7 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Toggle" />
-                <Toggle id="myToggle" name="Toggle demo" bind:toggle={formState.toggle}/>
+                <Toggle id="myToggle" name="This is a toggle" bind:toggle={formState.toggle}/>
             </div>
             <Button variant="primary" width="hug" onclick={handleSubmit}>Submit form</Button>
             <p class="text-xs text-muted-foreground">Check console to see output on submit</p>
