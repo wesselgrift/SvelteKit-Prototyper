@@ -104,7 +104,7 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="myTextarea" label="Textarea" />
-                <Textarea disabled id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
+                <Textarea id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="myfiles" label="File" />
@@ -112,7 +112,7 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label forId="mySelect" label="Select" />
-                <Select disabled id="mySelect" name="Select demo" options={['Option 1', 'Option 2', 'Option 3']} bind:value={formState.select}/>
+                <Select id="mySelect" name="Select demo" options={['Option 1', 'Option 2', 'Option 3']} bind:value={formState.select}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Checkboxes" />
