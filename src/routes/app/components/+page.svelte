@@ -10,7 +10,6 @@
     import Separator from '$lib/components/parts/Separator.svelte';
     import Spinner from '$lib/components/parts/Spinner.svelte';
     import TextLink from '$lib/components/parts/TextLink.svelte';
-    import FileInput from '$lib/components/parts/FileInput.svelte';
     import Textarea from '$lib/components/parts/Textarea.svelte';
     import Checkbox from '$lib/components/parts/Checkbox.svelte';
     import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
@@ -104,7 +103,7 @@
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label for="myfiles" label="File" />
-                <FileInput name="myfiles" multiple="true" bind:value={formState.file}/>
+                <Input name="text" type="file" multiple="true" bind:value={formState.file}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label for="mySelect" label="Select" />
