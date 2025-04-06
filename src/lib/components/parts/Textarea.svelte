@@ -1,9 +1,13 @@
 <script>
     // Props
     let { 
-      name, 
-      value = $bindable(), 
-      type = 'text'
+        id,
+        name, 
+        value = $bindable(), 
+        placeholder,
+        required = false,
+        disabled = false,
+        type = 'text'
     } = $props();
 
     // Default classes
@@ -11,4 +15,4 @@
     "block min-h-[100px] w-full text-base lg:text-sm py-2 px-3.5 lg:py-3 lg:px-4 border border-input focus:border-input bg-background rounded-lg focus-ring transition-all";
 </script>
   
-<textarea {name} {type} class={defaultClasses} bind:value></textarea>
+<textarea {id} {name} {type} {placeholder} {required} {disabled} class={defaultClasses} bind:value></textarea>

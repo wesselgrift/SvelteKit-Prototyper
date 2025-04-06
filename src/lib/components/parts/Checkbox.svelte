@@ -1,7 +1,11 @@
 <script>
     let {
+        id,
+        name,
         options, // takes an array of strings
-        checked = $bindable() // this is bindable in the parent component as a boolean
+        checked = $bindable(), // this is bindable in the parent component as a boolean
+        required = false,
+        disabled = false,
     } = $props();
 
     let boxClasses = "focus-ring border-input cursor-pointer rounded-md size-4 bg-background hover:bg-accent/80 checked:bg-primary checked:hover:bg-primary/80 checked:focus:bg-primary checked:active:bg-primary transition-all"
@@ -12,15 +16,15 @@
     {#if options.length === 1}
         {#each options as option}
             <div class="flex flex-row gap-2 items-center">
-                <input type="checkbox" id={option} value={option} class={boxClasses} bind:checked={checked}>
-                <label for={option} class={labelClasses}>{option}</label>
+                <input {id} {name} type="checkbox" value={option} class={boxClasses} bind:checked={checked} {required} {disabled}>
+                <label for={id} class={labelClasses}>{option}</label>
             </div>
         {/each}
     {:else if options.length > 1}
-        {#each options as option}
+        {#each options as option, index}
             <div class="flex flex-row gap-2 items-center">
-                <input type="checkbox" id={option} value={option} class={boxClasses} bind:group={checked}>
-                <label for={option} class={labelClasses}>{option}</label>
+                <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={boxClasses} bind:group={checked} {required} {disabled}>
+                <label for={`${id}-${index}`} class={labelClasses}>{option}</label>
             </div>
         {/each}
     {/if}

@@ -1,7 +1,11 @@
 <script>
     let {
+        id,
+        name,
         options, // takes an array of strings
-        selected = $bindable() // this is bindable in the parent component as a boolean
+        selected = $bindable(), // this is bindable in the parent component as a boolean
+        required = false,
+        disabled = false,
     } = $props();
 
     let radioClasses = "focus-ring border-input cursor-pointer rounded-full size-4 bg-background hover:bg-accent/80 checked:bg-primary checked:hover:bg-primary/80 checked:focus:bg-primary checked:active:bg-primary transition-all"
@@ -9,10 +13,10 @@
 </script>
 
 <div class="flex flex-col gap-1">
-    {#each options as option}
+    {#each options as option, index}
         <div class="flex flex-row gap-2 items-center">
-            <input type="radio" id={option} value={option} class={radioClasses} bind:group={selected}>
-            <label for={option} class={labelClasses}>{option}</label>
+            <input id={`${id}-${index}`} name={`${name}-${index}`} type="radio" value={option} class={radioClasses} bind:group={selected} {required} {disabled}>
+            <label for={`${id}-${index}`} class={labelClasses}>{option}</label>
         </div>
     {/each}
 </div>

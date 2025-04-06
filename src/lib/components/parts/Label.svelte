@@ -1,9 +1,9 @@
 <script>
     // Props
     let { 
-        name, 
+        forId, 
         label
     } = $props();
 </script>
   
-<label for={name} class="block font-medium text-foreground">{label}</label>
+<label for={forId} class="block font-medium text-foreground">{label}</label>

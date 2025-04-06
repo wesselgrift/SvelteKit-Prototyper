@@ -21,6 +21,7 @@
 
     let formState = $state({
         textfield: '',
+        password: '',
         textarea: '',
         file: [],
         checkbox: [],
@@ -94,35 +95,87 @@
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4 items-start">
             <div class="flex flex-col w-full gap-1">
-                <Label for="text" label="Text" />
-                <Input name="text" type="text" bind:value={formState.textfield} />
+                <Label forId="textExample" label="Text" />
+                <Input id="textExample" name="Text input demo" type="text" bind:value={formState.textfield} />
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Label for="myTextarea" label="Textarea" />
-                <Textarea name="myTextarea" bind:value={formState.textarea}/>
+                <Label forId="passwordExample" label="Password" />
+                <Input id="passwordExample" name="Password input demo" type="password" bind:value={formState.password} />
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Label for="myfiles" label="File" />
-                <Input name="text" type="file" multiple="true" bind:value={formState.file}/>
+                <Label forId="myTextarea" label="Textarea" />
+                <Textarea id="myTextarea" name="Text area demo" bind:value={formState.textarea}/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Label for="mySelect" label="Select" />
-                <Select name="mySelect" bind:value={formState.select} options={['Option 1', 'Option 2', 'Option 3']}/>
+                <Label forId="myfiles" label="File" />
+                <Input id="myfiles" name="File input demo" type="file" multiple="true" bind:value={formState.file}/>
             </div>
             <div class="flex flex-col w-full gap-1">
-                <Label for="myCheckbox" label="Checkboxes" />
-                <Checkbox options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
+                <Label forId="mySelect" label="Select" />
+                <Select id="mySelect" name="Select demo" options={['Option 1', 'Option 2', 'Option 3']} bind:value={formState.select}/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Label label="Checkboxes" />
+                <Checkbox id="myCheckbox" name="Checkbox demo" options={['This is a checkbox', 'This is another checkbox', 'This is a third checkbox']} bind:checked={formState.checkbox}/>
             </div>
             <div class="flex flex-col w-full gap-1 mb-2">
-                <Label for="myRadiobutton" label="Radiobuttons" />
-                <Radiobutton options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
+                <Label label="Radiobuttons" />
+                <Radiobutton id="myRadiobutton" name="Radiobutton demo" options={['This is a radiobutton', 'This is another radiobutton', 'This is a third radiobutton']} bind:selected={formState.radiobutton}/>
             </div>
             <div class="flex flex-col w-full gap-1">
                 <Label label="Toggle" />
-                <Toggle label="This is a toggle" bind:toggle={formState.toggle}/>
+                <Toggle id="myToggle" name="Toggle demo" bind:toggle={formState.toggle}/>
             </div>
             <Button variant="primary" width="hug" onclick={handleSubmit}>Submit form</Button>
             <p class="text-xs text-muted-foreground">Check console to see output on submit</p>
+        </div>
+    </div>
+
+    <h3 class="text-lg text-muted-foreground">All input types</h3>
+    <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <div class="w-full max-w-md flex flex-col gap-4 items-start">
+            <div class="flex flex-col w-full gap-1">
+                <Input name="color" type="color"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="date" type="date"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="datetime-local" type="datetime-local"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="email" type="email"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="file" type="file"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="month" type="month"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="number" type="number"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="password" type="password"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="range" type="range"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="search" type="search"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="tel" type="tel"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="time" type="time"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="url" type="url"/>
+            </div>
+            <div class="flex flex-col w-full gap-1">
+                <Input name="week" type="week"/>
+            </div>
         </div>
     </div>
 
