@@ -12,7 +12,11 @@
 
     // Default classes
     const defaultClasses = 
-    "relative overflow-hidden gap-2 inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 focus-ring transition-all";
+        "relative overflow-hidden gap-2 inline-flex items-center justify-center whitespace-nowrap rounded-lg font-medium disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 focus-ring transition-all";
+
+    // Disabled classes
+    const disabledClasses = 
+        "bg-muted text-muted-foreground/70 pointer-events-none border border-muted";
 
     // Width types
     const widthType = {
@@ -33,12 +37,21 @@
         secondary: `bg-secondary text-secondary-foreground hover-on-secondary`,
         outline: `border border-border bg-background hover-on-background`,
         ghost: `bg-transparent hover-on-background`,
-        disabled: `bg-muted text-muted-foreground/70 pointer-events-none`
+        disabled: `${disabledClasses}`
     }
 
 </script>
   
-<button {type} onclick={onclick} class={variants[variant] + ' ' + sizes[size] +' '+ widthType[width] + ' ' + defaultClasses} {disabled}>
+<button {type} onclick={onclick} class={
+    (disabled ? disabledClasses : variants[variant])
+        +' '+ 
+    sizes[size] 
+        +' '+ 
+    widthType[width] 
+        +' '+ 
+    defaultClasses
+    } 
+>
     {#if children}
         {@render children()}
     {/if}
