@@ -105,7 +105,7 @@
         <Button type="submit">
             {#if showLoading}
                 <Spinner
-                    className="size-5"
+                    size={5}
                     spinColor="fill-primary-foreground"
                     pathColor="text-primary-foreground/10"
                 />

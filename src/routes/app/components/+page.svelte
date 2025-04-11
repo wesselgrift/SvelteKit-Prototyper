@@ -195,7 +195,7 @@
 
     <h3 class="text-lg text-muted-foreground">Spinner</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Spinner />
+        <Spinner size={8} />
     </div>
 
     <h3 class="text-lg text-muted-foreground">Textlink</h3>

@@ -1,15 +1,17 @@
 <script>
 	// Props
 	let {
-		className = 'w-8 h-8',
+		size = 8,
 		spinColor = 'fill-primary',
 		pathColor = 'text-accent'
 	} = $props();
+
+	let stringifySize = size.toString();
 </script>
 
 <svg
 	aria-hidden="true"
-	class="{className} {pathColor} {spinColor} animate-spin"
+	class="size-{stringifySize} {pathColor} {spinColor} animate-spin"
 	viewBox="0 0 100 101"
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
