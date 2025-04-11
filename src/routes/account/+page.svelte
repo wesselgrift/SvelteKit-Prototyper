@@ -10,7 +10,7 @@
 	<div class="animate-fade-in-zoom flex w-full items-start justify-center lg:w-1/2 lg:items-center">
 		<div class="w-full max-w-md p-5">
             <div class="mb-[80px] lg:mb-10">
-			    <Logo size={28}/>
+			    <Logo/>
             </div>
 			<h2 class="mb-9 text-2xl font-medium leading-tight text-color-foreground">Create Account</h2>
             <div class="flex flex-col gap-5">

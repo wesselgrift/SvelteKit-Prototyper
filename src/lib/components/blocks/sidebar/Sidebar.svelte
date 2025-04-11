@@ -25,7 +25,7 @@
 <!-- Sidebar -->
 <div class="sidebar flex flex-col fixed top-0 -left-64 {$viewSidebar ? 'left-0' : ' '} md:left-0 w-64 h-dvh justify-between items-start bg-sidebar transition-all duration-300 z-40">
     <div class="flex justify-between items-center w-full p-4">
-       <Logo size={28} />
+       <Logo/>
         <span role="presentation" class="block md:hidden">
             <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}><PanelRight size={20} /></Button>
         </span>

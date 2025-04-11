@@ -33,7 +33,7 @@
 	<div class="flex justify-center lg:h-screen lg:items-center">
 		<div class="animate-fade-in-zoom w-full max-w-md p-5">
 			<div class="mb-[80px] lg:mb-10">
-			    <Logo size={28} />
+			    <Logo/>
             </div>
 			<h2 class="mb-9 text-2xl font-medium leading-tight text-color-foreground">Log in</h2>
             <div class="flex flex-col gap-5">
