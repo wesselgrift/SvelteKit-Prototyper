@@ -17,7 +17,9 @@
     import Toggle from '$lib/components/parts/Toggle.svelte';
     import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
-    import { X, Maximize2, Download, Ellipsis } from "lucide-svelte";
+    import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
+    import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
+    import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
     let formState = $state({
         textfield: 'Hey this is some value',
@@ -28,6 +30,12 @@
         select: 'Option 1',
         toggle: false
     });
+
+    let DropDownOpen = $state(false);
+
+    function handleDropDownOpen() {
+        DropDownOpen = !DropDownOpen;
+    }
 
     function handleSubmit() {
         console.log($state.snapshot(formState));
@@ -183,6 +191,34 @@
         </div>
     </div>
 
+    <h3 class="text-lg text-muted-foreground">Dropdown Menu</h3>
+    <div class="relative flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <Button variant="outline" width="hug" onclick={handleDropDownOpen}>
+            Show dropdown
+            {#if DropDownOpen}
+                <ChevronUp size={18} />
+            {:else}
+                <ChevronDown size={18} />
+            {/if}
+        </Button>
+        {#if DropDownOpen}
+            <DropdownMenu classes="w-64 top-20" flyInFrom={-10}>
+                <MenuItem>
+                    <span class="truncate">Settings</span>
+                    <Folder size={18} />
+                </MenuItem>
+                <MenuItem>
+                    <span class="truncate">This is another menu item</span>
+                    <Calendar size={18} />
+                </MenuItem>
+                <MenuItem>
+                    <span class="truncate">This is a third menu item</span>
+                    <Settings size={18} />
+                </MenuItem>
+            </DropdownMenu>
+        {/if}
+    </div>
+
     <h3 class="text-lg text-muted-foreground">Separator</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <Separator />
@@ -190,7 +226,7 @@
 
     <h3 class="text-lg text-muted-foreground">Logo</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Logo/>
+        <Logo size={32}/>
     </div>
 
     <h3 class="text-lg text-muted-foreground">Spinner</h3>

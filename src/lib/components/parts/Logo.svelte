@@ -4,10 +4,9 @@
         size = 28
     } = $props();
 
-    let stringifySize = size.toString();
 </script>
 
-<picture>
+<picture class="block w-{size} h-auto">
   <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)" />
-  <img src="/logo.svg" alt="logo" class="w-{stringifySize} h-{stringifySize}"/>
+  <img src="/logo.svg" alt="logo" class="w-full"/>
 </picture>
