@@ -5,8 +5,8 @@
     import { logout } from '$lib/firebase/auth';
 
 	// Components
-	import SidebarAccountMenu from '$lib/components/blocks/sidebar/SidebarAccountMenu.svelte';
-	import SidebarMenuItem from '$lib/components/blocks/sidebar/SidebarMenuItem.svelte';
+	import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
+	import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
     import Avatar from '$lib/components/parts/Avatar.svelte';
     import Separator from '$lib/components/parts/Separator.svelte';
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
@@ -69,20 +69,20 @@
 
 <!-- Account Menu that opens when the button is clicked -->
 {#if accountPopup }
-	<SidebarAccountMenu bind:element={popupWrapper}>
-		<SidebarMenuItem disabled={true}>
+	<DropdownMenu bind:element={popupWrapper} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
+		<MenuItem disabled={true}>
             <span class="truncate">{$userProfile.email}</span>
-        </SidebarMenuItem>
-		<SidebarMenuItem onclick={handleSettings}>
+        </MenuItem>
+		<MenuItem onclick={handleSettings}>
             <span class="truncate">Settings</span>
             <Settings size={18} />
-        </SidebarMenuItem>
+        </MenuItem>
         <div class="px-3">
             <Separator />
         </div>
-		<SidebarMenuItem onclick={handleLogout}>
+		<MenuItem onclick={handleLogout}>
             <span class="truncate">Log out</span>
             <LogOut size={18} />
-        </SidebarMenuItem>
-	</SidebarAccountMenu>
+        </MenuItem>
+	</DropdownMenu>
 {/if}

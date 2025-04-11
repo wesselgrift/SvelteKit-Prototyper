@@ -4,13 +4,18 @@
 	import { cubicOut } from 'svelte/easing';
 
 	// Props
-	let { children, element = $bindable() } = $props();
+	let { 
+        children, 
+        element = $bindable(),
+        flyInFrom = 10,
+        classes = ''
+        } = $props();
 </script>
 
-<div class="absolute bottom-12 left-2 z-10 mb-2 flex w-[calc(100%-1rem)] flex-col gap-1 rounded-xl border border-border bg-popover p-1 shadow-md"
+<div class="absolute z-10 flex flex-col gap-1 rounded-xl border border-border bg-popover p-1 shadow-md {classes}"
 	transition:fly={{
 		duration: 150,
-		y: 10,
+		y: flyInFrom,
 		opacity: 0,
 		easing: cubicOut
 	}}
