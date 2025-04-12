@@ -16,17 +16,12 @@
 
     // Element states
     let accountPopup = $state(false);
-    let accountPopupWrapper = $state();
-    
+    let accountPopupTrigger = $state();
 
 	// Open & close profile menu
 	function toggleAccountPopup(event) {
         event.stopPropagation();
-		if (clickOutside(event, accountPopupWrapper)) {
-            accountPopup = false;
-        } else {
-            accountPopup = true;
-        }
+        accountPopup = !accountPopup;
 	}
 
     // Handle Logout
@@ -48,7 +43,7 @@
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={toggleAccountPopup} class={defaultClasses}>
+<button bind:this={accountPopupTrigger} onclick={toggleAccountPopup} class={defaultClasses}>
 	<div class="flex flex-row items-center justify-start gap-3 mr-4">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
@@ -58,7 +53,7 @@
 
 <!-- Account Menu that opens when the button is clicked -->
 {#if accountPopup }
-	<DropdownMenu bind:element={accountPopupWrapper} clickOutside={toggleAccountPopup} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
+	<DropdownMenu trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
 		<MenuItem disabled={true}>
             <span class="truncate">{$userProfile.email}</span>
         </MenuItem>
