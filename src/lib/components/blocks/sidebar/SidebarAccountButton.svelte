@@ -4,6 +4,9 @@
     import { viewSettings } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
 
+    // Utils
+    import { clickOutside } from '$lib/utils/clickOutside';
+
 	// Components
 	import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
 	import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
@@ -12,33 +15,19 @@
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
     // Element states
-    let accountButton = $state();
     let accountPopup = $state(false);
-    let popupWrapper = $state();
+    let accountPopupWrapper = $state();
     
 
-	// Open profile menu
+	// Open & close profile menu
 	function toggleAccountPopup(event) {
         event.stopPropagation();
-		accountPopup = !accountPopup;
+		if (clickOutside(event, accountPopupWrapper)) {
+            accountPopup = false;
+        } else {
+            accountPopup = true;
+        }
 	}
-
-    // Close profile menu when clicking outside of the popupWrapper
-    function handleClickOutside(event) {
-        if (popupWrapper && !popupWrapper.contains(event.target) && !accountButton.contains(event.target) && accountPopup) {
-            accountPopup = !accountPopup;
-        }
-    }
-
-    // Add event listener to close profile menu when clicking outside of the popupWrapper
-    $effect(() => {
-        if (accountPopup) {
-            window.addEventListener('mouseup', handleClickOutside);
-
-            // Remove event listener when component is destroyed
-            return () => window.removeEventListener('mouseup', handleClickOutside);
-        }
-    });
 
     // Handle Logout
 	async function handleLogout() {
@@ -59,7 +48,7 @@
 </script>
 
 <!-- Account Menu Button -->
-<button onclick={toggleAccountPopup} class={defaultClasses} bind:this={accountButton}>
+<button onclick={toggleAccountPopup} class={defaultClasses}>
 	<div class="flex flex-row items-center justify-start gap-3 mr-4">
 		<Avatar userName={$userProfile.firstName} />
 		{$userProfile.firstName}
@@ -69,7 +58,7 @@
 
 <!-- Account Menu that opens when the button is clicked -->
 {#if accountPopup }
-	<DropdownMenu bind:element={popupWrapper} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
+	<DropdownMenu bind:element={accountPopupWrapper} clickOutside={toggleAccountPopup} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
 		<MenuItem disabled={true}>
             <span class="truncate">{$userProfile.email}</span>
         </MenuItem>
