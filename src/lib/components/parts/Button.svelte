@@ -7,7 +7,8 @@
         variant = 'primary',
         size = 'default',
         disabled = false,
-        width = 'fill'
+        width = 'fill',
+        element = $bindable()
     } = $props();
 
     // Default classes
@@ -50,7 +51,8 @@
     widthType[width] 
         +' '+ 
     defaultClasses
-    } 
+    }
+    bind:this={element}
 >
     {#if children}
         {@render children()}

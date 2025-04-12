@@ -31,10 +31,12 @@
         toggle: false
     });
 
-    let DropDownOpen = $state(false);
+    let DropDown = $state(false);
+    let DropDownTrigger = $state();
 
-    function handleDropDownOpen() {
-        DropDownOpen = !DropDownOpen;
+    function toggleDropDown(event) {
+        event.stopPropagation();
+        DropDown = !DropDown;
     }
 
     function handleSubmit() {
@@ -193,16 +195,16 @@
 
     <h3 class="text-lg text-muted-foreground">Dropdown Menu</h3>
     <div class="relative flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Button variant="outline" width="hug" onclick={handleDropDownOpen}>
+        <Button variant="outline" width="hug" bind:element={DropDownTrigger} onclick={toggleDropDown}>
             Show dropdown
-            {#if DropDownOpen}
+            {#if DropDown}
                 <ChevronUp size={18} />
             {:else}
                 <ChevronDown size={18} />
             {/if}
         </Button>
-        {#if DropDownOpen}
-            <DropdownMenu classes="w-64 top-20" flyInFrom={-10}>
+        {#if DropDown}
+            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} classes="w-64 top-20" flyInFrom={-10}>
                 <MenuItem>
                     <span class="truncate">Settings</span>
                     <Folder size={18} />
