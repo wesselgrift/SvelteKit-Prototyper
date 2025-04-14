@@ -6,7 +6,7 @@
 
     // Stores
     import { userProfile } from "$lib/stores/userStore";
-    import { lockedByModal, lockedBySidebar, settingsModal } from "$lib/stores/uiStore";
+    import { lockScroll, settingsModal } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
     // Lifecycle
@@ -14,9 +14,6 @@
 
     // Prop: children
     let { children } = $props();
-
-    // Derived: lockScroll is true if viewSettings or viewSidebar is true
-    let lockScroll = $derived($lockedByModal || $lockedBySidebar);
 
     // Document objects for class manipulation
     let body;
@@ -39,7 +36,7 @@
     // Update body and html class when lockScroll changes
     $effect(() => {
         if (browser) {
-            if (lockScroll) {
+            if ($lockScroll) {
                 // Add lock-scroll class to body and html
                 body.classList.add('lock-scroll');
                 html.classList.add('lock-scroll');
@@ -63,14 +60,11 @@
             body.classList.remove('lock-scroll');
             html.classList.remove('lock-scroll');
 
-            // Set modal and sidebar to false on mount to prevent them 
+            // Set scroll-lock to false on mount to prevent it 
             // from being open when the user logs back in
-            $lockedByModal = false;
-            $lockedBySidebar = false;
+            $lockScroll = false;
         }
 	});
-
-
 
 </script>
 

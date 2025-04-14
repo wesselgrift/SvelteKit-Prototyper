@@ -1,7 +1,7 @@
 <script>
 	// Svelte, Auth and user store
     import { userProfile } from "$lib/stores/userStore";
-    import { viewSidebar, lockedBySidebar } from "$lib/stores/uiStore";
+    import { viewSidebar } from "$lib/stores/uiStore";
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
@@ -13,7 +13,6 @@
     // Toggle sidebar
     function closeSidebar() {
         $viewSidebar = false;
-        $lockedBySidebar = false;
     }
 </script>
 

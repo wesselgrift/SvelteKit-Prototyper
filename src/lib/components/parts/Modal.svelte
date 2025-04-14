@@ -1,6 +1,6 @@
 <script>
     // Stores
-    import { lockedByModal } from "$lib/stores/uiStore";
+    import { lockScroll } from "$lib/stores/uiStore";
 
     // Lifecycle
     import { onMount, onDestroy } from "svelte";
@@ -20,14 +20,14 @@
     // Lock scroll when modal is open
     onMount(() => {
         if (browser) {
-            $lockedByModal = true;
+            $lockScroll = true;
         }
     });
 
     // Unlock scroll when modal is closed
     onDestroy(() => {
         if (browser) {
-            $lockedByModal = false;
+            $lockScroll = false;
         }
     });
 

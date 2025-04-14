@@ -1,8 +1,7 @@
 import { writable } from "svelte/store";
 
-// Scroll lock Items
-export const lockedByModal = writable(false);
-export const lockedBySidebar = writable(false);
+// Scroll lock
+export const lockScroll = writable(false);
 
 // Modals
 export const settingsModal = writable(false);
