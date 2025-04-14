@@ -44,6 +44,7 @@
         title, 
         closeAction = () => {} 
     } = $props();
+    
 </script>
 
 <div role="presentation" class="fixed left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
