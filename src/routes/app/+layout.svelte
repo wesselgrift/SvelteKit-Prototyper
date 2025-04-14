@@ -9,60 +9,36 @@
     import { lockScroll, settingsModal } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
+    // Utils
+    import { bodyClassUpdater } from "$lib/utils/bodyClassUpdater";
+
     // Lifecycle
     import { onMount, onDestroy } from "svelte";
 
     // Prop: children
     let { children } = $props();
 
-    // Document objects for class manipulation
-    let body;
-    let html;
-
     // When the app layout is mounted add class to body and html
 	onMount(() => {
         if (browser) {
-            
-            // Initialize document objects
-            body = document.body;
-            html = document.documentElement;
-
             // Add logged-in class to body and html
-            body.classList.add('logged-in');
-            html.classList.add('logged-in');
+            bodyClassUpdater(true, 'logged-in');
         }
 	});
 
     // Update body and html class when lockScroll changes
     $effect(() => {
         if (browser) {
-            if ($lockScroll) {
-                // Add lock-scroll class to body and html
-                body.classList.add('lock-scroll');
-                html.classList.add('lock-scroll');
-            } else {
-                // Remove lock-scroll class from body and html
-                body.classList.remove('lock-scroll');
-                html.classList.remove('lock-scroll');
-            }
+            bodyClassUpdater($lockScroll, 'lock-scroll');
         }
     });
 	
     // When the app layout is destroyed remove classes from body and html
 	onDestroy(() => {
         if (browser) {
-
-            // Remove logged-in class from body and html
-            body.classList.remove('logged-in');
-            html.classList.remove('logged-in');
-
-            // Remove lock-scroll class from body and html
-            body.classList.remove('lock-scroll');
-            html.classList.remove('lock-scroll');
-
-            // Set scroll-lock to false on mount to prevent it 
-            // from being open when the user logs back in
-            $lockScroll = false;
+            // Remove logged-in and lock-scroll classes from body and html
+            bodyClassUpdater(false, 'logged-in');
+            bodyClassUpdater(false, 'lock-scroll');
         }
 	});
 
