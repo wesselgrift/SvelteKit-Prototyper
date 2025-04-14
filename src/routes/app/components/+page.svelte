@@ -21,6 +21,8 @@
     import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
+    import { viewSettings } from "$lib/stores/uiStore";
+
     let formState = $state({
         textfield: 'Hey this is some value',
         textarea: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
@@ -219,6 +221,13 @@
                 </MenuItem>
             </DropdownMenu>
         {/if}
+    </div>
+
+    <h3 class="text-lg text-muted-foreground">Modal</h3>
+    <div class="relative flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <Button variant="outline" width="hug" bind:element={DropDownTrigger} onclick={() => $viewSettings = true}>
+            Show modal
+        </Button>
     </div>
 
     <h3 class="text-lg text-muted-foreground">Separator</h3>
