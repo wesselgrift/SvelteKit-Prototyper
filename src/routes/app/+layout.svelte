@@ -70,11 +70,6 @@
         }
 	});
 
-    // Close settings modal
-    function closeSettingsModal() {
-        $viewSettings = false;
-    }
-
 
 
 </script>
@@ -93,7 +88,7 @@
 
             <!-- Settings modal -->
             {#if $viewSettings}
-                <Modal title="Settings" closeModal={closeSettingsModal}>
+                <Modal title="Settings">
                     <p class="text-muted-foreground mb-2">Signed in as:</p>
                     <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
                     <p class="mb-4">{$userProfile.email}</p>

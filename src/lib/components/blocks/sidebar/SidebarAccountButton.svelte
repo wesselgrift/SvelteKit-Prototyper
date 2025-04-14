@@ -4,9 +4,6 @@
     import { viewSettings } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
 
-    // Utils
-    import { clickOutside } from '$lib/utils/clickOutside';
-
 	// Components
 	import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
 	import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
@@ -31,7 +28,7 @@
 	}
 
     // Handle Settings
-    function handleSettings() {
+    function showSettings() {
         accountPopup = false;
         $viewSettings = true;
     }
@@ -57,7 +54,7 @@
 		<MenuItem disabled={true}>
             <span class="truncate">{$userProfile.email}</span>
         </MenuItem>
-		<MenuItem onclick={handleSettings}>
+		<MenuItem onclick={showSettings}>
             <span class="truncate">Settings</span>
             <Settings size={18} />
         </MenuItem>
