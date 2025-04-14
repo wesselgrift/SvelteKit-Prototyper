@@ -61,14 +61,14 @@
 
     <h3 class="text-lg text-muted-foreground">Button</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
+        <div class="flex flex-col xl:flex-row gap-2 justify-center w-full">
             <Button variant="primary" width="hug">Button Primary</Button>
             <Button variant="secondary" width="hug">Button Secondary</Button>
             <Button variant="outline" width="hug">Button Outline</Button>
             <Button variant="ghost" width="hug">Button Ghost</Button>
             <Button variant="disabled" width="hug">Button Disabled</Button>
         </div>
-        <div class="flex flex-col lg:flex-row gap-2 justify-center w-full">
+        <div class="flex flex-col xl:flex-row gap-2 justify-center w-full">
             <Button variant="primary" size="small" width="hug">Button Primary Small</Button>
             <Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
             <Button variant="outline" size="small" width="hug">Button Outline Small</Button>
