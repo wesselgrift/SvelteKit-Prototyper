@@ -1,7 +1,7 @@
 <script>
 	// Svelte, Auth and user store
     import { userProfile } from "$lib/stores/userStore";
-    import { viewSidebar } from "$lib/stores/uiStore";
+    import { viewSidebar, lockedBySidebar } from "$lib/stores/uiStore";
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
@@ -11,14 +11,15 @@
     import { PanelRight } from "lucide-svelte";
 
     // Toggle sidebar
-    function toggleSidebar() {
-        $viewSidebar = !$viewSidebar;
+    function closeSidebar() {
+        $viewSidebar = false;
+        $lockedBySidebar = false;
     }
 </script>
 
 <!-- Backdrop -->
 {#if $viewSidebar}
-    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-30" onclick={toggleSidebar()}>
+    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-30" onclick={closeSidebar}>
     </div>
 {/if}
 
@@ -27,7 +28,7 @@
     <div class="flex justify-between items-center w-full p-4">
        <Logo/>
         <span role="presentation" class="block md:hidden">
-            <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}><PanelRight size={20} /></Button>
+            <Button variant="ghost" size="icon" width="hug" onclick={closeSidebar}><PanelRight size={20} /></Button>
         </span>
     </div>    
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">

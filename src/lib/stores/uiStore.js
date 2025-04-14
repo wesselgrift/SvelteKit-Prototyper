@@ -1,7 +1,11 @@
 import { writable } from "svelte/store";
 
-// Modal visibility
-export const viewSettings = writable(false);
+// Scroll lock Items
+export const lockedByModal = writable(false);
+export const lockedBySidebar = writable(false);
 
-// Sidebar visibility
+// Modals
+export const settingsModal = writable(false);
+
+// Sidebar
 export const viewSidebar = writable(false);

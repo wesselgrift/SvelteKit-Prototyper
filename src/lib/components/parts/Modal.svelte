@@ -1,4 +1,11 @@
 <script>
+    // Stores
+    import { lockedByModal } from "$lib/stores/uiStore";
+
+    // Lifecycle
+    import { onMount, onDestroy } from "svelte";
+    import { browser } from "$app/environment";
+
     // Components
     import Button from "$lib/components/parts/Button.svelte";
     import { X } from "lucide-svelte";
@@ -9,6 +16,20 @@
 
     // Modal wrapper
     let modalWrapper = $state();
+
+    // Lock scroll when modal is open
+    onMount(() => {
+        if (browser) {
+            $lockedByModal = true;
+        }
+    });
+
+    // Unlock scroll when modal is closed
+    onDestroy(() => {
+        if (browser) {
+            $lockedByModal = false;
+        }
+    });
 
     // Check if the click is outside the ModalWrapper and on the backdrop
     function checkClickOutside(event) {

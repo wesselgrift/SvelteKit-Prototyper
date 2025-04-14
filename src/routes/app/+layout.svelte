@@ -6,7 +6,7 @@
 
     // Stores
     import { userProfile } from "$lib/stores/userStore";
-    import { viewSettings, viewSidebar } from "$lib/stores/uiStore";
+    import { lockedByModal, lockedBySidebar, settingsModal } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
     // Lifecycle
@@ -16,7 +16,7 @@
     let { children } = $props();
 
     // Derived: lockScroll is true if viewSettings or viewSidebar is true
-    let lockScroll = $derived($viewSettings || $viewSidebar);
+    let lockScroll = $derived($lockedByModal || $lockedBySidebar);
 
     // Document objects for class manipulation
     let body;
@@ -65,8 +65,8 @@
 
             // Set modal and sidebar to false on mount to prevent them 
             // from being open when the user logs back in
-            $viewSettings = false;
-            $viewSidebar = false;
+            $lockedByModal = false;
+            $lockedBySidebar = false;
         }
 	});
 
@@ -87,8 +87,8 @@
             </main>
 
             <!-- Settings modal -->
-            {#if $viewSettings}
-                <Modal title="Settings" closeAction={() => $viewSettings = false}>
+            {#if $settingsModal}
+                <Modal title="Settings" closeAction={() => $settingsModal = false}>
                     <p class="text-muted-foreground mb-2">Signed in as:</p>
                     <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
                     <p class="mb-4">{$userProfile.email}</p>
