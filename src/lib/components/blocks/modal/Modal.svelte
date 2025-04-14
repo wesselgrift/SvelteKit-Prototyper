@@ -13,7 +13,7 @@
     // Props
     let { children, title } = $props();
 
-    // Handle backdrop click
+    // Close modal
     function closeModal() {
         $viewSettings = false;
     }
