@@ -2,7 +2,7 @@
     // Components   
     import Protected from "$lib/components/blocks/auth/Protected.svelte";
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
-    import Modal from "$lib/components/blocks/modal/Modal.svelte";
+    import Modal from "$lib/components/parts/Modal.svelte";
 
     // Stores
     import { userProfile } from "$lib/stores/userStore";
@@ -88,7 +88,7 @@
 
             <!-- Settings modal -->
             {#if $viewSettings}
-                <Modal title="Settings">
+                <Modal title="Settings" closeAction={() => $viewSettings = false}>
                     <p class="text-muted-foreground mb-2">Signed in as:</p>
                     <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
                     <p class="mb-4">{$userProfile.email}</p>

@@ -1,7 +1,4 @@
 <script>
-    // Stores
-    import { viewSettings } from "$lib/stores/uiStore";
-
     // Components
     import Button from "$lib/components/parts/Button.svelte";
     import { X } from "lucide-svelte";
@@ -10,13 +7,22 @@
 	import { fly, fade } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 
-    // Props
-    let { children, title } = $props();
+    // Modal wrapper
+    let modalWrapper = $state();
 
-    // Close modal
-    function closeModal() {
-        $viewSettings = false;
+    // Check if the click is outside the ModalWrapper and on the backdrop
+    function checkClickOutside(event) {
+        if (modalWrapper && !modalWrapper.contains(event.target)) {
+            closeAction();
+        }
     }
+
+    // Props
+    let { 
+        children, 
+        title, 
+        closeAction = () => {} 
+    } = $props();
 </script>
 
 <div role="presentation" class="fixed left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
@@ -25,7 +31,7 @@
 		opacity: 0,
 		easing: cubicOut
 	}}
-    onclick={closeModal}>
+    onclick={checkClickOutside}>
     <div class="block flex-col justify-start items-start bg-popover rounded-xl w-full max-w-2xl border border-border shadow-2xl shadow-black/10" 
     transition:fly={{
 		duration: 200,
@@ -33,10 +39,12 @@
 		y: 10,
 		opacity: 0,
 		easing: cubicOut
-	}}>
+	}}
+    bind:this={modalWrapper}
+    >
         <div class="px-5 py-4 flex justify-between items-center border-b border-border">
             <h2 class="text-lg font-medium">{title}</h2>
-            <Button variant="secondary" size="icon" width="hug" onclick={closeModal}>
+            <Button variant="secondary" size="icon" width="hug" onclick={closeAction}>
                 <X size={20} />
             </Button>
         </div>
