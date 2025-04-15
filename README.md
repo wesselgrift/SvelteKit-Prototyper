@@ -1,11 +1,11 @@
-## Simple Svelte App with Firebase Auth and Firestore for user data.
+## Simple SvelteKit App with Firebase Auth and Firestore for user data.
 
-- Sign in (and reset password)
-- Sign up
+- Firebase authentication flow (sign-in, sign-up, password reset and email verification)
+- Firestore user profile creation
 - Protected page (for logged in users)
-- Logout
-- A couple of basic components
-- TailwindCSS and semantic theme
+- Directory based routing
+- Basic, responsive components and blocks (like a sidebar, modal, etc)
+- TailwindCSS and semantic theme (automatic dark/light mode)
 
 **Install with**
 ```
@@ -33,4 +33,4 @@ npm run dev
 Go into tailwind.config.js and change the semantic theme colors.
 
 **Deployment**<br>
-Adapter for Vercel installed. Import repo in Vercel and deploy (use `dist` as build folder). For more info and other adapters, see [SvelteKit Adapters](https://svelte.dev/docs/kit/adapters).
+Import repo in Vercel and deploy (use `dist` as build folder).
