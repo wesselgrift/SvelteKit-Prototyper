@@ -19,6 +19,7 @@
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
     import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
     import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
+    import Tabs from '$lib/components/parts/Tabs.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
     import { exampleModal } from "$lib/stores/uiStore";
@@ -35,6 +36,24 @@
 
     let DropDown = $state(false);
     let DropDownTrigger = $state();
+
+    let tabItems = $state([
+        {
+            title: 'Tab 1', 
+            id: 'tab1',
+            state: true
+        }, 
+        {
+            title: 'Tab 2', 
+            id: 'tab2',
+            state: false
+        }, 
+        {
+            title: 'Tab 3', 
+            id: 'tab3',
+            state: false
+        }
+    ])
 
     function toggleDropDown(event) {
         event.stopPropagation();
@@ -228,6 +247,23 @@
         <Button variant="outline" width="hug" onclick={() => $exampleModal = true}>
             Show modal
         </Button>
+    </div>
+
+    <h3 class="text-lg text-muted-foreground">Tabs</h3>
+    <div class="relative flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <div class="w-full max-w-md flex flex-col gap-4">
+            <Tabs bind:items={tabItems} />
+
+            <Card>
+                {#if tabItems.find(item => item.state).title === 'Tab 1'}
+                    <p>This is tab 1</p>
+                {:else if tabItems.find(item => item.state).title === 'Tab 2'}
+                    <p>This is tab 2</p>
+                {:else if tabItems.find(item => item.state).title === 'Tab 3'}
+                    <p>This is tab 3</p>
+                {/if}
+            </Card>
+        </div>
     </div>
 
     <h3 class="text-lg text-muted-foreground">Separator</h3>
