@@ -15,7 +15,7 @@
 </script>
 
 {#snippet TabItem(title, id, state)}
-    <button id={id} class="w-full py-2 px-4 rounded-md focus-ring transition-all {state ? 'bg-background' : ''}" onclick={() => handleTabClick(id)}>
+    <button id={id} class="w-full py-1.5 px-3 lg:py-2 lg:px-4 rounded-md focus-ring transition-all {state ? 'bg-background' : ''}" onclick={() => handleTabClick(id)}>
         {title}
     </button>
 {/snippet}
