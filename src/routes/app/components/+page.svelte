@@ -256,11 +256,14 @@
 
             <Card>
                 {#if tabItems.find(item => item.state).title === 'Tab 1'}
-                    <p>This is tab 1</p>
+                    <h3 class="text-lg font-medium mb-1">This is tab 1</h3>
+                    <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 {:else if tabItems.find(item => item.state).title === 'Tab 2'}
-                    <p>This is tab 2</p>
+                    <h3 class="text-lg font-medium mb-1">This is tab 2</h3>
+                    <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 {:else if tabItems.find(item => item.state).title === 'Tab 3'}
-                    <p>This is tab 3</p>
+                    <h3 class="text-lg font-medium mb-1">This is tab 3</h3>
+                    <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 {/if}
             </Card>
         </div>
