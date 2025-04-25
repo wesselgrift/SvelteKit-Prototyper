@@ -39,17 +39,17 @@
 
     let tabItems = $state([
         {
-            title: 'Tab 1', 
+            title: 'General', 
             id: 'tab1',
             state: true
         }, 
         {
-            title: 'Tab 2', 
+            title: 'Account', 
             id: 'tab2',
             state: false
         }, 
         {
-            title: 'Tab 3', 
+            title: 'Billing', 
             id: 'tab3',
             state: false
         }
@@ -255,14 +255,14 @@
             <Tabs bind:items={tabItems} />
 
             <Card>
-                {#if tabItems.find(item => item.state).title === 'Tab 1'}
-                    <h3 class="text-md lg:text-lg font-medium mb-1">This is tab 1</h3>
+                {#if tabItems.find(item => item.state).id === 'tab1'}
+                    <h3 class="text-md lg:text-lg font-medium mb-1">General</h3>
                     <p class="text-foreground/70">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                {:else if tabItems.find(item => item.state).title === 'Tab 2'}
-                    <h3 class="text-md lg:text-lg font-medium mb-1">This is tab 2</h3>
+                {:else if tabItems.find(item => item.state).id === 'tab2'}
+                    <h3 class="text-md lg:text-lg font-medium mb-1">Account</h3>
                     <p class="text-foreground/70">Proin convallis nunc a dui ultricies, sit amet imperdiet nisl condimentum.</p>
-                {:else if tabItems.find(item => item.state).title === 'Tab 3'}
-                    <h3 class="text-md lg:text-lg font-medium mb-1">This is tab 3</h3>
+                {:else if tabItems.find(item => item.state).id === 'tab3'}
+                    <h3 class="text-md lg:text-lg font-medium mb-1">Billing</h3>
                     <p class="text-foreground/70">Aenean elementum elementum ipsum tempus porta. Donec nisi ante, sollicitudin a turpis ultricies, pharetra.</p>
                 {/if}
             </Card>
