@@ -114,14 +114,16 @@
 
     <h3 class="text-lg text-muted-foreground">Dialog</h3>
     <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Dialog variant="default">
-            <h4 class="text-md font-medium mb-2">This is a dialog</h4>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates itaque nam provident! Consectetur optio mollitia quaerat, eveniet reprehenderit tempora?
+        <div class="w-full max-w-md flex flex-col gap-4">
+            <Dialog variant="default">
+                <h4 class="text-md font-medium mb-2">This is a dialog</h4>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
         </Dialog>
         <Dialog variant="error">
             <h4 class="text-md font-medium mb-2">This is a dialog</h4>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates itaque nam provident! Consectetur optio mollitia quaerat, eveniet reprehenderit tempora?
-        </Dialog>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
+            </Dialog>
+        </div>
     </div>
 
     <h3 class="text-lg text-muted-foreground">Form elements</h3>
