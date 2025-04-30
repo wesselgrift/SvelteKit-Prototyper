@@ -9,3 +9,6 @@ export const exampleModal = writable(false);
 
 // Sidebar
 export const viewSidebar = writable(false);
+
+// Portals
+export const portals = writable({});

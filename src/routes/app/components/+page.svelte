@@ -12,6 +12,7 @@
     import TextLink from '$lib/components/parts/TextLink.svelte';
     import Textarea from '$lib/components/parts/Textarea.svelte';
     import Checkbox from '$lib/components/parts/Checkbox.svelte';
+    import Portal from '$lib/components/parts/Portal.svelte';
     import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
     import Select from '$lib/components/parts/Select.svelte';
     import Toggle from '$lib/components/parts/Toggle.svelte';
@@ -22,7 +23,7 @@
     import Tabs from '$lib/components/parts/Tabs.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
-    import { exampleModal } from "$lib/stores/uiStore";
+    import { exampleModal, portals } from "$lib/stores/uiStore";
 
     let formState = $state({
         textfield: 'Hey this is some value',
@@ -284,6 +285,19 @@
     <h3 class="text-lg text-muted-foreground">Spinner</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <Spinner size={8} />
+    </div>
+
+    <Portal target="examplePortal">
+        <div class="w-full max-w-md flex flex-col gap-4 items-start">
+            <p>
+                Hello! This content is ✨ teleported ✨ here from another component, page or layout. Use it for modals, tooltips (etc) that need to be rendered outside of the parent component's DOM hierarchy.
+            </p>
+        </div>
+    </Portal>
+
+    <h3 class="text-lg text-muted-foreground">Portals</h3>
+    <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <Portal name="examplePortal"/>
     </div>
 
     <h3 class="text-lg text-muted-foreground">Textlink</h3>

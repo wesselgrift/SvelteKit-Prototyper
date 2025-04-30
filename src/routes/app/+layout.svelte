@@ -3,10 +3,10 @@
     import Protected from "$lib/components/blocks/auth/Protected.svelte";
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
     import Modal from "$lib/components/parts/Modal.svelte";
-
+    import Portal from "$lib/components/parts/Portal.svelte";
     // Stores
     import { userProfile } from "$lib/stores/userStore";
-    import { lockScroll, settingsModal, exampleModal } from "$lib/stores/uiStore";
+    import { lockScroll, settingsModal, exampleModal, portals } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
     // Utils
