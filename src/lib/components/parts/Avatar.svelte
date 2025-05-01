@@ -1,6 +1,6 @@
 <script>
-    // Props
-    export let userName;
+    // Store
+    import { userProfile } from '$lib/stores/userStore';
 
     // Gradient colors
     const gradientColors = {
@@ -15,14 +15,20 @@
 
     // Get color index
     function getColorIndex(name) {
+        if (!name) return 1; // Return a default index if name is not yet available
         const charSum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
         return (charSum % 7) + 1;       
     }
     
-    // Get color index
-    const colorIndex = getColorIndex(userName);
+    // Calculate color index reactively
+    const colorIndex = $derived(getColorIndex($userProfile.firstName));
+
 </script>
 
-<div class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr {gradientColors[colorIndex]} text-white">
-    {userName[0]}
-</div>
+{#if $userProfile.firstName}
+    <div class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr {gradientColors[colorIndex]} text-white">
+        {$userProfile.firstName[0]}
+    </div>
+{:else}
+    <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
+{/if}

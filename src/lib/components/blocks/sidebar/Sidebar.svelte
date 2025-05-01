@@ -1,6 +1,5 @@
 <script>
 	// Svelte, Auth and user store
-    import { userProfile } from "$lib/stores/userStore";
     import { viewSidebar } from "$lib/stores/uiStore";
 
 	// Components
@@ -34,10 +33,6 @@
         <SidebarContent/>
     </div>
     <div class="w-full flex flex-col p-4 relative">
-        {#if $userProfile.firstName}
-            <SidebarAccountButton/>
-        {:else}
-            <div class="h-12 block -m-2 bg-background animate-pulse rounded-lg"></div>
-        {/if}
+        <SidebarAccountButton/>
     </div>
 </div>

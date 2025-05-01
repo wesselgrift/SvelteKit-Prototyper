@@ -1,7 +1,6 @@
 <script>
 	// Auth and stores
 	import { userProfile } from '$lib/stores/userStore';
-    import { settingsModal } from '$lib/stores/uiStore';
     import { logout } from '$lib/firebase/auth';
 
 	// Components
@@ -9,12 +8,15 @@
 	import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
     import Avatar from '$lib/components/parts/Avatar.svelte';
     import Separator from '$lib/components/parts/Separator.svelte';
+    import Modal from '$lib/components/parts/Modal.svelte';
+    import Portal from '$lib/components/parts/Portal.svelte';
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
     // Element states
     let accountPopup = $state(false);
     let accountPopupTrigger = $state();
-
+    let settingsModal = $state(false);
+    
 	// Open & close profile menu
 	function toggleAccountPopup(event) {
         event.stopPropagation();
@@ -30,7 +32,7 @@
     // Handle Settings
     function showSettings() {
         accountPopup = false;
-        $settingsModal = true;
+        settingsModal = true;
     }
 
     const defaultClasses = 
@@ -39,14 +41,18 @@
     
 </script>
 
-<!-- Account Menu Button -->
-<button bind:this={accountPopupTrigger} onclick={toggleAccountPopup} class={defaultClasses}>
-	<div class="flex flex-row items-center justify-start gap-3 mr-4">
-		<Avatar userName={$userProfile.firstName} />
-		{$userProfile.firstName}
-	</div>
-	<Ellipsis size={20} />
-</button>
+{#if $userProfile.firstName}
+    <!-- Account Menu Button -->
+    <button bind:this={accountPopupTrigger} onclick={toggleAccountPopup} class={defaultClasses}>
+        <div class="flex flex-row items-center justify-start gap-3 mr-4">
+            <Avatar />
+            {$userProfile.firstName}
+        </div>
+        <Ellipsis size={20} />
+    </button>
+{:else}
+    <div class="h-12 block -m-2 bg-background animate-pulse rounded-lg"></div>
+{/if}
 
 <!-- Account Menu that opens when the button is clicked -->
 {#if accountPopup }
@@ -66,4 +72,15 @@
             <LogOut size={18} />
         </MenuItem>
 	</DropdownMenu>
+{/if}
+
+<!-- Settings modal -->
+{#if settingsModal}
+    <Portal target="settings-modal">
+        <Modal title="Settings" closeAction={() => settingsModal = false}>
+            <p class="text-muted-foreground mb-2">Signed in as:</p>
+            <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
+            <p class="mb-4">{$userProfile.email}</p>
+        </Modal>
+    </Portal>
 {/if}

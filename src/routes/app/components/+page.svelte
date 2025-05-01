@@ -1,5 +1,4 @@
 <script>
-    import { userProfile } from "$lib/stores/userStore";
     import Button from "$lib/components/parts/Button.svelte"
     import Card from "$lib/components/parts/Card.svelte"
     import Avatar from "$lib/components/parts/Avatar.svelte"
@@ -21,9 +20,8 @@
     import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
     import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
     import Tabs from '$lib/components/parts/Tabs.svelte';
+    import Modal from '$lib/components/parts/Modal.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
-
-    import { exampleModal, portals } from "$lib/stores/uiStore";
 
     let formState = $state({
         textfield: 'Hey this is some value',
@@ -37,6 +35,7 @@
 
     let DropDown = $state(false);
     let DropDownTrigger = $state();
+    let exampleModal = $state(false);
 
     let tabItems = $state([
         {
@@ -106,11 +105,7 @@
 
     <h3 class="text-lg text-muted-foreground">Avatar</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        {#if $userProfile.firstName}
-            <Avatar userName={$userProfile.firstName}/>
-        {:else}
-            <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
-        {/if}
+        <Avatar />
     </div>
 
     <h3 class="text-lg text-muted-foreground">Dialog</h3>
@@ -247,9 +242,16 @@
 
     <h3 class="text-lg text-muted-foreground">Modal</h3>
     <div class="relative flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
-        <Button variant="outline" width="hug" onclick={() => $exampleModal = true}>
+        <Button variant="outline" width="hug" onclick={() => exampleModal = true}>
             Show modal
         </Button>
+        {#if exampleModal}
+            <Portal target="example-modal">
+                <Modal title="Example modal" closeAction={() => exampleModal = false}>
+                    <p>This is an example modal</p>
+                </Modal>
+            </Portal>
+        {/if}
     </div>
 
     <h3 class="text-lg text-muted-foreground">Tabs</h3>
@@ -309,10 +311,6 @@
 
     <h3 class="text-lg text-muted-foreground">Accountbutton with menu for sidebar</h3>
     <div class="flex flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4 relative">
-        {#if $userProfile.firstName}
-            <SidebarAccountButton/>
-        {:else}
-            <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
-        {/if}
+        <SidebarAccountButton/>
     </div>
 </div>

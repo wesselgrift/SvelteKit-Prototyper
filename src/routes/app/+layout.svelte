@@ -2,11 +2,10 @@
     // Components   
     import Protected from "$lib/components/blocks/auth/Protected.svelte";
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
-    import Modal from "$lib/components/parts/Modal.svelte";
     import Portal from "$lib/components/parts/Portal.svelte";
+    
     // Stores
-    import { userProfile } from "$lib/stores/userStore";
-    import { lockScroll, settingsModal, exampleModal, portals } from "$lib/stores/uiStore";
+    import { lockScroll } from "$lib/stores/uiStore";
     import { browser } from '$app/environment';
 
     // Utils
@@ -56,21 +55,11 @@
                 {@render children()}
             </main>
 
-            <!-- Settings modal -->
-            {#if $settingsModal}
-                <Modal title="Settings" closeAction={() => $settingsModal = false}>
-                    <p class="text-muted-foreground mb-2">Signed in as:</p>
-                    <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
-                    <p class="mb-4">{$userProfile.email}</p>
-                </Modal>
-            {/if}
-
             <!-- Example modal -->
-            {#if $exampleModal}
-                <Modal title="Example modal" closeAction={() => $exampleModal = false}>
-                    <p>This is an example modal</p>
-                </Modal>
-            {/if}
+            <Portal name="example-modal"/>
+
+            <!-- Settings modal -->
+            <Portal name="settings-modal"/>
         </div>
     </div>
 </Protected>
