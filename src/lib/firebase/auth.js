@@ -87,9 +87,6 @@ export function initializeAuth() {
                     }
                 } else {
                     console.log("Auth state changed: no user is signed in");
-                    if (browser) {
-                        goto("/login");
-                    }
                 }
 
                 loading.set(false);

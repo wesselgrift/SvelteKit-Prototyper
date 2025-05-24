@@ -1,7 +1,9 @@
 <script>
-	// Auth and stores
+	// Auth, Navigation and stores
 	import { userProfile } from '$lib/stores/userStore';
     import { logout } from '$lib/firebase/auth';
+    import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
 
 	// Components
 	import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
@@ -27,6 +29,9 @@
 	async function handleLogout() {
         accountPopup = false
 		await logout();
+        if (browser) {
+            goto("/login");
+        }
 	}
 
     // Handle Settings
