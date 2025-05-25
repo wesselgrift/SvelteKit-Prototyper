@@ -2,25 +2,34 @@
     import Logo from "$lib/components/parts/Logo.svelte";
     import Button from "$lib/components/parts/Button.svelte";
     import { goto } from "$app/navigation";
-
-    function login() {
-        goto("/login");
-    }
-
-    function signup() {
-        goto("/account");
-    }
+    import { Github } from "lucide-svelte";
 </script>
 
-<nav class="flex flex-row justify-between items-center gap-4 py-4 px-4 border-b border-border">
-    <Logo />
-    <div class="flex flex-row gap-4 items-start">
-        <Button width="hug" size="small" variant="primary" onclick={signup}>Create account</Button>
-        <Button width="hug" size="small" variant="outline" onclick={login}>Login</Button>
-    </div>
-</nav>
-<main>
-    <section class="p-8 flex flex-col justify-center items-center">
-        <h1 class="text-xl font-semibold">Hello World</h1>
-    </section>
-</main>
+<!-- Homepage content -->
+<div class="flex flex-col w-full max-w-7xl justify-center mx-auto">
+    <nav class="flex flex-row justify-between items-center gap-4 py-6 px-4">
+        <Logo />
+        <div class="flex flex-row gap-1 items-start">
+            <a href="/account">
+                <Button width="hug" size="small" variant="ghost">Create account</Button>
+            </a>
+            <a href="/login">
+                <Button width="hug" size="small" variant="ghost">Login</Button>
+            </a>
+        </div>
+    </nav>
+    <main class="border border-border mt-8">
+        <section class="px-4 py-[160px] flex flex-col justify-center items-center">
+            <h1 class="text-5xl font-medium mb-5">SvelteKit Starter</h1>
+            <p class="text-lg text-muted-foreground text-center mb-4">
+                A starter kit for SvelteKit with Tailwind CSS, Firestore and Firebase authenication. <br> No typescript, because f*ck typescript.
+            </p>
+            <a href="https://github.com/wesselgrift/svelte-boilerplate" target="_blank">
+                <Button width="hug" variant="primary">
+                    <Github size={20} />
+                    View on Github
+                </Button>
+            </a>
+        </section>
+    </main>
+</div>

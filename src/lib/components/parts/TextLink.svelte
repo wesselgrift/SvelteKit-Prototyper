@@ -11,7 +11,7 @@
 
     // Variants
     const variants = {
-        primary: `${defaultClasses} text-primary hover:underline`,
+        primary: `${defaultClasses} text-primary underline`,
         muted: `${defaultClasses} text-muted-foreground hover:text-foreground`,
         disabled: `${defaultClasses} text-muted-foreground pointer-events-none opacity-50 select-none`,
     }
