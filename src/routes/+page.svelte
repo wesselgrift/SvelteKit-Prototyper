@@ -19,7 +19,7 @@
     </nav>
     <main class="border border-border mt-8">
         <section class="px-4 py-[160px] flex flex-col justify-center items-center">
-            <h1 class="text-5xl font-medium mb-5">SvelteKit Prototyping Boileplate</h1>
+            <h1 class="text-5xl font-medium mb-5">SvelteKit Prototyping Starter</h1>
             <p class="text-lg text-muted-foreground text-center mb-4">
                 A small starter kit built with with SvelteKit, Tailwind CSS, Firestore and Firebase authenication. <br> No typescript, because f*ck typescript.
             </p>
