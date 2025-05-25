@@ -17,10 +17,10 @@
             </a>
         </div>
     </nav>
-    <main class="border border-border mt-8">
-        <section class="px-4 py-[160px] flex flex-col justify-center items-center">
-            <h1 class="text-5xl font-medium mb-5">SvelteKit Prototyping Starter</h1>
-            <p class="text-lg text-muted-foreground text-center mb-4">
+    <main class="px-4">
+        <section class="px-4 py-[160px] flex flex-col justify-center items-center border border-border">
+            <h1 class="text-2xl lg:text-5xl font-medium mb-4 text-center">SvelteKit Prototyping Starter</h1>
+            <p class="text-md lg:text-lg text-muted-foreground text-center mb-4">
                 A small starter kit built with with SvelteKit, Tailwind CSS, Firestore and Firebase authenication. <br> No typescript, because f*ck typescript.
             </p>
             <a href="https://github.com/wesselgrift/svelte-boilerplate" target="_blank">
