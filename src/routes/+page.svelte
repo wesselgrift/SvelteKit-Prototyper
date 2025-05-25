@@ -1,11 +1,10 @@
 <script>
     import Logo from "$lib/components/parts/Logo.svelte";
     import Button from "$lib/components/parts/Button.svelte";
-    import { goto } from "$app/navigation";
     import { Github } from "lucide-svelte";
 </script>
 
-<!-- Homepage content -->
+<!-- Homepage dummy content -->
 <div class="flex flex-col w-full max-w-7xl justify-center mx-auto">
     <nav class="flex flex-row justify-between items-center gap-4 py-6 px-4">
         <Logo />
