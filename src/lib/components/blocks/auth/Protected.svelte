@@ -1,7 +1,6 @@
 <script>
 	// Stores and navigation
 	import { user, loading } from '$lib/stores/userStore';
-    import { goto } from "$app/navigation";
 
 	// Components
 	import Spinner from '$lib/components/parts/Spinner.svelte';
@@ -9,15 +8,6 @@
 
 	// Props
 	let { children } = $props();
-
-    // Functions
-    function login() {
-        goto('/login');
-    }
-
-    function signup() {
-        goto('/account');
-    }
 </script>
 
 {#if $loading}
