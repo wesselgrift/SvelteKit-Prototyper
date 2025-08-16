@@ -3,19 +3,16 @@ import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     sendPasswordResetEmail, 
-    signOut, 
+    signOut as firebaseSignOut, 
     signInWithPopup, 
     GoogleAuthProvider, 
-    setPersistence, 
-    browserLocalPersistence, 
     onAuthStateChanged,
     sendEmailVerification
-    } from "firebase/auth";
+} from "firebase/auth";
 import app from "$lib/firebase/firebase";
 import { user, loading } from "$lib/stores/userStore";
 import { goto } from "$app/navigation";
 import { browser } from "$app/environment";
-import { setUserProfileData } from '$lib/utils/userProfile';
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -23,88 +20,95 @@ const googleProvider = new GoogleAuthProvider();
 let authInitialized = false;
 
 export async function register(email, password) {
-    return await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    
+    // Send verification email
+    await sendEmailVerification(userCredential.user);
+    
+    return userCredential;
 }
 
 export async function sendVerificationEmail(user) {
     return await sendEmailVerification(user);
 }
 
-export async function checkEmailVerified() {
-    if (auth.currentUser) {
-        await auth.currentUser.reload();
-        return auth.currentUser.emailVerified;
+export async function login(email, password) {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    
+    // Get ID token and create server session
+    const idToken = await userCredential.user.getIdToken();
+    
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken })
+    });
+    
+    if (!response.ok) {
+        throw new Error('Failed to create session');
+    }
+    
+    // Force page reload to get new server state
+    if (browser) {
+        window.location.href = '/app';
     }
 }
 
-export async function login(email, password) {
-    return await signInWithEmailAndPassword(auth, email, password);
+export async function loginWithGoogle() {
+    const userCredential = await signInWithPopup(auth, googleProvider);
+    
+    // Get ID token and create server session
+    const idToken = await userCredential.user.getIdToken();
+    
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken })
+    });
+    
+    if (!response.ok) {
+        throw new Error('Failed to create session');
+    }
+    
+    // Force page reload to get new server state
+    if (browser) {
+        window.location.href = '/app';
+    }
+}
+
+export async function logout() {
+    // Sign out from Firebase client
+    await firebaseSignOut(auth);
+    
+    // Clear server session
+    await fetch('/api/auth/logout', { method: 'POST' });
+    
+    // Redirect to login
+    if (browser) {
+        window.location.href = '/login';
+    }
 }
 
 export async function resetPassword(email) {
     return await sendPasswordResetEmail(auth, email);
 }
 
-export async function loginWithGoogle() {
-    return await signInWithPopup(auth, googleProvider);
-}
-
-export async function logout() {
-    return await signOut(auth);
-}
-
+// Simplified auth state - mainly for loading states now
 export function initializeAuth() {
-    // Prevent multiple initializations
     if (authInitialized) return;
     authInitialized = true;
-
-    let unsubscribe;
-
-    // Set persistence to browser local persistence
-    setPersistence(auth, browserLocalPersistence)
-        .then(() => {
-            unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-                user.set(currentUser);
-
-                if (currentUser && currentUser.emailVerified) {
-                    console.log("Auth state changed: user is signed in with verified email.");
-
-                    // Set the user profile data in the stores
-                    setUserProfileData(currentUser);
-
-                    if (browser) {
-                        // Check if the user is already in the app route or a subpage
-                        const currentPath = window.location.pathname;
-                        if (!currentPath.startsWith('/app')) {
-                            goto("/app");
-                        }
-                    }
-                } else if (currentUser && !currentUser.emailVerified) {
-                    console.log("Auth state changed: user is signed in with unverified email.");
-                    
-                    if (browser) {
-                        goto("/verify-email");
-                    }
-                } else {
-                    console.log("Auth state changed: no user is signed in");
-                }
-
-                loading.set(false);
-            });
-        })
-        .catch((error) => {
-            console.error("Error setting persistence:", error);
-            loading.set(false);
-        });
-
-    // Return cleanup function
+    
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+        // We don't use this for auth decisions anymore, just loading states
+        loading.set(false);
+    });
+    
     return () => {
         if (unsubscribe) {
             unsubscribe();
             authInitialized = false;
         }
     };
-
 }
 
 export default auth;

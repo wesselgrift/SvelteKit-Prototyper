@@ -1,15 +1,38 @@
-import { getDocument } from "$lib/firebase/firestore";
+import { getDocument, setDocument } from "$lib/firebase/firestore";
 import { userProfile } from "$lib/stores/userStore";
 
-// Get the user profile data from the database with the user id
 export async function setUserProfileData(user) {
-    const userDoc = await getDocument("users", user.uid);
-
-    let profileArray = {
-        firstName: userDoc.firstName,
-        lastName: userDoc.lastName,
-        email: userDoc.email
+    try {
+        let userDoc = await getDocument("users", user.uid);
+        
+        // Create profile if it doesn't exist
+        if (!userDoc) {
+            const newProfile = {
+                firstName: '',
+                lastName: '',
+                email: user.email,
+                createdAt: new Date().toISOString()
+            };
+            
+            await setDocument("users", user.uid, newProfile);
+            userDoc = newProfile;
+        }
+        
+        const profileData = {
+            firstName: userDoc.firstName || '',
+            lastName: userDoc.lastName || '',
+            email: userDoc.email || user.email || ''
+        };
+        
+        userProfile.set(profileData);
+        
+    } catch (error) {
+        console.error('Error setting user profile:', error);
+        // Set fallback profile
+        userProfile.set({
+            firstName: '',
+            lastName: '',
+            email: user?.email || ''
+        });
     }
-
-    userProfile.set(profileArray)
 }
