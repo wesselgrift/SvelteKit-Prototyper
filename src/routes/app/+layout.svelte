@@ -1,9 +1,9 @@
 <script>
-    // Remove the Protected component wrapper - server handles protection now
     import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
     import Portal from "$lib/components/parts/Portal.svelte";
     
     import { lockScroll } from "$lib/stores/uiStore";
+    import { userProfile } from "$lib/stores/userStore"; // Import the store
     import { browser } from '$app/environment';
     import { bodyClassUpdater } from "$lib/utils/bodyClassUpdater";
     import { onMount, onDestroy } from "svelte";
@@ -11,7 +11,12 @@
     let { children, data } = $props();
     
     // Server-provided user data
-    const { user } = data;
+    const { user, userProfile: serverUserProfile } = data;
+    
+    // Populate the store with server data
+    $effect(() => {
+        userProfile.set(serverUserProfile);
+    });
 
     onMount(() => {
         if (browser) {

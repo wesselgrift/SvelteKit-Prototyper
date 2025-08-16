@@ -21,35 +21,51 @@
 	let passwordStrength = $state(0);
 	let showLoading = $state(false);
 
+	// Add these imports to your existing script block
+	import { goto, invalidateAll } from '$app/navigation';
+	import { browser } from '$app/environment';
+
 	async function handleRegister() {
 		try {
 			showLoading = true;
 
-			// Register the user and get the user id
+			// 1. Register the user (this sends verification email)
 			const userCredential = await register(email, password);
 			const userId = userCredential.user.uid;
 
+			// 2. Try to set the user document in Firestore
+			try {
+				await setDocument('users', userId, {
+					firstName,
+					lastName,
+					email
+				});
+			} catch (firestoreError) {
+				console.error('Firestore write failed:', firestoreError);
+			}
+
+			localStorage.setItem('email', email);
 			error = '';
 			result = true;
 
-			localStorage.setItem('email', email);
-
-			// Set the user document in Firestore
-			await setDocument('users', userId, {
-				firstName,
-				lastName,
-				email
-			});
-
-			// Send verification email
-			await sendVerificationEmail(userCredential.user);
-
-			// Login the user
-			await login(email, password);
+			// 3. SvelteKit-native redirect
+			if (browser) {
+				await invalidateAll();
+				await goto('/verify-email', { replaceState: true });
+			}
 
 		} catch (err) {
+			console.error('Registration error:', err);
+
+			if (err.code === 'auth/email-already-in-use') {
+				error = 'This email is already registered. Try logging in instead.';
+			} else if (err.code === 'auth/weak-password') {
+				error = 'Password is too weak. Please choose a stronger password.';
+			} else {
+				error = 'Registration failed. Please try again.';
+			}
+
 			result = '';
-			error = true;
 			showLoading = false;
 		} finally {
 			showLoading = false;

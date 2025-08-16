@@ -77,15 +77,25 @@ export async function loginWithGoogle() {
 }
 
 export async function logout() {
-    // Sign out from Firebase client
-    await firebaseSignOut(auth);
-    
-    // Clear server session
-    await fetch('/api/auth/logout', { method: 'POST' });
-    
-    // Redirect to login
-    if (browser) {
-        window.location.href = '/login';
+    try {
+        // Sign out from Firebase client
+        await firebaseSignOut(auth);
+        
+        // Clear server session
+        const response = await fetch('/api/auth/logout', { method: 'POST' });
+        
+        if (!response.ok) {
+            console.error('Server logout failed, but continuing...');
+        }
+        
+    } catch (error) {
+        console.error('Logout error:', error);
+        // Continue with redirect even if logout partially fails
+    } finally {
+        // Always redirect to login regardless of errors
+        if (browser) {
+            window.location.href = '/login';
+        }
     }
 }
 
