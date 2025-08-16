@@ -16,12 +16,13 @@
             relative 
             overflow-hidden 
             inline-flex gap-2 items-center justify-center whitespace-nowrap 
-            rounded-lg 
+            rounded-lg
             font-medium 
             disabled:pointer-events-none 
             disabled:opacity-50 
             focus-ring 
             transition-all
+            h-fit
             [&_svg]:pointer-events-none 
             [&_svg]:shrink-0 
         `,
