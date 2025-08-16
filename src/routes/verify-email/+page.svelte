@@ -1,51 +1,90 @@
 <script>
-	// Stores, actions and navigation
-	import { user, loading } from '$lib/stores/userStore';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { sendVerificationEmail, logout } from '$lib/firebase/auth';
-
-	// Components
-	import Logo from '$lib/components/parts/Logo.svelte';
 	import Button from '$lib/components/parts/Button.svelte';
+	import Logo from '$lib/components/parts/Logo.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
 	import Dialog from '$lib/components/parts/Dialog.svelte';
 	import { Check } from 'lucide-svelte';
 
-	// Element states
 	let userEmail = $state('');
 	let emailResent = $state(false);
 	let showLoading = $state(false);
 	let error = $state('');
+	let poll; // interval handle
 
-	// Effects
-	$effect(() => {
-		if ($user) {
-			userEmail = $user.email;
+	async function getCurrentUser() {
+		const { default: auth } = await import('$lib/firebase/auth');
+		return auth.currentUser;
+	}
+
+	async function ensureSession() {
+		if (!browser) return;
+		const u = await getCurrentUser();
+		if (!u) return;
+		const idToken = await u.getIdToken(true);
+		await fetch('/api/auth/login', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({ idToken })
+		});
+	}
+
+	async function checkVerification() {
+		if (!browser) return;
+		try {
+			showLoading = true;
+			const u = await getCurrentUser();
+			if (!u) {
+				error = 'No user found. Please sign in again.';
+				return;
+			}
+			await u.reload();
+			userEmail = u.email || userEmail;
+
+			if (u.emailVerified) {
+				await ensureSession(); // make sure server session is set
+				await invalidateAll(); // refresh server data
+				await goto('/app', { replaceState: true });
+			} else {
+				error = 'Email not verified yet. Please check your inbox.';
+			}
+		} finally {
+			showLoading = false;
 		}
+	}
+
+	// On mount: set email, ensure session, and start a short poll
+	$effect(async () => {
+		if (!browser) return;
+		const u = await getCurrentUser();
+		userEmail = u?.email || '';
+		await ensureSession();
+
+		// Poll every 4s; stop when page is destroyed or redirect happens
+		poll = setInterval(checkVerification, 4000);
+		return () => clearInterval(poll);
 	});
 
-	// Redirect to app if user is verified
-	$effect(() => {
-		if (browser && !$loading && $user?.emailVerified) {
-			goto('/app');
-		}
-	});
-
-	// Resend email
 	async function resendEmail() {
 		try {
 			showLoading = true;
-			await sendVerificationEmail($user);
+			const u = await getCurrentUser();
+			if (!u) {
+				error = 'No user found. Please sign in again.';
+				return;
+			}
+			await sendVerificationEmail(u);
+			emailResent = true;
+			error = '';
 		} catch (err) {
-			error = err.message;
-			showLoading = false;
+			error =
+				err?.code === 'auth/too-many-requests'
+					? 'Too many requests. Please wait a few minutes and try again.'
+					: 'Failed to send email. Please try again.';
 		} finally {
 			showLoading = false;
-			emailResent = true;
-			setTimeout(() => {
-				emailResent = false;
-			}, 3000);
 		}
 	}
 
@@ -65,7 +104,7 @@
 	<div class="animate-fade-in-zoom flex w-full items-start justify-center lg:w-1/2 lg:items-center">
 		<div class="w-full max-w-md p-5">
 			<div class="mb-[80px] lg:mb-10">
-				<Logo/>
+				<Logo />
 			</div>
 			{#if error}
 				<div class="mb-5">
@@ -102,6 +141,9 @@
 
 					<Button width="hug" variant="ghost" size="small" onclick={tryAnotherEmail}>
 						Sign up with another email
+					</Button>
+					<Button onclick={checkVerification} disabled={showLoading}>
+						{showLoading ? 'Checking…' : 'Check verification'}
 					</Button>
 				</div>
 			</div>
