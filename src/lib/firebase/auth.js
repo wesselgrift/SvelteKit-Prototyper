@@ -10,8 +10,7 @@ import {
     sendEmailVerification
 } from "firebase/auth";
 import app from "$lib/firebase/firebase";
-import { user, loading } from "$lib/stores/userStore";
-import { goto } from "$app/navigation";
+import { loading } from "$lib/stores/userStore";
 import { browser } from "$app/environment";
 
 const auth = getAuth(app);

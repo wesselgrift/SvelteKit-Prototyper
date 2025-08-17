@@ -36,6 +36,7 @@ export async function handle({ event, resolve }) {
     if (user && user.emailVerified) {
         // Verified users: redirect away from auth pages to app
         if (['/login', '/verify-email', '/account'].includes(path)) {
+            console.log('🪧 Redirecting to /app');
             throw redirect(302, '/app');
         }
         // Redirect from root to app
@@ -45,11 +46,13 @@ export async function handle({ event, resolve }) {
     } else if (user && !user.emailVerified) {
         // Unverified signed-in users: redirect to verify-email
         if (['/login', '/account'].includes(path)) {
+            console.log('🪧 Redirecting to /verify-email');
             throw redirect(302, '/verify-email');
         }
     } else if (!user) {
         // No user at all: redirect protected pages to login
-        if (['/verify-email', '/app'].includes(path)) {
+        if (['/app'].includes(path)) {
+            console.log('🪧 Redirecting to /login');
             throw redirect(302, '/login');
         }
     }
