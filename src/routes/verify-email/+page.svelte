@@ -135,7 +135,7 @@
 					<Button width="hug" variant="outline" size="small" onclick={resendEmail}>
 						{#if showLoading}
 							<Spinner
-								className="size-5"
+                                size={5}
 								spinColor="fill-secondary-foreground"
 								pathColor="text-secondary-foreground/10"
 							/>
