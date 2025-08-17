@@ -102,11 +102,9 @@
 	// Log out and try another email
 	async function tryAnotherEmail() {
 		try {
-			await logout();
+			await logout('/account');
 		} catch (err) {
 			console.error(err);
-		} finally {
-			// logout() will redirect to /login; avoid competing redirects
 		}
 	}
 </script>

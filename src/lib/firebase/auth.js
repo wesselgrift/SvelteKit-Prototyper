@@ -47,9 +47,14 @@ export async function login(email, password) {
         throw new Error('Failed to create session');
     }
     
-    // Force page reload to get new server state
+    // Navigate based on verification status (client-side)
     if (browser) {
-        window.location.href = '/app';
+        const { goto } = await import('$app/navigation');
+        if (userCredential.user?.emailVerified) {
+            await goto('/app');
+        } else {
+            await goto('/verify-email');
+        }
     }
 }
 
@@ -69,13 +74,18 @@ export async function loginWithGoogle() {
         throw new Error('Failed to create session');
     }
     
-    // Force page reload to get new server state
+    // Navigate based on verification status (client-side)
     if (browser) {
-        window.location.href = '/app';
+        const { goto } = await import('$app/navigation');
+        if (userCredential.user?.emailVerified) {
+            await goto('/app');
+        } else {
+            await goto('/verify-email');
+        }
     }
 }
 
-export async function logout() {
+export async function logout(redirectTo = '/login') {
     try {
         // Sign out from Firebase client
         await firebaseSignOut(auth);
@@ -91,11 +101,25 @@ export async function logout() {
         console.error('Logout error:', error);
         // Continue with redirect even if logout partially fails
     } finally {
-        // Always redirect to login regardless of errors
+        // Always redirect at the end
         if (browser) {
-            window.location.href = '/login';
+            const { goto } = await import('$app/navigation');
+            await goto(redirectTo);
         }
     }
+}
+
+// Ensure the server has a session cookie for the currently signed-in Firebase user
+export async function ensureServerSession() {
+    if (!browser) return;
+    const user = auth.currentUser;
+    if (!user) return;
+    const idToken = await user.getIdToken(true);
+    await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken })
+    });
 }
 
 export async function resetPassword(email) {

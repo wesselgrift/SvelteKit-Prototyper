@@ -24,6 +24,7 @@
 	// Add these imports to your existing script block
 	import { goto, invalidateAll } from '$app/navigation';
 	import { browser } from '$app/environment';
+    import { ensureServerSession } from '$lib/firebase/auth';
 
 	async function handleRegister() {
 		try {
@@ -49,6 +50,7 @@
 			result = true;
 
 			if (browser) {
+                await ensureServerSession();
 				await invalidateAll();
 				await goto('/verify-email', { replaceState: true }); // client side redirect (no server check)
 			}

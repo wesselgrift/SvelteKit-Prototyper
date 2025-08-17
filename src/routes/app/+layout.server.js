@@ -1,4 +1,3 @@
-import { redirect } from '@sveltejs/kit';
 import { adminDb } from '$lib/server/firebase-admin';
 
 // Helper to parse "John Doe" into firstName/lastName (only for Google users)

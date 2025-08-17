@@ -17,6 +17,7 @@ export async function handle({ event, resolve }) {
                 displayName: decodedClaims.name || null
             };
             console.log('✅ Valid session for user:', decodedClaims.email);
+            console.log('📨 Email verified:', decodedClaims.email_verified);
         } catch (error) {
             console.log('❌ Invalid session cookie:', error.message);
             console.log('🗑️ Clearing invalid session cookie');
@@ -32,27 +33,33 @@ export async function handle({ event, resolve }) {
     const path = event.url.pathname;
     const user = event.locals.user;
 
-    // Centralized route guards
+    // Skip API routes
+    if (path.startsWith('/api')) {
+        return resolve(event);
+    }
+
+    // Centralized route guards (reworked per access rules)
     if (user && user.emailVerified) {
-        // Verified users: redirect away from auth pages to app
-        if (['/login', '/verify-email', '/account'].includes(path)) {
-            console.log('🪧 Redirecting to /app');
-            throw redirect(302, '/app');
-        }
-        // Redirect from root to app
-        if (path === '/') {
+        // Logged-in and email verified: only allow /app and its subpages
+        if (!path.startsWith('/app')) {
+            console.log('🪧 Verified user redirected to /app');
             throw redirect(302, '/app');
         }
     } else if (user && !user.emailVerified) {
-        // Unverified signed-in users: redirect to verify-email
-        if (['/login', '/account'].includes(path)) {
-            console.log('🪧 Redirecting to /verify-email');
+        // Logged-in but email unverified: only allow /verify-email
+        if (path !== '/verify-email') {
+            console.log('🪧 Unverified user redirected to /verify-email');
             throw redirect(302, '/verify-email');
         }
-    } else if (!user) {
-        // No user at all: redirect protected pages to login
-        if (['/app'].includes(path)) {
-            console.log('🪧 Redirecting to /login');
+    } else {
+        // Non-logged-in users
+        const publicPaths = ['/', '/login', '/account', '/reset-password'];
+        if (path === '/verify-email' || path.startsWith('/app')) {
+            console.log('🪧 Anonymous user redirected to /login');
+            throw redirect(302, '/login');
+        }
+        if (!publicPaths.includes(path)) {
+            console.log('🪧 Anonymous user redirected to /login');
             throw redirect(302, '/login');
         }
     }
