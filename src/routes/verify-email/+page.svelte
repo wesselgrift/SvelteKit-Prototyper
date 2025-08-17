@@ -12,7 +12,7 @@
 	let emailResent = $state(false);
 	let showLoading = $state(false);
 	let error = $state('');
-	let poll = null; // interval handle
+	let poll = null;
 
 	function stopPoll() {
 		if (poll) {

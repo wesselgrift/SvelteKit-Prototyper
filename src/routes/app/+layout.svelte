@@ -13,7 +13,7 @@
     // Server-provided user data
     const { user, userProfile: serverUserProfile } = data;
     
-    // Populate the store with server data
+    // Populate userProfile store with server data
     $effect(() => {
         userProfile.set(serverUserProfile);
     });
