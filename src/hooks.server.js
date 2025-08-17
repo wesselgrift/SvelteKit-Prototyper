@@ -1,4 +1,5 @@
 import { adminAuth } from '$lib/server/firebase-admin';
+import { redirect } from '@sveltejs/kit';
 
 export async function handle({ event, resolve }) {
     const sessionCookie = event.cookies.get('session');
@@ -28,5 +29,30 @@ export async function handle({ event, resolve }) {
         event.locals.user = null;
     }
     
+    const path = event.url.pathname;
+    const user = event.locals.user;
+
+    // Centralized route guards
+    if (user && user.emailVerified) {
+        // Verified users: redirect away from auth pages to app
+        if (['/login', '/verify-email', '/account'].includes(path)) {
+            throw redirect(302, '/app');
+        }
+        // Redirect from root to app
+        if (path === '/') {
+            throw redirect(302, '/app');
+        }
+    } else if (user && !user.emailVerified) {
+        // Unverified signed-in users: redirect to verify-email
+        if (['/login', '/account'].includes(path)) {
+            throw redirect(302, '/verify-email');
+        }
+    } else if (!user) {
+        // No user at all: redirect protected pages to login
+        if (['/verify-email', '/app'].includes(path)) {
+            throw redirect(302, '/login');
+        }
+    }
+
     return resolve(event);
 }

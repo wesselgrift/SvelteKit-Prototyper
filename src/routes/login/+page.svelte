@@ -5,31 +5,15 @@
 	import Separator from '$lib/components/parts/Separator.svelte';
 	import Logo from '$lib/components/parts/Logo.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import { onDestroy } from 'svelte';
-	import { user, loading } from '$lib/stores/userStore';
-	import { goto } from '$app/navigation';
-	let currentUser = $state();
+	import { loading } from '$lib/stores/userStore';
 
-	const unsubscribe = user.subscribe((val) => {
-		currentUser = val;
-
-		if (currentUser && currentUser.emailVerified && typeof window !== 'undefined') {
-			goto('/app');
-		} else if (currentUser && !currentUser.emailVerified && typeof window !== 'undefined') {
-			goto('/verify-email');
-		}
-	});
-
-	onDestroy(() => {
-		unsubscribe();
-	});
 </script>
 
 {#if $loading}
 	<div role="status" class="flex h-screen flex-row items-center justify-center">
 		<Spinner />
 	</div>
-{:else if !$loading && !currentUser}
+{:else}
 	<div class="flex justify-center lg:h-screen lg:items-center">
 		<div class="animate-fade-in-zoom w-full max-w-md p-5">
 			<div class="mb-[80px] lg:mb-10">

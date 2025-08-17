@@ -29,9 +29,6 @@
 	async function handleLogout() {
         accountPopup = false
 		await logout();
-        if (browser) {
-            goto("/login");
-        }
 	}
 
     // Handle Settings

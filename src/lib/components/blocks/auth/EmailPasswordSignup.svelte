@@ -48,10 +48,9 @@
 			error = '';
 			result = true;
 
-			// 3. SvelteKit-native redirect
 			if (browser) {
 				await invalidateAll();
-				await goto('/verify-email', { replaceState: true });
+				await goto('/verify-email', { replaceState: true }); // client side redirect (no server check)
 			}
 
 		} catch (err) {

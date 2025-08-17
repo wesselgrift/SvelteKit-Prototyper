@@ -13,13 +13,6 @@ function parseDisplayName(displayName) {
 }
 
 export async function load({ locals }) {
-    if (!locals.user) {
-        throw redirect(302, '/login');
-    }
-    
-    if (!locals.user.emailVerified) {
-        throw redirect(302, '/verify-email');
-    }
     
     // Get or create user profile
     let userProfile;

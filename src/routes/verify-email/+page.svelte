@@ -23,14 +23,6 @@
 
 	async function getCurrentUser() {
 		const { default: auth } = await import('$lib/firebase/auth');
-
-        // If no user is found, redirect to login
-        if (!auth.currentUser) {
-            goto('/login');
-            return;
-        }
-
-        // If user is found, return the user
 		return auth.currentUser;
 	}
 
@@ -59,7 +51,7 @@
 				stopPoll();
 				await ensureSession(); // make sure server session is set
 				await invalidateAll(); // refresh server data
-				await goto('/app', { replaceState: true });
+				await goto('/app', { replaceState: true }); // redirect to app client side (no server check)
 			}
 		} catch (err) {
 			console.error(err);
