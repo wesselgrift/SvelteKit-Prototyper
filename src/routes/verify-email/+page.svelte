@@ -12,10 +12,25 @@
 	let emailResent = $state(false);
 	let showLoading = $state(false);
 	let error = $state('');
-	let poll; // interval handle
+	let poll = null; // interval handle
+
+	function stopPoll() {
+		if (poll) {
+			clearInterval(poll);
+			poll = null;
+		}
+	}
 
 	async function getCurrentUser() {
 		const { default: auth } = await import('$lib/firebase/auth');
+
+        // If no user is found, redirect to login
+        if (!auth.currentUser) {
+            goto('/login');
+            return;
+        }
+
+        // If user is found, return the user
 		return auth.currentUser;
 	}
 
@@ -31,40 +46,44 @@
 		});
 	}
 
+    // Here we need to make some fixes
 	async function checkVerification() {
 		if (!browser) return;
 		try {
-			showLoading = true;
 			const u = await getCurrentUser();
-			if (!u) {
-				error = 'No user found. Please sign in again.';
-				return;
-			}
 			await u.reload();
 			userEmail = u.email || userEmail;
 
 			if (u.emailVerified) {
+				// stop timer before any navigation
+				stopPoll();
 				await ensureSession(); // make sure server session is set
 				await invalidateAll(); // refresh server data
 				await goto('/app', { replaceState: true });
-			} else {
-				error = 'Email not verified yet. Please check your inbox.';
 			}
-		} finally {
-			showLoading = false;
+		} catch (err) {
+			console.error(err);
 		}
 	}
 
 	// On mount: set email, ensure session, and start a short poll
-	$effect(async () => {
+	$effect(() => {
 		if (!browser) return;
-		const u = await getCurrentUser();
-		userEmail = u?.email || '';
-		await ensureSession();
 
-		// Poll every 4s; stop when page is destroyed or redirect happens
-		poll = setInterval(checkVerification, 4000);
-		return () => clearInterval(poll);
+		(async () => {
+			const u = await getCurrentUser();
+			userEmail = u?.email || '';
+			await ensureSession();
+
+			// make sure no previous timer lingers
+			stopPoll();
+			// Poll every 4s; stop when page is destroyed or redirect happens
+			poll = setInterval(checkVerification, 4000);
+		})();
+
+		return () => {
+			stopPoll();
+		};
 	});
 
 	async function resendEmail() {
@@ -95,7 +114,7 @@
 		} catch (err) {
 			console.error(err);
 		} finally {
-			goto('/account');
+			// logout() will redirect to /login; avoid competing redirects
 		}
 	}
 </script>
@@ -141,9 +160,6 @@
 
 					<Button width="hug" variant="ghost" size="small" onclick={tryAnotherEmail}>
 						Sign up with another email
-					</Button>
-					<Button onclick={checkVerification} disabled={showLoading}>
-						{showLoading ? 'Checking…' : 'Check verification'}
 					</Button>
 				</div>
 			</div>
