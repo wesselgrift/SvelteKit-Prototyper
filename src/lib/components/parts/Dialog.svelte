@@ -6,7 +6,7 @@
     } = $props();
 
     // Default classes
-    const defaultClasses = 'dialog border p-5 rounded-lg';
+    const defaultClasses = 'dialog border p-4 rounded-lg';
 
     // Variants
     const variants = {

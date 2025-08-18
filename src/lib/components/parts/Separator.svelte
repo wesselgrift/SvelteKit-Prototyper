@@ -1,1 +1,9 @@
-<hr class="w-full border-border">
+<script>
+    const classes = {
+        default: `
+            w-full border-border
+        `
+    }
+</script>
+
+<hr class={classes.default}>

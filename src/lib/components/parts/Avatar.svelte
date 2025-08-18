@@ -23,10 +23,22 @@
     // Calculate color index reactively
     const colorIndex = $derived(getColorIndex($userProfile.firstName));
 
+    const classes = {
+        default: `
+            flex 
+            size-8 
+            items-center 
+            justify-center 
+            rounded-full 
+            bg-gradient-to-tr 
+            text-white
+        `
+    }
+
 </script>
 
 {#if $userProfile.firstName}
-    <div class="flex size-8 items-center justify-center rounded-full bg-gradient-to-tr {gradientColors[colorIndex]} text-white">
+    <div class={classes.default + ' ' + gradientColors[colorIndex]}>
         {$userProfile.firstName[0]}
     </div>
 {:else}

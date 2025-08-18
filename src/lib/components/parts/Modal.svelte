@@ -44,17 +44,57 @@
         title, 
         closeAction = () => {} 
     } = $props();
+
+    const classes = {
+        backdrop: `
+            fixed 
+            left-0 top-0 z-50 p-5
+            flex 
+            justify-center
+            items-center
+            h-dvh w-full 
+            bg-sidebar/80  
+        `,
+        modal: `
+            block 
+            flex-col 
+            justify-start 
+            items-start 
+            w-full max-w-2xl
+            bg-popover 
+            rounded-xl 
+            border border-border 
+            shadow-2xl 
+            shadow-black/10
+        `,
+        modalHeader: `
+            px-5 py-4 
+            flex 
+            justify-between 
+            items-center 
+            border-b 
+            border-border
+        `,
+        modalTitle: `
+            text-lg font-medium
+        `,
+        modalBody: `
+            min-h-[400px] max-h-[80vh] 
+            p-5 
+            overflow-y-auto
+        `
+    }
     
 </script>
 
-<div role="presentation" class="fixed left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-50 p-5" 
+<div role="presentation" class={classes.backdrop} 
     transition:fade={{
 		duration: 200,
 		opacity: 0,
 		easing: cubicOut
 	}}
     onclick={checkClickOutside}>
-    <div class="block flex-col justify-start items-start bg-popover rounded-xl w-full max-w-2xl border border-border shadow-2xl shadow-black/10" 
+    <div class={classes.modal} 
     transition:fly={{
 		duration: 200,
         delay: 100,
@@ -64,13 +104,13 @@
 	}}
     bind:this={modalWrapper}
     >
-        <div class="px-5 py-4 flex justify-between items-center border-b border-border">
-            <h2 class="text-lg font-medium">{title}</h2>
+        <div class={classes.modalHeader}>
+            <h2 class={classes.modalTitle}>{title}</h2>
             <Button variant="secondary" size="icon" width="hug" onclick={closeAction}>
                 <X size={20} />
             </Button>
         </div>
-        <div class="p-5 min-h-[400px] max-h-[80vh] overflow-y-auto">
+        <div class={classes.modalBody}>
             {@render children()}
         </div>
     </div>

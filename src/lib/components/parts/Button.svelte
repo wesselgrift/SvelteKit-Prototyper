@@ -23,6 +23,7 @@
             focus-ring 
             shadow-sm
             transition-all
+            select-none
             [&_svg]:pointer-events-none 
             [&_svg]:shrink-0 
         `,

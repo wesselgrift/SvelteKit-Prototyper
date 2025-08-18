@@ -4,6 +4,14 @@
         forId, 
         label
     } = $props();
+
+    const classes = {
+        default: `
+            block 
+            font-medium 
+            text-foreground
+        `
+    }
 </script>
   
-<label for={forId} class="block font-medium text-foreground">{label}</label>
+<label for={forId} class={classes.default}>{label}</label>

@@ -6,15 +6,30 @@
         variant = 'primary',
     } = $props();
 
-    // Default classes
-    const defaultClasses = 'transition rounded focus-ring outline-none';
-
-    // Variants
-    const variants = {
-        primary: `${defaultClasses} text-primary underline`,
-        muted: `${defaultClasses} text-muted-foreground hover:text-foreground`,
-        disabled: `${defaultClasses} text-muted-foreground pointer-events-none opacity-50 select-none`,
+    const classes = {
+        default: `
+            transition 
+            rounded 
+            focus-ring 
+            outline-none
+        `,
+        variants: {
+            primary: `
+                text-primary 
+                underline
+            `,
+            muted: `
+                text-muted-foreground 
+                hover:text-foreground
+            `,
+            disabled: `
+                text-muted-foreground 
+                pointer-events-none 
+                opacity-50 
+                select-none
+            `,
+        }
     }
 </script>
 
-<a class={variants[variant]} {href}>{text}</a>
+<a class={classes.default + ' ' + classes.variants[variant]} {href}>{text}</a>

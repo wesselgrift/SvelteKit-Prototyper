@@ -3,7 +3,7 @@
     let { children } = $props();
 
     const classes = {
-        card: `
+        default: `
             bg-card
             text-card-foreground 
             p-6 rounded-xl shadow-sm 
@@ -14,6 +14,6 @@
     }
 </script>
   
-<div class={classes.card}>
+<div class={classes.default}>
     {@render children()}
 </div>

@@ -223,7 +223,7 @@
             {/if}
         </Button>
         {#if DropDown}
-            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} classes="w-64 top-20" flyInFrom={-10}>
+            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} classes="w-64 top-16" flyInFrom={-10}>
                 <MenuItem>
                     <span class="truncate">Settings</span>
                     <Folder size={18} />

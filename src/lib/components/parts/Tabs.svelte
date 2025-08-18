@@ -12,15 +12,45 @@
             }
         });
     }
+
+    const classes = {
+        wrapper: `
+            flex 
+            flex-row gap-1
+            w-full 
+            bg-muted 
+            p-1 
+            rounded-lg 
+        `,
+        tab: `
+            w-full 
+            py-1 lg:py-1.5 
+            px-3 lg:px-4 
+            rounded-md 
+            font-medium 
+            focus-ring 
+            transition-all
+        `,
+        tabActive: `
+            bg-background 
+            text-foreground 
+            shadow-sm
+        `,
+        tabInactive: `
+            bg-transparent 
+            text-foreground/50 
+            hover:text-foreground
+        `,
+    }
 </script>
 
 {#snippet TabItem(title, id, state)}
-    <button id={id} class="{state ? 'bg-background text-foreground shadow-sm' : 'bg-transparent text-foreground/50 hover:text-foreground'} w-full py-1 px-3 lg:py-1.5 lg:px-4 rounded-md font-medium focus-ring transition-all" onclick={() => handleTabClick(id)}>
+    <button id={id} class="{state ? classes.tabActive : classes.tabInactive} {classes.tab}" onclick={() => handleTabClick(id)}>
         {title}
     </button>
 {/snippet}
 
-<div class="block w-full bg-muted p-1 rounded-lg flex flex-row gap-1">
+<div class={classes.wrapper}>
     {#each items as item}
         {@render TabItem(item.title, item.id, item.state)}
     {/each}

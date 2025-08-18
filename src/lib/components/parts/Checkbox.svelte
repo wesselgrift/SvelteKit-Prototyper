@@ -8,29 +8,50 @@
         disabled = false,
     } = $props();
 
-    const boxClasses = 
-        "focus-ring border-input cursor-pointer rounded-md size-4 bg-background hover:bg-accent/80 checked:bg-primary checked:hover:bg-primary/80 checked:focus:bg-primary checked:active:bg-primary transition-all"
-    
-    const labelClasses = 
-        "text-sm text-foreground cursor-pointer select-none"
-
-    const disabledClasses =
-        "disabled:cursor-default disabled:bg-primary/30 disabled:border-input/50 disabled:pointer-events-none";
+    const classes = {
+        checkBox: `
+            focus-ring 
+            border-input 
+            cursor-pointer 
+            rounded-md 
+            size-4 
+            bg-background 
+            hover:bg-accent/80 
+            checked:bg-primary 
+            checked:hover:bg-primary/80 
+            checked:focus:bg-primary 
+            checked:active:bg-primary 
+            transition-all
+            shadow-sm
+        `,
+        label: `
+            text-sm 
+            text-foreground 
+            cursor-pointer 
+            select-none
+        `,
+        disabled: `
+            disabled:cursor-default 
+            disabled:bg-primary/30 
+            disabled:border-input/50 
+            disabled:pointer-events-none
+        `
+    } 
 </script>
 
 <div class="flex flex-col gap-1">
     {#if options.length === 1}
         {#each options as option}
             <div class="flex flex-row gap-2 items-center">
-                <input {id} {name} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:checked={checked} {required} {disabled}>
-                <label for={id} class={labelClasses + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
+                <input {id} {name} type="checkbox" value={option} class={classes.checkBox + ' ' + classes.disabled} bind:checked={checked} {required} {disabled}>
+                <label for={id} class={classes.label + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
             </div>
         {/each}
     {:else if options.length > 1}
         {#each options as option, index}
             <div class="flex flex-row gap-2 items-center">
-                <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={boxClasses + ' ' + disabledClasses} bind:group={checked} {required} {disabled}>
-                <label for={`${id}-${index}`} class={labelClasses + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
+                <input id={`${id}-${index}`} name={`${name}-${index}`} type="checkbox" value={option} class={classes.checkBox + ' ' + classes.disabled} bind:group={checked} {required} {disabled}>
+                <label for={`${id}-${index}`} class={classes.label + ' ' + (disabled ? 'pointer-events-none text-muted-foreground' : '')}>{option}</label>
             </div>
         {/each}
     {/if}
