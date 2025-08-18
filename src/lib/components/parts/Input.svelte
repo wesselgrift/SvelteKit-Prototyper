@@ -11,31 +11,76 @@
         disabled = false,
     } = $props();
 
-    // Default classes
-    const baseTypeClasses = 
-    "block w-full text-base lg:text-sm py-2 px-3.5 lg:py-3 lg:px-4 border border-input focus:border-input bg-background rounded-lg focus-ring transition-all";
 
-    const fileTypeClasses = 
-    "block overflow-hidden w-full text-base lg:text-sm border border-input focus:border-input bg-background rounded-lg cursor-pointer focus-ring transition-all file:font-medium file:cursor-pointer file:border-0 file:py-2 file:px-3.5 lg:file:py-3 lg:file:px-4 file:mr-4 file:bg-secondary hover:file:bg-secondary-foreground/10 file:text-secondary-foreground";
-
-    const colorTypeClasses =
-    "inline-block lg:text-sm size-10 rounded-full focus-ring transition-all";
-
-    const rangeTypeClasses =
-    "w-full cursor-pointer";
-
-    const disabledClasses =
-    "disabled:cursor-default disabled:bg-muted disabled:border-muted disabled:text-muted-foreground/70 disabled:pointer-events-none file:disabled:bg-muted-foreground/10 file:disabled:text-muted-foreground/70";
+    const classes = {
+        default: `
+            block w-full 
+            text-base lg:text-sm 
+            h-9     lg:h-10
+            px-3.5  lg:px-4 
+            bg-background
+            border border-input  
+            rounded-lg 
+            focus-ring 
+            focus:border-input 
+            transition-all
+            shadow-sm
+        `,
+        fileType:`
+            block w-full 
+            text-base lg:text-sm 
+            bg-background 
+            border border-input 
+            rounded-lg 
+            overflow-hidden 
+            shadow-sm
+            cursor-pointer 
+            focus-ring 
+            focus:border-input 
+            transition-all 
+            file:font-medium 
+            file:cursor-pointer 
+            file:border-0 
+            file:h-9   lg:file:h-[38px]
+            file:px-3.5 lg:file:px-4 
+            file:mr-4 
+            file:bg-secondary 
+            hover:file:bg-secondary-foreground/10 
+            file:text-secondary-foreground
+        `,
+        colorType:`
+            inline-block 
+            lg:text-sm 
+            size-10 
+            rounded-full 
+            focus-ring 
+            shadow-sm
+            transition-all
+        `,
+        rangeType:`
+            w-full 
+            cursor-pointer
+        `,
+        disabled:`
+            disabled:cursor-default 
+            disabled:bg-muted 
+            disabled:border-muted 
+            disabled:text-muted-foreground/70 
+            disabled:pointer-events-none 
+            file:disabled:bg-muted-foreground/10 
+            file:disabled:text-muted-foreground/70
+        `
+    }
 </script>
   
 {#if type === 'text' || type === 'password' || type === 'email' || type === 'tel' || type === 'url' || type === 'search' || type === 'number' || type === 'date' || type === 'datetime-local' || type === 'month' || type === 'time' || type === 'week'}
-    <input {name} {id} {type} {placeholder} {required} {disabled} class={baseTypeClasses + ' ' + disabledClasses} bind:value />
+    <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.default + ' ' + classes.disabled} bind:value />
 {:else if type === 'file'}
-    <input {name} {id} {type} {placeholder} {required} {disabled} class={fileTypeClasses + ' ' + disabledClasses} bind:value {multiple} />
+    <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.fileType + ' ' + classes.disabled} bind:value {multiple} />
 {:else if type === 'color'}
-    <input {name} {id} {type} {placeholder} {required} {disabled} class={colorTypeClasses + ' ' + disabledClasses} bind:value />
+    <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.colorType + ' ' + classes.disabled} bind:value />
 {:else if type === 'range'}
-    <input {name} {id} {type} {placeholder} {required} {disabled} class={rangeTypeClasses + ' ' + disabledClasses} bind:value />
+    <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.rangeType + ' ' + classes.disabled} bind:value />
 {/if}
 
 

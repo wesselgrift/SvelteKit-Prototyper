@@ -21,8 +21,8 @@
             disabled:pointer-events-none 
             disabled:opacity-50 
             focus-ring 
+            shadow-sm
             transition-all
-            h-fit
             [&_svg]:pointer-events-none 
             [&_svg]:shrink-0 
         `,
@@ -37,6 +37,7 @@
                 bg-secondary 
                 text-secondary-foreground 
                 hover-on-secondary
+                shadow-none
             `,
             outline: `
                 border border-border 
@@ -46,6 +47,7 @@
             ghost: `
                 bg-transparent 
                 hover-on-background
+                shadow-none
             `,
             disabled: `
                 bg-muted 
@@ -57,15 +59,15 @@
         },
         size: {
             default: `
-                py-2.5  lg:py-3.5 
+                h-9     lg:h-10
                 px-4    lg:px-5
             `,
             small: `
-                py-1    lg:py-1.5 
+                h-8
                 px-2    lg:px-3
             `,
             icon: `
-                p-1.5
+                size-8
             `
         },
         width: {
