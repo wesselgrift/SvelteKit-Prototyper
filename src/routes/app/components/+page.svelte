@@ -15,10 +15,10 @@
     import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
     import Select from '$lib/components/parts/Select.svelte';
     import Toggle from '$lib/components/parts/Toggle.svelte';
-    import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
+    import SidebarAccountButton from '$lib/components/parts/SidebarAccountButton.svelte';
     import PageTitle from '$lib/components/parts/PageTitle.svelte';
-    import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
-    import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
+    import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
+    import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
     import Tabs from '$lib/components/parts/Tabs.svelte';
     import Modal from '$lib/components/parts/Modal.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";

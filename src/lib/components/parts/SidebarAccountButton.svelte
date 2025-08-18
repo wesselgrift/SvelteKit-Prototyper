@@ -2,12 +2,10 @@
 	// Auth, Navigation and stores
 	import { userProfile } from '$lib/stores/userStore';
     import { logout } from '$lib/firebase/auth';
-    import { goto } from '$app/navigation';
-    import { browser } from '$app/environment';
 
 	// Components
-	import DropdownMenu from '$lib/components/blocks/dropdownmenu/DropdownMenu.svelte';
-	import MenuItem from '$lib/components/blocks/dropdownmenu/MenuItem.svelte';
+	import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
+	import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
     import Avatar from '$lib/components/parts/Avatar.svelte';
     import Separator from '$lib/components/parts/Separator.svelte';
     import Modal from '$lib/components/parts/Modal.svelte';

@@ -1,5 +1,5 @@
 <script>
-    import Sidebar from "$lib/components/blocks/sidebar/Sidebar.svelte";
+    import Sidebar from "$lib/components/parts/Sidebar.svelte";
     import Portal from "$lib/components/parts/Portal.svelte";
     
     import { lockScroll } from "$lib/stores/uiStore";

@@ -4,8 +4,8 @@
 
 	// Components
     import Logo from '$lib/components/parts/Logo.svelte';
-    import SidebarAccountButton from '$lib/components/blocks/sidebar/SidebarAccountButton.svelte';
-    import SidebarContent from '$lib/components/blocks/sidebar/SidebarContent.svelte';
+    import SidebarAccountButton from '$lib/components/parts/SidebarAccountButton.svelte';
+    import SidebarContent from '$lib/components/parts/SidebarContent.svelte';
     import Button from '$lib/components/parts/Button.svelte';
     import { PanelRight } from "lucide-svelte";
 
