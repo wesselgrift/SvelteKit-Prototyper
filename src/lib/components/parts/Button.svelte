@@ -16,14 +16,14 @@
             relative 
             overflow-hidden 
             inline-flex gap-2 items-center justify-center whitespace-nowrap 
-            rounded-lg
+            rounded-lg 
             font-medium 
             disabled:pointer-events-none 
-            disabled:opacity-50 
-            focus-ring 
-            shadow-sm
-            transition-all
-            select-none
+            disabled:opacity-50  
+            focus-ring  
+            shadow-sm 
+            transition-all 
+            select-none 
             [&_svg]:pointer-events-none 
             [&_svg]:shrink-0 
         `,
@@ -32,23 +32,23 @@
                 bg-primary 
                 text-primary-foreground 
                 hover-on-primary 
-                hover-on-primary
+                hover-on-primary 
             `,
             secondary: `
                 bg-secondary 
                 text-secondary-foreground 
-                hover-on-secondary
-                shadow-none
+                hover-on-secondary 
+                shadow-none 
             `,
             outline: `
                 border border-border 
                 bg-background 
-                hover-on-background
+                hover-on-background 
             `,
             ghost: `
                 bg-transparent 
-                hover-on-background
-                shadow-none
+                hover-on-background 
+                shadow-none 
             `,
             disabled: `
                 bg-muted 
@@ -80,10 +80,10 @@
 </script>
 
 <button {type} bind:this={element} onclick={onclick} class={
+        classes.default + ' ' + 
         (disabled ? classes.variant.disabled : classes.variant[variant]) + ' ' +
         classes.size[size] + ' ' +
-        classes.width[width] + ' ' +
-        classes.default 
+        classes.width[width]
 }>
     {@render children()}
 </button>
