@@ -20,8 +20,7 @@
             font-medium 
             disabled:pointer-events-none 
             disabled:opacity-50  
-            focus-ring  
-            shadow-sm 
+            focus-ring   
             transition-all 
             select-none 
             [&_svg]:pointer-events-none 
@@ -33,6 +32,7 @@
                 text-primary-foreground 
                 hover-on-primary 
                 hover-on-primary 
+                shadow-sm
             `,
             secondary: `
                 bg-secondary 
@@ -44,11 +44,11 @@
                 border border-border 
                 bg-background 
                 hover-on-background 
+                shadow-sm
             `,
             ghost: `
                 bg-transparent 
                 hover-on-background 
-                shadow-none 
             `,
             disabled: `
                 bg-muted 
