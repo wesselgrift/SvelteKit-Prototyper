@@ -64,7 +64,7 @@
                 px-4    lg:px-5
             `,
             small: `
-                h-8
+                h-7     lg:h-8
                 px-2    lg:px-3
             `,
             icon: `

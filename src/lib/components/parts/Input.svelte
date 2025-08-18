@@ -18,7 +18,6 @@
             text-base lg:text-sm 
             h-9     lg:h-10
             px-3.5  lg:px-4 
-            py-0
             bg-background
             border border-input  
             rounded-lg 
