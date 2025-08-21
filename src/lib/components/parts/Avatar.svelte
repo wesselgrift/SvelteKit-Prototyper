@@ -1,8 +1,8 @@
 <script>
-    // Store
+    // Import user profile data from store
     import { userProfile } from '$lib/stores/userStore';
 
-    // Gradient colors
+    // Available gradient color combinations for avatar backgrounds
     const gradientColors = {
         1: 'from-sky-500 to-fuchsia-500',
         2: 'from-purple-500 to-indigo-500',
@@ -13,16 +13,19 @@
         7: 'from-blue-500 to-teal-400',
     }
 
-    // Get color index
+    // Generate a consistent color index based on the user's name
+    // Same name will always get the same color
     function getColorIndex(name) {
-        if (!name) return 1; // Return a default index if name is not yet available
+        if (!name) return 1;
+        // Sum up character codes and use modulo to get index 1-7
         const charSum = name.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
         return (charSum % 7) + 1;       
     }
     
-    // Calculate color index reactively
+    // Reactively calculate which color to use based on firstName
     const colorIndex = $derived(getColorIndex($userProfile.firstName));
 
+    // Base styling for the avatar circle
     const classes = {
         default: `
             flex 
@@ -37,10 +40,12 @@
 
 </script>
 
+<!-- Show avatar with first initial if user data is loaded -->
 {#if $userProfile.firstName}
     <div class={classes.default + ' ' + gradientColors[colorIndex]}>
         {$userProfile.firstName[0]}
     </div>
 {:else}
+    <!-- Show loading skeleton while user data is being fetched -->
     <div class="h-12 block -m-2 bg-gray-200 animate-pulse rounded-lg"></div>
 {/if}

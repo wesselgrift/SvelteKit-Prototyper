@@ -1,7 +1,9 @@
 <script>
-    // Props
+    // Accept any content passed between the Card component tags
+    // This uses Svelte 5's snippet system for component composition
     let { children } = $props();
 
+    // Card classes
     const classes = {
         default: `
             bg-card
@@ -14,6 +16,8 @@
     }
 </script>
   
+<!-- Reusable card container component -->
 <div class={classes.default}>
+    <!-- Render whatever content was passed as children -->
     {@render children()}
 </div>
