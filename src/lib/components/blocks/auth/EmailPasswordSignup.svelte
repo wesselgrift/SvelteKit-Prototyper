@@ -1,20 +1,18 @@
 <script>
 	// Import Firebase authentication and database functions
 	import { register, login, sendVerificationEmail } from '$lib/firebase/auth';
-	import { setDocument } from '$lib/firebase/firestore';
+	// Import SvelteKit navigation and environment utilities
+	import { goto, invalidateAll } from '$app/navigation';
+	import { browser } from '$app/environment';
+    import { ensureServerSession } from '$lib/firebase/auth';
 
-	// Import UI components for building the signup form
+    // Import UI components for building the signup form
 	import PasswordIndicator from '$lib/components/blocks/auth/PasswordIndicator.svelte';
 	import Button from '$lib/components/parts/Button.svelte';
 	import Label from '$lib/components/parts/Label.svelte';
 	import Input from '$lib/components/parts/Input.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
 	import Dialog from '$lib/components/parts/Dialog.svelte';
-
-	// Import SvelteKit navigation and environment utilities
-	import { goto, invalidateAll } from '$app/navigation';
-	import { browser } from '$app/environment';
-    import { ensureServerSession } from '$lib/firebase/auth';
 
 	// Form data state variables using Svelte 5's $state rune
 	let firstName = $state('');              // User's first name input
@@ -36,18 +34,8 @@
 			const userCredential = await register(email, password);
 			const userId = userCredential.user.uid;
 
-			// Step 2: Save additional user data to Firestore database
-			// This is wrapped in try/catch so registration can still succeed if database write fails
-			try {
-				await setDocument('users', userId, {
-					firstName,
-					lastName,
-					email
-				});
-			} catch (firestoreError) {
-				// Log the error but don't fail the entire registration
-				console.error('Firestore write failed:', firestoreError);
-			}
+			// Step 2: Send profile to server to upsert using Admin SDK (no client Firestore)
+            await ensureServerSession({ profile: { firstName, lastName, email } });
 
 			// Store email in localStorage for use on verification page
 			localStorage.setItem('email', email);
@@ -58,8 +46,6 @@
 
 			// Only perform navigation if we're in the browser (not during SSR)
 			if (browser) {
-                // Sync the session with the server
-                await ensureServerSession();
 				// Refresh all data on the page
 				await invalidateAll();
 				// Navigate to email verification page

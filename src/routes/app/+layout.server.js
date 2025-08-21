@@ -48,26 +48,13 @@ export async function load({ locals }) {
                 email: data.email || locals.user.email // Prefer saved email, fallback to auth email
             };
         } else {
-            // New user - this typically happens on first login, especially with Google OAuth
-            // Parse their display name (if available) to extract first and last names
+            // No profile found - provide a non-persistent fallback based on auth data
             const { firstName, lastName } = parseDisplayName(locals.user.displayName);
-            
-            // Create profile object with parsed names
             userProfile = {
                 firstName,
                 lastName,
                 email: locals.user.email
             };
-            
-            // Create a new profile document in Firestore for this user
-            // This ensures future visits will find an existing profile
-            await adminDb.collection('users').doc(locals.user.uid).set({
-                firstName,
-                lastName,
-                email: locals.user.email,
-                createdAt: new Date(), // Track when the profile was created
-                updatedAt: new Date()  // Track when it was last modified
-            });
         }
     } catch (error) {
         // If anything goes wrong with the database operation, log the error

@@ -2,17 +2,16 @@
 	// Import global styles that apply to the entire application
 	import '$src/app.scss';
 	
-	// Import SvelteKit utilities and Firebase auth initialization
+	// Import SvelteKit utilities
 	import { browser } from '$app/environment';
-	import { initializeAuth } from '$lib/firebase/auth';
 
 	// Get the children prop which contains the page content to render
 	let { children } = $props();
 
 	// Initialize Firebase authentication only in the browser (not during SSR)
-	// This sets up auth state listeners and handles automatic login/logout
+	// Use dynamic import to avoid SSR importing client SDK
 	if (browser) {
-		initializeAuth();
+		import('$lib/firebase/auth').then((m) => m.initializeAuth());
 	}
 </script>
 

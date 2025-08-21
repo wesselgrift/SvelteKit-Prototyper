@@ -1,6 +1,6 @@
 <script>
 	// Import Firebase authentication function for user login
-	import { login } from '$lib/firebase/auth';
+	// import { login } from '$lib/firebase/auth';
 
 	// Import UI components for building the signin form
 	import Label from '$lib/components/parts/Label.svelte';
@@ -31,7 +31,8 @@
 			// Show loading spinner while processing login
 			showLoading = true;
 
-			// Attempt to log in the user with Firebase
+			// Attempt to log in the user with Firebase (dynamic import)
+			const { login } = await import('$lib/firebase/auth');
 			await login(email, password);
 
 			// Save email to localStorage for future logins (convenience feature)

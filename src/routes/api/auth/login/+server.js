@@ -1,14 +1,16 @@
 // Import SvelteKit utilities and Firebase Admin SDK
 import { json } from '@sveltejs/kit';
-import { adminAuth } from '$lib/server/firebase-admin';
+import { adminAuth, adminDb } from '$lib/server/firebase-admin';
 
 // Server-side login endpoint that creates secure session cookies
 // This runs on the server and handles the exchange of Firebase ID tokens for session cookies
 export async function POST({ request, cookies }) {
     try {
-        // Extract the Firebase ID token from the request body
-        // This token was generated on the client after successful Firebase authentication
-        const { idToken } = await request.json();
+        // Extract the Firebase ID token and optional profile from the request body
+        // The ID token was generated on the client after successful Firebase authentication
+        const body = await request.json();
+        const idToken = body?.idToken;
+        const profile = body?.profile || null;
         
         // Validate that an ID token was provided
         if (!idToken) {
@@ -33,6 +35,45 @@ export async function POST({ request, cookies }) {
             path: '/'                                    // Available across the entire site
         });
         
+        // Upsert user profile document server-side using Admin SDK
+        // This consolidates trusted writes and avoids client-side Firestore usage
+        try {
+            const uid = decodedToken.uid;
+            const userRef = adminDb.collection('users').doc(uid);
+            const snap = await userRef.get();
+
+            // Derive names from either provided profile or decoded token's name
+            const derivedName = (decodedToken.name || '').trim();
+            const nameParts = derivedName ? derivedName.split(' ') : [];
+            const fallbackFirst = nameParts[0] || '';
+            const fallbackLast = nameParts.slice(1).join(' ') || '';
+
+            const firstName = profile?.firstName ?? fallbackFirst;
+            const lastName = profile?.lastName ?? fallbackLast;
+            const email = profile?.email ?? decodedToken.email ?? '';
+
+            if (!snap.exists) {
+                await userRef.set({
+                    firstName,
+                    lastName,
+                    email,
+                    createdAt: new Date(),
+                    updatedAt: new Date()
+                });
+            } else {
+                await userRef.update({
+                    // Only update provided fields to avoid clobbering
+                    ...(firstName ? { firstName } : {}),
+                    ...(lastName ? { lastName } : {}),
+                    ...(email ? { email } : {}),
+                    updatedAt: new Date()
+                });
+            }
+        } catch (e) {
+            // Non-fatal: log and continue to return success response
+            console.error('Profile upsert error:', e);
+        }
+
         // Return success response with essential user information
         // This data can be used by the client without storing sensitive tokens
         return json({ 

@@ -1,6 +1,6 @@
 <script>
 	// Import Firebase authentication function for password reset functionality
-	import { resetPassword } from '$lib/firebase/auth';
+	// import { resetPassword } from '$lib/firebase/auth';
 
 	// Import reusable UI components for building the form
 	import Label from '$lib/components/parts/Label.svelte';
@@ -22,6 +22,7 @@
 			showLoading = true;
 			
 			// Call Firebase to send password reset email
+			const { resetPassword } = await import('$lib/firebase/auth');
 			await resetPassword(email);
 			
 			// Show success message (generic for security - doesn't reveal if email exists)

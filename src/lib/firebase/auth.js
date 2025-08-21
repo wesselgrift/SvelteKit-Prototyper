@@ -189,7 +189,7 @@ export async function logout(redirectTo = '/login') {
  * 
  * Only runs in the browser and only if a user is currently signed in
  */
-export async function ensureServerSession() {
+export async function ensureServerSession(payload) {
     // Only run this code in the browser (not during server-side rendering)
     if (!browser) return;
     
@@ -204,7 +204,7 @@ export async function ensureServerSession() {
     await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idToken })
+        body: JSON.stringify({ idToken, ...(payload ? payload : {}) })
     });
 }
 

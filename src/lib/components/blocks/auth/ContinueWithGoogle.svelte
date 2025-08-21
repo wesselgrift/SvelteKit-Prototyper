@@ -1,6 +1,6 @@
 <script>
 	// Import Firebase Google authentication function
-	import { loginWithGoogle } from '$lib/firebase/auth';
+	// import { loginWithGoogle } from '$lib/firebase/auth';
 
 	// Import reusable Button component
 	import Button from '$lib/components/parts/Button.svelte';
@@ -11,6 +11,7 @@
 		try {
 			// Trigger Google OAuth popup and handle the authentication flow
 			// Firebase handles all the OAuth complexity (popup, token exchange, user creation)
+			const { loginWithGoogle } = await import('$lib/firebase/auth');
 			await loginWithGoogle();
 			
 			// Note: Successful login will trigger navigation via the auth state change

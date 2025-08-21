@@ -2,7 +2,7 @@
 	// Import SvelteKit utilities and Firebase auth functions
 	import { goto, invalidateAll } from '$app/navigation';
 	import { browser } from '$app/environment';
-	import { sendVerificationEmail, logout } from '$lib/firebase/auth';
+	// import { sendVerificationEmail, logout } from '$lib/firebase/auth';
 	
 	// Import UI components
 	import Button from '$lib/components/parts/Button.svelte';
@@ -93,6 +93,7 @@
 				error = 'No user found. Please sign in again.';
 				return;
 			}
+			const { sendVerificationEmail } = await import('$lib/firebase/auth');
 			await sendVerificationEmail(u);
 			emailResent = true;
 			error = '';
@@ -110,6 +111,7 @@
 	// Log out and redirect to signup with different email
 	async function tryAnotherEmail() {
 		try {
+			const { logout } = await import('$lib/firebase/auth');
 			await logout('/account');
 		} catch (err) {
 			console.error(err);

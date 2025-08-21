@@ -1,7 +1,7 @@
 <script>
 	// Import user data and authentication functions
 	import { userProfile } from '$lib/stores/userStore';
-    import { logout } from '$lib/firebase/auth';
+    // import { logout } from '$lib/firebase/auth';
 
 	// Import UI components for account menu and modal
 	import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
@@ -26,6 +26,7 @@
     // Handle user logout - close menu and sign out
 	async function handleLogout() {
         accountPopup = false;     // Close dropdown first
+		const { logout } = await import('$lib/firebase/auth');
 		await logout();           // Sign out user and redirect
 	}
 
