@@ -1,14 +1,15 @@
 <script>
-	// Props
+	// Component props with default values
 	let {
-		size = 8,
-		spinColor = 'fill-primary',
-		pathColor = 'text-accent'
+		size = 8, // Default size is 8px
+		spinColor = 'fill-primary', // Default spin color is primary
+		pathColor = 'text-accent' // Default path color is accent
 	} = $props();
 
 	let stringifySize = size.toString();
 </script>
 
+<!-- SVG spinner with animation -->
 <svg
 	aria-hidden="true"
 	class="size-{stringifySize} {pathColor} {spinColor} animate-spin"
@@ -25,4 +26,6 @@
 		fill="currentFill"
 	/>
 </svg>
+
+<!-- Screen reader only text -->
 <span class="sr-only">Loading...</span>

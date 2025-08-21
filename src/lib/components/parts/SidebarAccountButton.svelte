@@ -1,9 +1,9 @@
 <script>
-	// Auth, Navigation and stores
+	// Import user data and authentication functions
 	import { userProfile } from '$lib/stores/userStore';
     import { logout } from '$lib/firebase/auth';
 
-	// Components
+	// Import UI components for account menu and modal
 	import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
 	import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
     import Avatar from '$lib/components/parts/Avatar.svelte';
@@ -12,51 +12,72 @@
     import Portal from '$lib/components/parts/Portal.svelte';
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
-    // Element states
-    let accountPopup = $state(false);
-    let accountPopupTrigger = $state();
-    let settingsModal = $state(false);
+    // Component state for UI interactions
+    let accountPopup = $state(false);       // Controls dropdown menu visibility
+    let accountPopupTrigger = $state();     // Reference to button element for positioning dropdown
+    let settingsModal = $state(false);      // Controls settings modal visibility
     
-	// Open & close profile menu
+	// Toggle the account dropdown menu open/closed
 	function toggleAccountPopup(event) {
-        event.stopPropagation();
+        event.stopPropagation();  // Prevent event bubbling to document click handlers
         accountPopup = !accountPopup;
 	}
 
-    // Handle Logout
+    // Handle user logout - close menu and sign out
 	async function handleLogout() {
-        accountPopup = false
-		await logout();
+        accountPopup = false;     // Close dropdown first
+		await logout();           // Sign out user and redirect
 	}
 
-    // Handle Settings
+    // Open settings modal and close dropdown menu
     function showSettings() {
-        accountPopup = false;
-        settingsModal = true;
+        accountPopup = false;     // Close dropdown
+        settingsModal = true;     // Open settings modal
     }
 
-    const defaultClasses = 
-    "-m-2 flex flex-row items-center justify-between rounded-xl p-2 pr-3 font-medium transition-all overflow-hidden bg-sidebar text-sidebar-foreground/50 hover:text-sidebar-foreground focus:text-sidebar-foreground hover-on-sidebar-background focus-ring";
-
+    // CSS classes for the account button styling
+    const classes = {
+        default: `
+            -m-2 p-2 pr-3
+            flex flex-row 
+            items-center justify-between 
+            rounded-xl 
+            font-medium 
+            transition-all 
+            overflow-hidden 
+            bg-sidebar 
+            text-sidebar-foreground/50 
+            hover:text-sidebar-foreground 
+            focus:text-sidebar-foreground 
+            hover-on-sidebar-background 
+            focus-ring
+        `
+    }
     
 </script>
 
+<!-- Show account button when user data is loaded -->
 {#if $userProfile.firstName}
-    <!-- Account Menu Button -->
-    <button bind:this={accountPopupTrigger} onclick={toggleAccountPopup} class={defaultClasses}>
+    <!-- Clickable account button that shows user info and opens dropdown menu -->
+    <button bind:this={accountPopupTrigger} onclick={toggleAccountPopup} class={classes.default}>
+        <!-- User info section with avatar and name -->
         <div class="flex flex-row items-center justify-start gap-3 mr-4">
             <Avatar />
             {$userProfile.firstName}
         </div>
+        <!-- Menu indicator icon -->
         <Ellipsis size={20} />
     </button>
 {:else}
+    <!-- Loading skeleton while user data is being fetched -->
     <div class="h-12 block -m-2 bg-background animate-pulse rounded-lg"></div>
 {/if}
 
-<!-- Account Menu that opens when the button is clicked -->
+<!-- Dropdown menu that appears when account button is clicked -->
 {#if accountPopup }
 	<DropdownMenu trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
+		
+        <!-- Menu items -->
 		<MenuItem disabled={true}>
             <span class="truncate">{$userProfile.email}</span>
         </MenuItem>
@@ -71,13 +92,16 @@
             <span class="truncate">Log out</span>
             <LogOut size={18} />
         </MenuItem>
+
 	</DropdownMenu>
 {/if}
 
-<!-- Settings modal -->
+<!-- Settings modal that opens when Settings is clicked -->
 {#if settingsModal}
+    <!-- Use portal to render modal at document root (escapes sidebar overflow) -->
     <Portal target="settings-modal">
         <Modal title="Settings" closeAction={() => settingsModal = false}>
+            <!-- Simple settings content showing user info -->
             <p class="text-muted-foreground mb-2">Signed in as:</p>
             <p class="mb-1">{$userProfile.firstName} {$userProfile.lastName}</p>
             <p class="mb-4">{$userProfile.email}</p>

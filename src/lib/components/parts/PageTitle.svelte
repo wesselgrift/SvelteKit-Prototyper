@@ -1,46 +1,54 @@
 <script>
-    // Svelte, Auth and user store
+    // Import UI store to control sidebar visibility
     import { viewSidebar } from "$lib/stores/uiStore";
     
-    // Components
+    // Import UI components
     import Button from "$lib/components/parts/Button.svelte"
     import { PanelLeft } from "lucide-svelte";
 
-    // Props
+    // Component props
     let { title } = $props();
 
-    // Toggle sidebar
+    // Toggle sidebar visibility on mobile devices
     function toggleSidebar() {
         $viewSidebar = !$viewSidebar;
     }
 
+    // CSS classes for responsive page title styling
     const classes = {
+        // Main title styling - responsive behavior changes between mobile and desktop
         title: `
-            fixed 
-            md:relative 
+            fixed               
+            md:relative         
             top-0 left-0 
             w-full
             flex flex-row 
             items-center gap-2 
-            px-5 py-4 md:p-0 
+            px-5 py-4 md:p-0    
             mb-6 
             border-b border-border md:border-none 
             text-xl md:text-2xl font-medium
             bg-background 
-            z-10 
+            z-10                
         `,
+        // Wrapper for the mobile menu button - only visible on mobile
         buttonWrapper: `
             block 
             -ml-2 mr-1
-            md:hidden 
+            md:hidden           
             border-r border-border pr-2 
         `
     }
 </script>
 
+<!-- Page title with responsive mobile menu button -->
 <h1 class={classes.title}>
+    <!-- Mobile-only hamburger menu button to toggle sidebar -->
     <span role="presentation" class={classes.buttonWrapper}>
-        <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}><PanelLeft size={20} /></Button>
+        <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}>
+            <PanelLeft size={20} />
+        </Button>
     </span>
+    <!-- The actual page title text -->
     { title }
 </h1>

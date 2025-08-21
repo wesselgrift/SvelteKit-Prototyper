@@ -1,18 +1,20 @@
 <script>
-    // Props
+    // Component props for different input configurations
     let { 
-        type = 'text',
-        id,
-        name,
-        value = $bindable(), 
-        placeholder,
-        required = false,
-        multiple = false,
-        disabled = false,
+        type = 'text',           // Input type (text, email, password, file, color, range, etc.)
+        id,                      // HTML id attribute for accessibility/labels
+        name,                    // Form field name for submission
+        value = $bindable(),     // Two-way bound value that updates parent component
+        placeholder,             // Placeholder text shown when empty
+        required = false,        // Whether field is required for form validation
+        multiple = false,        // Allow multiple file selection (file inputs only)
+        disabled = false,        // Whether input is disabled/read-only
     } = $props();
 
 
+    // CSS classes for different input types and states
     const classes = {
+        // Standard styling for text-based inputs (text, email, password, etc.)
         default: `
             block w-full 
             text-base lg:text-sm 
@@ -26,6 +28,7 @@
             transition-all
             shadow-sm
         `,
+        // Special styling for file upload inputs with custom file button
         fileType:`
             block w-full 
             text-base lg:text-sm 
@@ -48,6 +51,7 @@
             hover:file:bg-secondary-foreground/10 
             file:text-secondary-foreground
         `,
+        // Circular styling for color picker inputs
         colorType:`
             inline-block 
             lg:text-sm 
@@ -57,10 +61,12 @@
             shadow-sm
             transition-all
         `,
+        // Minimal styling for range slider inputs
         rangeType:`
             w-full 
             cursor-pointer
         `,
+        // Disabled state styling for all input types
         disabled:`
             disabled:cursor-default 
             disabled:bg-muted 
@@ -73,19 +79,24 @@
     }
 </script>
   
+<!-- Render different input elements based on the type prop -->
 {#if type === 'text' || type === 'password' || type === 'email' || type === 'tel' || type === 'url' || type === 'search' || type === 'number' || type === 'date' || type === 'datetime-local' || type === 'month' || type === 'time' || type === 'week'}
+    <!-- Standard text-based inputs with icons added via CSS -->
     <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.default + ' ' + classes.disabled} bind:value />
 {:else if type === 'file'}
+    <!-- File upload input with styled file selection button -->
     <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.fileType + ' ' + classes.disabled} bind:value {multiple} />
 {:else if type === 'color'}
+    <!-- Color picker input with circular styling -->
     <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.colorType + ' ' + classes.disabled} bind:value />
 {:else if type === 'range'}
+    <!-- Range slider input with custom thumb and track styling -->
     <input {name} {id} {type} {placeholder} {required} {disabled} class={classes.rangeType + ' ' + classes.disabled} bind:value />
 {/if}
 
 
 <style>
-    /* Style date and time related inputs */
+    /* Hide default browser date/time picker indicators */
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="datetime-local"]::-webkit-calendar-picker-indicator,
     input[type="month"]::-webkit-calendar-picker-indicator,
@@ -94,20 +105,20 @@
         display: none;
     }
 
-    /* Add a date related icon */
+    /* Add custom calendar icon to date/time inputs using inline SVG */
     input[type="date"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="time"], input[type="search"] {
         position: relative;
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-calendar-icon lucide-calendar'><path d='M8 2v4'/><path d='M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/></svg>");
         background-repeat: no-repeat;
         background-size: 1.2rem;
         background-position: left 1rem center;
-        padding-left: 2.6rem;
+        padding-left: 2.6rem; /* Make room for the icon */
         &:disabled{
             background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' opacity='0.3' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-calendar-icon lucide-calendar'><path d='M8 2v4'/><path d='M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/></svg>");
         }
     }
 
-    /* Add a time related icon */
+    /* Override with clock icon for time inputs */
     input[type="time"] {
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-clock-icon lucide-clock'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>");
         &:disabled{
@@ -115,7 +126,7 @@
         }
     }
 
-    /* Add a search related icon and cancel icon */
+    /* Add search icon and style the clear button for search inputs */
     input[type="search"] {
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-search-icon lucide-search'><circle cx='11' cy='11' r='8'/><path d='m21 21-4.3-4.3'/></svg>");
         &::-webkit-search-cancel-button{
@@ -133,7 +144,7 @@
         }
     }
 
-    /* Dark mode svg colors */
+    /* Dark mode - change icon colors from black to white */
     @media (prefers-color-scheme: dark) {
         input[type="date"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="time"], input[type="search"] {
             background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-calendar-icon lucide-calendar'><path d='M8 2v4'/><path d='M16 2v4'/><rect width='18' height='18' x='3' y='4' rx='2'/><path d='M3 10h18'/></svg>");
@@ -155,24 +166,24 @@
         }
     }
 
-    /*Range type styling*/
+    /* Custom range slider styling */
     input[type="range"] {
         -webkit-appearance: none;
         appearance: none;
         background: transparent;
     }
 
-    /* Removes default focus */
+    /* Remove default focus outline for range inputs */
     input[type="range"]:focus {
         outline: none;
     }
 
-    /* slider track */
+    /* WebKit range slider track styling */
     input[type="range"]::-webkit-slider-runnable-track {
         @apply bg-muted h-2 rounded-lg;
     }
 
-    /* slider thumb */
+    /* WebKit range slider thumb (draggable handle) styling */
     input[type="range"]::-webkit-slider-thumb {
         @apply appearance-none bg-primary rounded-full size-4 -mt-1;
     }
@@ -185,14 +196,14 @@
         @apply opacity-50 pointer-events-none;
     }
 
-    /* slider track */
+    /* Firefox range slider track styling */
     input[type="range"]::-moz-range-track {
         @apply bg-muted h-2 rounded-lg;
     }
 
-    /* slider thumb */
+    /* Firefox range slider thumb styling */
     input[type="range"]::-moz-range-thumb {
-        border: none; /*Removes extra border that FF applies*/
+        border: none; /* Remove Firefox's default border */
         @apply appearance-none bg-primary rounded-full size-4 -mt-1;
     }
 
@@ -204,7 +215,7 @@
         @apply opacity-50 pointer-events-none;
     }
 
-    /* Style color input */
+    /* Custom color input styling - remove default styling */
     input[type="color"] {
         appearance: none;
         -webkit-appearance: none;
@@ -215,9 +226,11 @@
             opacity: 0.3;
         }
     }
+    /* Remove padding from color swatch wrapper */
     input[type="color"]::-webkit-color-swatch-wrapper {
         padding: 0px;
     }
+    /* Remove border from color swatch */
     input[type="color"]::-webkit-color-swatch {
         border: none;
     }
