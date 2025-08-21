@@ -1,11 +1,12 @@
 ## SvelteKit + Svelte 5 + Firebase boilerplate
 
-Production‑ready starter with Firebase Authentication (email/password + Google), session cookies, route guards, and Firestore helpers. Ships with TailwindCSS, dark/light theme, and a small component library.
+Production‑ready starter with Firebase Authentication (email/password + Google), secure session cookies, centralized route guards, and a server‑first data approach (no client Firestore). Ships with TailwindCSS, dark/light theme, and a small component library.
 
 ### Features
 - **Auth**: sign up, login, logout, password reset, email verification
 - **Secure sessions**: Firebase ID token → server session cookie
 - **Route guards**: centralized in `src/hooks.server.js`
+- **Server‑first data**: all reads/writes via Firebase Admin on the server
 - **UI**: responsive components, sidebar, dialogs, inputs, etc.
 - **Styling**: TailwindCSS with semantic theming and auto dark/light
 
@@ -68,6 +69,7 @@ npm run format    # format code with Prettier
 - Client signs in with Firebase (`email/password` or `Google`).
 - The client sends the Firebase ID token to `POST /api/auth/login`.
 - Server verifies the ID token and sets a secure `session` cookie.
+- Server upserts a Firestore user profile (`users/{uid}`) using the Admin SDK.
 - `src/hooks.server.js` reads the cookie on every request and sets `event.locals.user`.
 - Central route guards enforce access:
   - Verified signed‑in users can access `/app`; other paths redirect to `/app`.
@@ -75,7 +77,7 @@ npm run format    # format code with Prettier
   - Signed‑out users can access `/`, `/login`, `/account`, `/reset-password`; other paths redirect to `/login`.
 
 Endpoints:
-- `POST /api/auth/login` – creates the session cookie
+- `POST /api/auth/login` – verifies ID token, creates the session cookie, and upserts the profile
 - `POST /api/auth/logout` – clears the session cookie
 
 ## Pages of interest
@@ -86,9 +88,45 @@ Endpoints:
 - `/reset-password` – send reset email
 - `/app` – protected area after verification
 
-## Firestore helpers
+## Data access (server‑first)
 
-Helpers in `src/lib/firebase/firestore.js` wrap common operations: `setDocument`, `getDocument`, `getCollection`, `updateDocument`, `deleteDocument`, `queryDocuments`. They use the client SDK and respect your Firestore security rules.
+- There is no client Firestore SDK in this project.
+- All database reads/writes use the Firebase Admin SDK on the server (e.g., in `+server.js` routes or `+layout.server.js`).
+- The login endpoint upserts `users/{uid}` so first‑time sign‑ins get a profile document.
+- To add your own data operations, create SvelteKit server routes under `src/routes/api/...` and use `adminDb` from `$lib/server/firebase-admin`.
+
+Example (server):
+
+```js
+// src/routes/api/widgets/+server.js
+import { json } from '@sveltejs/kit';
+import { adminDb } from '$lib/server/firebase-admin';
+
+export async function GET() {
+  const snapshot = await adminDb.collection('widgets').get();
+  return json(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })));
+}
+```
+
+## Client SDK usage (auth only)
+
+- The client only uses the Firebase Auth SDK for interactive flows: `signInWithEmailAndPassword`, `signInWithPopup`, `sendPasswordResetEmail`, `sendEmailVerification`.
+- Client Auth code is dynamically imported in the browser to avoid SSR importing the SDK and to keep bundles lean.
+
+Example (dynamic import in a click handler):
+
+```svelte
+<script>
+  let email = $state('');
+  let password = $state('');
+  async function handleLogin() {
+    const { login } = await import('$lib/firebase/auth');
+    await login(email, password);
+  }
+</script>
+
+<button onclick={handleLogin}>Log in</button>
+```
 
 ## Styling and components
 
@@ -113,6 +151,6 @@ Cookie security is already configured to be `secure` in production.
 ## Tech stack
 
 - SvelteKit 2, Svelte 5 (runes API)
-- Firebase JS SDK + Firebase Admin SDK
+- Firebase JS SDK (Auth on client only) + Firebase Admin SDK
 - TailwindCSS
 - Plain JavaScript (no TypeScript)
