@@ -1,4 +1,4 @@
-## SvelteKit + Svelte 5 + Firebase boilerplate
+## SvelteKit + Tailwind CSS + Firebase Auth boilerplate
 
 Production‑ready starter with Firebase Authentication (email/password + Google), secure session cookies, centralized route guards, and a server‑first data approach (no client Firestore). Ships with TailwindCSS, dark/light theme, and a small component library.
 

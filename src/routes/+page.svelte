@@ -25,9 +25,9 @@
     <main class="px-4">
         <!-- Hero section with project description -->
         <section class="px-4 py-16 lg:py-[160px] flex flex-col justify-center items-center border border-border">
-            <h1 class="text-2xl lg:text-5xl font-medium mb-4 text-center">SvelteKit Prototyping Starter</h1>
+            <h1 class="text-2xl lg:text-5xl font-medium mb-4 text-center">SvelteKit Prototyper</h1>
             <p class="text-md lg:text-lg text-muted-foreground text-center mb-4">
-                A small starter kit built with with SvelteKit, Tailwind CSS and Firebase auth-flows. <br> No typescript, because f*ck typescript.
+                SvelteKit + Tailwind CSS + Firebase Auth boilerplate
             </p>
             <!-- Link to GitHub repository -->
             <a href="https://github.com/wesselgrift/svelte-boilerplate" target="_blank">
