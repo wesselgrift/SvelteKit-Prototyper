@@ -1,19 +1,24 @@
 <script>
+	// Import SvelteKit utilities and Firebase auth functions
 	import { goto, invalidateAll } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { sendVerificationEmail, logout } from '$lib/firebase/auth';
+	
+	// Import UI components
 	import Button from '$lib/components/parts/Button.svelte';
 	import Logo from '$lib/components/parts/Logo.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
 	import Dialog from '$lib/components/parts/Dialog.svelte';
 	import { Check } from 'lucide-svelte';
 
-	let userEmail = $state('');
-	let emailResent = $state(false);
-	let showLoading = $state(false);
-	let error = $state('');
-	let poll = null;
+	// Page state variables
+	let userEmail = $state('');           // User's email address for display
+	let emailResent = $state(false);      // Whether verification email was resent
+	let showLoading = $state(false);      // Loading state for resend button
+	let error = $state('');               // Error message to display
+	let poll = null;                      // Timer for checking verification status
 
+	// Stop the verification polling timer
 	function stopPoll() {
 		if (poll) {
 			clearInterval(poll);
@@ -21,11 +26,13 @@
 		}
 	}
 
+	// Get the current Firebase user
 	async function getCurrentUser() {
 		const { default: auth } = await import('$lib/firebase/auth');
 		return auth.currentUser;
 	}
 
+	// Sync Firebase auth with server session
 	async function ensureSession() {
 		if (!browser) return;
 		const u = await getCurrentUser();
@@ -38,27 +45,26 @@
 		});
 	}
 
-    // Here we need to make some fixes
+	// Check if user has verified their email and redirect if so
 	async function checkVerification() {
 		if (!browser) return;
 		try {
 			const u = await getCurrentUser();
-			await u.reload();
+			await u.reload(); // Refresh user data from Firebase
 			userEmail = u.email || userEmail;
 
 			if (u.emailVerified) {
-				// stop timer before any navigation
-				stopPoll();
-				await ensureSession(); // make sure server session is set
-				await invalidateAll(); // refresh server data
-				await goto('/app', { replaceState: true }); // redirect to app client side (no server check)
+				stopPoll(); // Stop checking once verified
+				await ensureSession(); // Sync with server
+				await invalidateAll(); // Refresh page data
+				await goto('/app', { replaceState: true }); // Redirect to main app
 			}
 		} catch (err) {
 			console.error(err);
 		}
 	}
 
-	// On mount: set email, ensure session, and start a short poll
+	// Set up page when it loads: get user email, sync session, start polling
 	$effect(() => {
 		if (!browser) return;
 
@@ -67,17 +73,18 @@
 			userEmail = u?.email || '';
 			await ensureSession();
 
-			// make sure no previous timer lingers
-			stopPoll();
-			// Poll every 4s; stop when page is destroyed or redirect happens
+			stopPoll(); // Clear any existing timer
+			// Check verification status every 4 seconds
 			poll = setInterval(checkVerification, 4000);
 		})();
 
+		// Cleanup timer when page unmounts
 		return () => {
 			stopPoll();
 		};
 	});
 
+	// Resend verification email to user
 	async function resendEmail() {
 		try {
 			showLoading = true;
@@ -90,6 +97,7 @@
 			emailResent = true;
 			error = '';
 		} catch (err) {
+			// Handle specific Firebase errors
 			error =
 				err?.code === 'auth/too-many-requests'
 					? 'Too many requests. Please wait a few minutes and try again.'
@@ -99,7 +107,7 @@
 		}
 	}
 
-	// Log out and try another email
+	// Log out and redirect to signup with different email
 	async function tryAnotherEmail() {
 		try {
 			await logout('/account');
@@ -109,12 +117,17 @@
 	}
 </script>
 
+<!-- Two-column layout: form on left, image on right -->
 <div class="w-full lg:flex lg:h-screen">
+	<!-- Left column: verification form -->
 	<div class="animate-fade-in-zoom flex w-full items-start justify-center lg:w-1/2 lg:items-center">
 		<div class="w-full max-w-md p-5">
+			<!-- Logo -->
 			<div class="mb-[80px] lg:mb-10">
 				<Logo />
 			</div>
+			
+			<!-- Error message -->
 			{#if error}
 				<div class="mb-5">
 					<Dialog variant="error">
@@ -122,6 +135,8 @@
 					</Dialog>
 				</div>
 			{/if}
+			
+			<!-- Page title and instructions -->
 			<h2 class="text-color-foreground mb-4 text-2xl font-medium leading-tight">
 				Check your email
 			</h2>
@@ -131,7 +146,9 @@
 					check your email and click the link to verify your account.
 				</p>
 
+				<!-- Action buttons -->
 				<div class="flex gap-2">
+					<!-- Resend email button with loading/success states -->
 					<Button width="hug" variant="outline" size="small" onclick={resendEmail}>
 						{#if showLoading}
 							<Spinner
@@ -148,6 +165,7 @@
 						{/if}
 					</Button>
 
+					<!-- Try different email button -->
 					<Button width="hug" variant="ghost" size="small" onclick={tryAnotherEmail}>
 						Sign up with another email
 					</Button>
@@ -155,12 +173,15 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- Right column: decorative image -->
 	<div class="sign-up-img animate-fade-in flex h-[200px] w-full bg-zinc-950 p-8 lg:h-auto lg:w-1/2">
 		<!-- Promo space -->
 	</div>
 </div>
 
 <style>
+	/* Background image styling for right column */
 	.sign-up-img {
 		background-image: url('/abstract-img.png');
 		background-size: cover;

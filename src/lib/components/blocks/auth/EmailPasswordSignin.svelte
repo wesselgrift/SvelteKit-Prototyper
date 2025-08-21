@@ -1,8 +1,8 @@
 <script>
-	// Auth
+	// Import Firebase authentication function for user login
 	import { login } from '$lib/firebase/auth';
 
-	// Components
+	// Import UI components for building the signin form
 	import Label from '$lib/components/parts/Label.svelte';
 	import Input from '$lib/components/parts/Input.svelte';
 	import TextLink from '$lib/components/parts/TextLink.svelte';
@@ -10,60 +10,72 @@
 	import Spinner from '$lib/components/parts/Spinner.svelte';
 	import Dialog from '$lib/components/parts/Dialog.svelte';
 
-	// Variables
-	let email = $state('');
-	let password = $state('');
-	let error = $state('');
-	let showLoading = $state(false);
+	// Form data state variables using Svelte 5's $state rune
+	let email = $state('');                  // User's email input
+	let password = $state('');               // User's password input
+	let error = $state('');                  // Error message to display to user
+	let showLoading = $state(false);         // Loading state for submit button
 
+	// Run once when component mounts to prefill email if user previously signed up
+	// This provides a better user experience by remembering their email
 	$effect(() => {
-        // Prefill email if it's in local storage
 		const savedEmail = localStorage.getItem('email');
 		if (savedEmail) {
 			email = savedEmail;
 		}
 	});
 
+	// Handle user login process with error handling
 	async function handleLogin() {
 		try {
-			// Show loading indicator
+			// Show loading spinner while processing login
 			showLoading = true;
 
-			// Login the user
+			// Attempt to log in the user with Firebase
 			await login(email, password);
 
-			// Store the email in local storage
+			// Save email to localStorage for future logins (convenience feature)
 			localStorage.setItem('email', email);
 
+			// Note: Successful login will trigger navigation via the auth state change
+			// The app will automatically redirect based on user verification status
+
 		} catch (err) {
+			// Display the Firebase error message to the user
+			// Firebase provides descriptive error messages like "Invalid email" or "Wrong password"
 			error = err.message;
 			showLoading = false;
 		} finally {
+			// Always hide loading spinner when done (success or error)
 			showLoading = false;
 		}
 	}
 </script>
 
+<!-- Show error message if login failed -->
 {#if error}
     <Dialog variant="error">
         Whoops, that didn't work. Please check if you filled in both email and password correctly.
     </Dialog>
 {/if}
 
+<!-- Login form with preventDefault to handle submission via JavaScript -->
 <form
 	onsubmit={(e) => {
-		e.preventDefault();
-		handleLogin();
+		e.preventDefault();    // Prevent default form submission
+		handleLogin();         // Handle login with our custom function
 	}}
 >
     <div class="flex flex-col gap-4">
+        <!-- Email input field -->
         <div class="flex flex-col gap-2">
             <Label for="email" label="Email" />
             <Input name="email" type="email" bind:value={email} />
         </div>
 
-    
+        <!-- Password input field with forgot password link -->
         <div class="flex flex-col gap-2">
+            <!-- Password label with "Forgot?" link aligned to the right -->
             <div class="flex flex-row justify-between">
                 <Label for="password" label="Password" />
                 <TextLink variant="muted" href="/reset-password" text="Forgot?" />
@@ -72,7 +84,9 @@
             <Input name="password" type="password" bind:value={password} />
         </div>
 
+        <!-- Submit button with loading state -->
         <Button type="submit">
+            <!-- Show spinner inside button when processing login -->
             {#if showLoading}
                 <Spinner
                     size={5}
