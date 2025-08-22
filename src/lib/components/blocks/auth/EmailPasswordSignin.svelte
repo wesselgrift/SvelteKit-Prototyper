@@ -16,6 +16,7 @@
 	let error = $state('');                  // Error message to display to user
 	let showLoading = $state(false);         // Loading state for submit button
 
+    // Derive loading state based on showLoading and navigating state
     const isLoading = $derived(showLoading || navigating.to === '/app');
 
 	// Run once when component mounts to prefill email if user previously signed up
