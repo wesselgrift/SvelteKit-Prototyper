@@ -1,6 +1,6 @@
 <script>
-	// Import Firebase authentication function for user login
-	// import { login } from '$lib/firebase/auth';
+	// Import navigation state
+	import { navigating } from '$app/state';
 
 	// Import UI components for building the signin form
 	import Label from '$lib/components/parts/Label.svelte';
@@ -15,6 +15,8 @@
 	let password = $state('');               // User's password input
 	let error = $state('');                  // Error message to display to user
 	let showLoading = $state(false);         // Loading state for submit button
+
+    const isLoading = $derived(showLoading || navigating.to === '/app');
 
 	// Run once when component mounts to prefill email if user previously signed up
 	// This provides a better user experience by remembering their email
@@ -88,7 +90,7 @@
         <!-- Submit button with loading state -->
         <Button type="submit">
             <!-- Show spinner inside button when processing login -->
-            {#if showLoading}
+            {#if isLoading}
                 <Spinner
                     size={5}
                     spinColor="fill-primary-foreground"
