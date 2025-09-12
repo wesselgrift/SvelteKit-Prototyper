@@ -14,7 +14,7 @@ Production‑ready starter with Firebase Authentication (email/password + Google
 
 ```bash
 git clone <this-repo>
-cd svelte-boilerplate
+cd Sveltekit-Prototyper
 npm install
 cp env.example .env
 # fill in all values in .env (see below)
