@@ -8,9 +8,5 @@ export default defineConfig({
 		alias: {
 			$src: path.resolve(__dirname, './src')
 		}
-	},
-    // server: {
-	// 	host: '0.0.0.0',
-	// 	allowedHosts: ['b670-2a02-a461-1948-0-b025-5327-9a54-90c0.ngrok-free.app']
-	// }
+	}
 });
