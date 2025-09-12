@@ -76,7 +76,7 @@
 
 <!-- Dropdown menu that appears when account button is clicked -->
 {#if accountPopup }
-	<DropdownMenu trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} classes="bottom-14 left-2 w-[calc(100%-1rem)]">
+	<DropdownMenu trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} position="bottom-14 left-2 w-[calc(100%-1rem)]">
 		
         <!-- Menu items -->
 		<MenuItem disabled={true}>

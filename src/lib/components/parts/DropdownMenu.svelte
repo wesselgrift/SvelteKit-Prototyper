@@ -13,7 +13,7 @@
         trigger,                       // The element that triggers the dropdown (button, etc.)
         clickOutside = () => {},       // Callback function when clicking outside
         flyInFrom = 10,                // Pixels to animate from (positive = from below)
-        classes = ''                   // Additional CSS classes to apply for positioning
+        position = ''                   // Additional CSS classes to apply for positioning
     } = $props();
 
     // Detects clicks outside the dropdown and trigger to close the menu
@@ -33,11 +33,27 @@
     onDestroy(() => {
         window.removeEventListener('mouseup', handleClickOutside);
     });
+    
+    // Base styling for the dropdown menu
+    const classes = {
+        default: `
+            absolute 
+            z-10 flex 
+            flex-col 
+            gap-1 
+            rounded-xl 
+            border border-border 
+            bg-popover 
+            p-1 
+            shadow-md
+        `
+    }
+
 </script>
 
 <!-- Dropdown menu container with positioning and styling -->
 <!-- Positioned absolutely to float above other content -->
-<div class="absolute z-10 flex flex-col gap-1 rounded-xl border border-border bg-popover p-1 shadow-md {classes}"
+<div class={classes.default + ' ' + position}
 	transition:fly={{
 		duration: 150,          // Animation duration in milliseconds
 		y: flyInFrom,           // Slide in from specified pixel offset

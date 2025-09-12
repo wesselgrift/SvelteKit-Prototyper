@@ -7,7 +7,10 @@
     import { PanelLeft } from "lucide-svelte";
 
     // Component props
-    let { title } = $props();
+    let { 
+        title, 
+        size = 'default'
+    } = $props();
 
     // Toggle sidebar visibility on mobile devices
     function toggleSidebar() {
@@ -27,10 +30,19 @@
             px-5 py-4 md:p-0    
             mb-6 
             border-b border-border md:border-none 
-            text-xl md:text-2xl font-medium
+            font-medium
             bg-background 
             z-10                
         `,
+        // Different sizes for the title
+        size: {
+            default: `
+                text-xl md:text-2xl
+            `,
+            small: `
+                text-lg md:text-xl
+            `,
+        },
         // Wrapper for the mobile menu button - only visible on mobile
         buttonWrapper: `
             block 
@@ -42,7 +54,7 @@
 </script>
 
 <!-- Page title with responsive mobile menu button -->
-<h1 class={classes.title}>
+<h1 class={classes.title + ' ' + classes.size[size]}>
     <!-- Mobile-only hamburger menu button to toggle sidebar -->
     <span role="presentation" class={classes.buttonWrapper}>
         <Button variant="ghost" size="icon" width="hug" onclick={toggleSidebar}>

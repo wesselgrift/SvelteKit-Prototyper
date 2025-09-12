@@ -21,6 +21,7 @@
     import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
     import Tabs from '$lib/components/parts/Tabs.svelte';
     import Modal from '$lib/components/parts/Modal.svelte';
+    import Accordion from '$lib/components/parts/Accordion.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
     let formState = $state({
@@ -108,15 +109,30 @@
         <Avatar />
     </div>
 
+    <h3 class="text-lg text-muted-foreground">Accordion</h3>
+    <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <div class="w-full max-w-md flex flex-col gap-4">
+            <Accordion title="This is an accordion 1">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
+            </Accordion>
+            <Accordion title="This is an accordion 2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
+            </Accordion>
+            <Accordion title="This is an accordion 3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
+            </Accordion>
+        </div>
+    </div>
+
     <h3 class="text-lg text-muted-foreground">Dialog</h3>
     <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4">
             <Dialog variant="default">
                 <h4 class="text-md font-medium mb-2">This is a dialog</h4>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
-        </Dialog>
-        <Dialog variant="error">
-            <h4 class="text-md font-medium mb-2">This is a dialog</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
+            </Dialog>
+            <Dialog variant="error">
+                <h4 class="text-md font-medium mb-2">This is a dialog</h4>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
             </Dialog>
         </div>
@@ -223,7 +239,7 @@
             {/if}
         </Button>
         {#if DropDown}
-            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} classes="w-64 top-16" flyInFrom={-10}>
+            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} position="w-64 top-16" flyInFrom={-10}>
                 <MenuItem>
                     <span class="truncate">Settings</span>
                     <Folder size={18} />
