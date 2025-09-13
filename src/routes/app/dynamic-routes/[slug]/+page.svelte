@@ -50,8 +50,8 @@
     <p>Available routes can be found in the sidebar navigation under "Dynamic routing".</p>
 {/if}
 
-  <style>
+<style>
     kbd {
-      @apply rounded-md px-2 py-1 bg-blue-500/20 text-xs;
+        @apply rounded-md px-2 py-1 bg-blue-500/20 text-xs;
     }
-  </style>
+</style>
