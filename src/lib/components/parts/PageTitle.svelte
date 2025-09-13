@@ -31,7 +31,8 @@
             mb-6 
             border-b border-border md:border-none 
             font-medium
-            z-10                
+            z-10
+            bg-background                
         `,
         // Different sizes for the title
         size: {
