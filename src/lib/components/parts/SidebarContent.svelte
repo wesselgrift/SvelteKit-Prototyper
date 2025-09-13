@@ -20,7 +20,7 @@
 <a class="font-medium { page.url.pathname === '/app/components' ? 'text-primary underline' : '' }" href="/app/components" onclick={handleMenuItemClick}>Components</a>
 
 <!-- Dynamic routes -->
-<span class="text-xs font-medium text-muted-foreground mt-5">Dynamic routes</span>
+<span class="text-xs font-medium text-muted-foreground mt-5">Dynamic routing</span>
 
 <div class="flex flex-col gap-4">
     <a class="font-medium { page.url.pathname === '/app/dynamic-route/howdy' ? 'text-primary underline' : '' }" href="/app/dynamic-route/howdy" onclick={handleMenuItemClick}>Howdy!</a>
