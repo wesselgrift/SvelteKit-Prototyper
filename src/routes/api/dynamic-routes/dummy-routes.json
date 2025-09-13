@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "slug": "howdy",
+      "title": "Howdy!",
+      "description": "A friendly greeting page"
+    },
+    {
+      "slug": "cowboy",
+      "title": "Cowboy!",
+      "description": "Yeehaw! Western-themed content"
+    },
+    {
+      "slug": "how-are-ya",
+      "title": "How are ya?",
+      "description": "A casual check-in page"
+    },
+    {
+      "slug": "hold-your-horses",
+      "title": "Hold your horses",
+      "description": "We don't want to rush into anything"
+    },
+    {
+      "slug": "lets-go",
+      "title": "Lets go",
+      "description": "Explore more complex functionality"
+    }
+  ]
+}
