@@ -87,6 +87,7 @@ Endpoints:
 - `/verify-email` – prompt to verify address and resend link
 - `/reset-password` – send reset email
 - `/app` – protected area after verification
+- `/dynamic-routes/[slug]` — dynamic pages that can be populated with data
 
 ## Data access (server‑first)
 
@@ -150,7 +151,7 @@ Cookie security is already configured to be `secure` in production.
 
 ## Tech stack
 
-- SvelteKit 2, Svelte 5 (runes API)
+- SvelteKit 2, Svelte 5
 - Firebase JS SDK (Auth on client only) + Firebase Admin SDK
-- TailwindCSS
+- TailwindCSS (^3.4.17)
 - Plain JavaScript (no TypeScript)
