@@ -1,5 +1,5 @@
 <script>
-    // Component props - destructured from parent component
+    // Component props
     let { 
         children,                      // Content to render inside the dialog
         variant = 'default'            // Dialog style variant: 'default' or 'error'

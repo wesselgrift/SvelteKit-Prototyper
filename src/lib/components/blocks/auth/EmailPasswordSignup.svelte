@@ -22,13 +22,13 @@
 	let result = $state('');                 // Success state for registration
 	let error = $state('');                  // Error message to display to user
 	let passwordStrength = $state(0);        // Password strength score (0-5)
-	let showLoading = $state(false);         // Loading state for submit button
+	let isLoading = $state(false);         // Loading state for submit button
 
 	// Handle user registration process with comprehensive error handling
 	async function handleRegister() {
 		try {
 			// Show loading spinner while processing
-			showLoading = true;
+			isLoading = true;
 
 			// Step 1: Create Firebase user account (automatically sends verification email)
 			const userCredential = await register(email, password);
@@ -67,10 +67,10 @@
 
 			// Clear success state and hide loading spinner
 			result = '';
-			showLoading = false;
+			isLoading = false;
 		} finally {
 			// Always hide loading spinner when done (success or error)
-			showLoading = false;
+			isLoading = false;
 		}
 	}
 </script>
@@ -129,7 +129,7 @@
         <!-- Submit button with loading state -->
         <Button type="submit">
             <!-- Show spinner inside button when processing registration -->
-            {#if showLoading}
+            {#if isLoading}
                 <Spinner
                     size={5}
                     spinColor="fill-primary-foreground"

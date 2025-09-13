@@ -1,13 +1,22 @@
 <script>
-	// Import Firebase Google authentication function
-	// import { loginWithGoogle } from '$lib/firebase/auth';
+    // Import navigation state
+	import { navigating } from '$app/state';
 
 	// Import reusable Button component
 	import Button from '$lib/components/parts/Button.svelte';
+	import Spinner from '$lib/components/parts/Spinner.svelte';
+
+    // Loading state for button spinner
+    let handlingAuth = $state(false);
+
+    // Derive loading state based on handlingAuth and navigating state
+    // Show spinner while processing login OR while navigating to auth-related pages
+    const isLoading = $derived(handlingAuth || navigating.to?.pathname === '/app' );
 
 	// Handle Google OAuth login process
 	// This uses Firebase's built-in Google authentication provider
 	async function handleGoogleLogin() {
+        handlingAuth = true;
 		try {
 			// Trigger Google OAuth popup and handle the authentication flow
 			// Firebase handles all the OAuth complexity (popup, token exchange, user creation)
@@ -23,6 +32,7 @@
 			// Set user-friendly error message (though this component doesn't display it)
 			// The error variable should be declared if error display is needed
 			error = err?.message || 'Google sign-in failed';
+            handlingAuth = false;
 		}
 	}
 </script>
@@ -34,7 +44,11 @@
 		Uses the reusable Button component with Google branding
 	-->
 	<Button variant="outline" onclick={handleGoogleLogin}>
-		<img src="/google-icon.svg" alt="Google" class="size-5" />
+        {#if isLoading}
+            <Spinner size={5}/>
+        {:else}
+            <img src="/google-icon.svg" alt="Google" class="size-5" />
+        {/if}
 		Continue with Google
 	</Button>
 </div>

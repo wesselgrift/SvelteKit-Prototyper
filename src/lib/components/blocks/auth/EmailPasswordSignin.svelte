@@ -14,11 +14,11 @@
 	let email = $state('');                  // User's email input
 	let password = $state('');               // User's password input
 	let error = $state('');                  // Error message to display to user
-	let showLoading = $state(false);         // Loading state for submit button
+	let handlingAuth = $state(false);         // Loading state for submit button
 
-    // Derive loading state based on showLoading and navigating state
+    // Derive loading state based on handlingAuth and navigating state
     // Show spinner while processing login OR while navigating to auth-related pages
-    const isLoading = $derived(showLoading || (navigating && (navigating.to?.pathname === '/app' || navigating.to?.pathname === '/verify-email')));
+    const isLoading = $derived(handlingAuth || (navigating && (navigating.to?.pathname === '/app' || navigating.to?.pathname === '/verify-email')));
 
 	// Run once when component mounts to prefill email if user previously signed up
 	// This provides a better user experience by remembering their email
@@ -33,7 +33,7 @@
 	async function handleLogin() {
 		try {
 			// Show loading spinner while processing login
-			showLoading = true;
+			handlingAuth = true;
 
 			// Attempt to log in the user with Firebase (dynamic import)
 			const { login } = await import('$lib/firebase/auth');
@@ -49,7 +49,7 @@
 			// Display the Firebase error message to the user
 			// Firebase provides descriptive error messages like "Invalid email" or "Wrong password"
 			error = err.message;
-			showLoading = false;
+			handlingAuth = false;
 		}
 	}
 </script>
