@@ -17,7 +17,8 @@
 	let showLoading = $state(false);         // Loading state for submit button
 
     // Derive loading state based on showLoading and navigating state
-    const isLoading = $derived(showLoading || navigating.to === '/app');
+    // Show spinner while processing login OR while navigating to auth-related pages
+    const isLoading = $derived(showLoading || (navigating && (navigating.to?.pathname === '/app' || navigating.to?.pathname === '/verify-email')));
 
 	// Run once when component mounts to prefill email if user previously signed up
 	// This provides a better user experience by remembering their email
@@ -48,9 +49,6 @@
 			// Display the Firebase error message to the user
 			// Firebase provides descriptive error messages like "Invalid email" or "Wrong password"
 			error = err.message;
-			showLoading = false;
-		} finally {
-			// Always hide loading spinner when done (success or error)
 			showLoading = false;
 		}
 	}

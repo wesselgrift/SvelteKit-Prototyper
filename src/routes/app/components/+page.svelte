@@ -112,13 +112,13 @@
     <h3 class="text-lg text-muted-foreground">Accordion</h3>
     <div class="flex flex-col gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4">
-            <Accordion title="This is an accordion 1">
+            <Accordion title="This is a title of an accordion">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
             </Accordion>
-            <Accordion title="This is an accordion 2">
+            <Accordion title="This is a title of an accordion">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
             </Accordion>
-            <Accordion title="This is an accordion 3">
+            <Accordion title="This is a title of an accordion">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
             </Accordion>
         </div>
