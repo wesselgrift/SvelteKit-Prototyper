@@ -12,7 +12,7 @@
 	import Label from '$lib/components/parts/Label.svelte';
 	import Input from '$lib/components/parts/Input.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Dialog from '$lib/components/parts/Dialog.svelte';
+	import Alert from '$lib/components/parts/Alert.svelte';
 
 	// Form data state variables using Svelte 5's $state rune
 	let firstName = $state('');              // User's first name input
@@ -78,9 +78,9 @@
 <!-- Show error message if registration failed -->
 {#if error}
 	<div class="mb-5">
-		<Dialog variant="error">
+		<Alert variant="error">
 			Whoops, that didn't work. Please check if you filled in all the fields correctly.
-		</Dialog>
+		</Alert>
 	</div>
 {/if}
 

@@ -7,7 +7,7 @@
 	import Input from '$lib/components/parts/Input.svelte';
 	import Button from '$lib/components/parts/Button.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Dialog from '$lib/components/parts/Dialog.svelte';
+	import Alert from '$lib/components/parts/Alert.svelte';
 
 	// Reactive state variables using Svelte 5's $state rune
 	let email = $state('');                    // User's email input for password reset
@@ -43,15 +43,15 @@
 
     <!-- Conditional message display - shows either success or error message -->
     {#if message}
-        <!-- Success message in default dialog style -->
-        <Dialog>
+        <!-- Success message in default alert style -->
+        <Alert>
             {message}
-        </Dialog>
+        </Alert>
     {:else if messageError}
-        <!-- Error message in error dialog style -->
-        <Dialog variant="error">
+        <!-- Error message in error alert style -->
+        <Alert variant="error">
             {messageError}
-        </Dialog>
+        </Alert>
     {/if}
 
     <!-- Email input section with label and help text -->

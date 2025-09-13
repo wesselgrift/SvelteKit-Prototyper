@@ -8,7 +8,7 @@
 	import Button from '$lib/components/parts/Button.svelte';
 	import Logo from '$lib/components/parts/Logo.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Dialog from '$lib/components/parts/Dialog.svelte';
+	import Alert from '$lib/components/parts/Alert.svelte';
 	import { Check } from 'lucide-svelte';
 
 	// Page state variables
@@ -132,9 +132,9 @@
 			<!-- Error message -->
 			{#if error}
 				<div class="mb-5">
-					<Dialog variant="error">
+					<Alert variant="error">
 						{error}
-					</Dialog>
+					</Alert>
 				</div>
 			{/if}
 			

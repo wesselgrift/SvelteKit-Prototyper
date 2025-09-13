@@ -8,7 +8,7 @@
 	import TextLink from '$lib/components/parts/TextLink.svelte';
 	import Button from '$lib/components/parts/Button.svelte';
 	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Dialog from '$lib/components/parts/Dialog.svelte';
+	import Alert from '$lib/components/parts/Alert.svelte';
 
 	// Form data state variables using Svelte 5's $state rune
 	let email = $state('');                  // User's email input
@@ -56,9 +56,9 @@
 
 <!-- Show error message if login failed -->
 {#if error}
-    <Dialog variant="error">
+    <Alert variant="error">
         Whoops, that didn't work. Please check if you filled in both email and password correctly.
-    </Dialog>
+    </Alert>
 {/if}
 
 <!-- Login form with preventDefault to handle submission via JavaScript -->

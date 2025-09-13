@@ -2,7 +2,7 @@
     import Button from "$lib/components/parts/Button.svelte"
     import Card from "$lib/components/parts/Card.svelte"
     import Avatar from "$lib/components/parts/Avatar.svelte"
-    import Dialog from "$lib/components/parts/Dialog.svelte"
+    import Alert from "$lib/components/parts/Alert.svelte"
     import Input from "$lib/components/parts/Input.svelte"
     import Label from "$lib/components/parts/Label.svelte"
     import Logo from "$lib/components/parts/Logo.svelte"
@@ -124,17 +124,17 @@
         </div>
     </div>
 
-    <h3 class="text-lg text-muted-foreground">Dialog</h3>
+    <h3 class="text-lg text-muted-foreground">Alert</h3>
     <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-col gap-4">
-            <Dialog variant="default">
-                <h4 class="text-md font-medium mb-2">This is a dialog</h4>
+            <Alert variant="default">
+                <h4 class="text-md font-medium mb-2">This is an alert</h4>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
-            </Dialog>
-            <Dialog variant="error">
-                <h4 class="text-md font-medium mb-2">This is a dialog</h4>
+            </Alert>
+            <Alert variant="error">
+                <h4 class="text-md font-medium mb-2">This is an alert</h4>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
-            </Dialog>
+            </Alert>
         </div>
     </div>
 
