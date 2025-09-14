@@ -46,9 +46,9 @@
 <div class="flex flex-col gap-4">
     {#if loading}
         <div class="flex flex-col gap-2">
-            <div class="h-4 w-2/3 bg-muted-foreground/20 rounded animate-pulse"></div>
-            <div class="h-4 w-1/2 bg-muted-foreground/20 rounded animate-pulse"></div>
-            <div class="h-4 w-3/4 bg-muted-foreground/20 rounded animate-pulse"></div>
+            <div class="h-4 w-2/3 bg-muted-foreground/10 rounded animate-pulse"></div>
+            <div class="h-4 w-1/2 bg-muted-foreground/10 rounded animate-pulse"></div>
+            <div class="h-4 w-3/4 bg-muted-foreground/10 rounded animate-pulse"></div>
         </div>
     {:else if dynamicRoutes.length > 0}
         {#each dynamicRoutes as route}
@@ -57,6 +57,7 @@
                 href="/app/dynamic-routes/{route.slug}" 
                 onclick={handleMenuItemClick}
                 title={route.description}
+                data-sveltekit-preload-data="hover"
             >
                 {route.title}
             </a>

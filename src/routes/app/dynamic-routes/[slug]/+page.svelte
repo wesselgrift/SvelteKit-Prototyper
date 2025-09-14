@@ -33,21 +33,38 @@
 </script>
   
 {#if loading}
+    <!-- Loading skeleton UI -->
     <div class="animate-pulse space-y-4">
-      <div class="h-8 w-1/3 bg-foreground/10 rounded"></div>
-      <div class="h-4 w-1/2 bg-foreground/10 rounded"></div>
-      <div class="h-4 w-1/4 bg-foreground/10 rounded"></div>
+      <div class="h-8 mb-8 w-1/3 bg-muted rounded"></div>
+      <div class="h-4 w-1/2 bg-muted rounded"></div>
+      <div class="h-4 w-1/4 bg-muted rounded"></div>
+      <div class="h-4 w-1/4 bg-muted rounded"></div>
+      <div class="h-4 w-1/4 bg-muted rounded"></div>
     </div>
 {:else if routeData}
+    <!-- Page content for a valid dynamic route -->
     <PageTitle title={routeData.title} />
     <p class="mb-6 text-muted-foreground">{routeData.description}</p>
-    <p class="mb-4">This is a dynamic route with a parameter, slug, that can be used to load data dynamically when a user requests a page like <kbd>/some-folder/[slug]</kbd>.</p>
-    <p>You can find the dummy data in <kbd>/src/routes/api/dynamic-routes/dummy-routes.json</kbd>.</p>
+    <p class="mb-4">
+        <!-- Explanation of dynamic route usage -->
+        This is a dynamic route with a parameter, slug, that can be used to load data dynamically when a user requests a page like <kbd>/some-folder/[slug]</kbd>.
+    </p>
+    <p>
+        <!-- Reference to dummy data location -->
+        You can find the dummy data in <kbd>/src/routes/api/dynamic-routes/dummy-routes.json</kbd>.
+    </p>
 {:else}
+    <!-- Fallback for unknown or missing route -->
     <PageTitle title="Page Not Found" />
-    <p>No page found for slug: <strong><kbd>{slug}</kbd></strong></p>
-    <p class="mb-4">This slug doesn't exist in our routes configuration. Try one of the available routes from the sidebar.</p>
-    <p>Available routes can be found in the sidebar navigation under "Dynamic routing".</p>
+    <p>
+        No page found for slug: <strong><kbd>{slug}</kbd></strong>
+    </p>
+    <p class="mb-4">
+        This slug doesn't exist in our routes configuration. Try one of the available routes from the sidebar.
+    </p>
+    <p>
+        Available routes can be found in the sidebar navigation under "Dynamic routing".
+    </p>
 {/if}
 
 <style>
