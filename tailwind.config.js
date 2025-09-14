@@ -20,6 +20,10 @@ export default {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
+                inverse: {
+                    DEFAULT: 'hsl(var(--inverse))',
+                    foreground: 'hsl(var(--inverse-foreground))',
+                },
 				background: 'hsl(var(--background))',
 				border: 'hsl(var(--border))',
 				card: {

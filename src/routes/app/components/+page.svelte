@@ -22,6 +22,7 @@
     import Tabs from '$lib/components/parts/Tabs.svelte';
     import Modal from '$lib/components/parts/Modal.svelte';
     import Accordion from '$lib/components/parts/Accordion.svelte';
+    import Tooltip from '$lib/components/parts/Tooltip.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
     let formState = $state({
@@ -65,6 +66,8 @@
         console.log($state.snapshot(formState));
     }
 
+    let tooltip = $state(false);
+
 </script>
 
 <PageTitle title="Components" />
@@ -102,6 +105,18 @@
             <Button variant="ghost" size="icon" width="hug"><Ellipsis size={20} /></Button>
             <Button variant="disabled" size="icon" width="hug"><Ellipsis size={20} /></Button>
         </div>
+    </div>
+
+    <h3 class="text-lg text-muted-foreground">Tooltip</h3>
+    <div class="relative flex items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <Button variant="outline" width="hug" onmouseenter={() => tooltip = true} onmouseleave={() => tooltip = false}>
+            Hover me
+        </Button>
+        {#if tooltip}
+            <Tooltip moveY={10} moveX={0} position="-top-5">
+                A tooltip
+            </Tooltip>
+        {/if}
     </div>
 
     <h3 class="text-lg text-muted-foreground">Avatar</h3>

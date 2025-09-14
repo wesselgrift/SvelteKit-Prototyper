@@ -8,7 +8,9 @@
         size = 'default',            // Button size (default, small, icon)
         disabled = false,            // Whether button is disabled
         width = 'fill',              // Width behavior (fill = full width, hug = content width)
-        element = $bindable()        // Reference to the actual button element
+        element = $bindable(),       // Reference to the actual button element
+        onmouseenter = () => {},     // Mouse enter handler function
+        onmouseleave = () => {}      // Mouse leave handler function
     } = $props();
 
     // CSS class definitions for different button styles
@@ -85,7 +87,7 @@
 </script>
 
 <!-- Render button with dynamically combined CSS classes -->
-<button {type} bind:this={element} onclick={onclick} class={
+<button {type} bind:this={element} onclick={onclick} onmouseenter={onmouseenter} onmouseleave={onmouseleave} class={
         classes.default + ' ' + 
         (disabled ? classes.variant.disabled : classes.variant[variant]) + ' ' +
         classes.size[size] + ' ' +
