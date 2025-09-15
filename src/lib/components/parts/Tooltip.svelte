@@ -32,7 +32,7 @@
 <!-- Positioned absolutely to float above other content with high contrast styling -->
 <span class={classes.default + ' ' + position}
     transition:fly={{
-        delay: 200,                 // Delay before animation starts (allows hover intent)
+        delay: 400,                 // Delay before animation starts (allows hover intent)
         duration: 150,              // Animation duration in milliseconds
         y: moveY,                   // Vertical slide distance in pixels
         x: moveX,                   // Horizontal slide distance in pixels

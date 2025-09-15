@@ -23,6 +23,7 @@
     import Modal from '$lib/components/parts/Modal.svelte';
     import Accordion from '$lib/components/parts/Accordion.svelte';
     import Tooltip from '$lib/components/parts/Tooltip.svelte';
+    import Badge from '$lib/components/parts/Badge.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
 
     let formState = $state({
@@ -150,6 +151,27 @@
                 <h4 class="text-md font-medium mb-2">This is an alert</h4>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla laborum, magni sunt aperiam nostrum officia nobis soluta, laudantium delectus voluptates?
             </Alert>
+        </div>
+    </div>
+
+    <h3 class="text-lg text-muted-foreground">Badge</h3>
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
+        <div class="w-full max-w-md flex flex-row flex-wrap gap-4">
+            <Badge variant="default">
+                This is a badge
+            </Badge>
+            <Badge variant="error">
+                This is a badge
+            </Badge>
+            <Badge variant="muted">
+                This is a badge
+            </Badge>
+            <Badge variant="inverse">
+                This is a badge
+            </Badge>
+            <Badge variant="info">
+                This is a badge
+            </Badge>
         </div>
     </div>
 
