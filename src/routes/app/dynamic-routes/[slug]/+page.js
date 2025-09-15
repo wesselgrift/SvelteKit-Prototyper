@@ -1,5 +1,12 @@
+// Import the error function from the @sveltejs/kit package
 import { error } from '@sveltejs/kit';
 
+// This is the load function for the dynamic route
+// It fetches the route data from the API and returns it
+// The route data is then passed to the page component
+// The page component can then use the route data to display the page
+// The route data is also passed to the page component as a prop
+// The page component can then use the route data to display the page
 export async function load({ params, fetch }) {
     try {
         const response = await fetch('/api/dynamic-routes');
