@@ -4,6 +4,8 @@
         href,                      // URL or path the link should navigate to
         text,                      // Text content to display inside the link
         variant = 'primary',       // Visual style variant - defaults to 'primary'
+        onmouseenter = () => {},   // Mouse enter handler function
+        onmouseleave = () => {}    // Mouse leave handler function
     } = $props();
 
     // CSS class definitions organized by purpose
@@ -46,4 +48,4 @@
     - Classes are concatenated to combine base styles with variant-specific styles
     - The variant prop determines which visual style from the variants object is used
 -->
-<a class={classes.default + ' ' + classes.variants[variant]} {href}>{text}</a>
+<a class={classes.default + ' ' + classes.variants[variant]} {href} onmouseenter={onmouseenter} onmouseleave={onmouseleave}>{text}</a>
