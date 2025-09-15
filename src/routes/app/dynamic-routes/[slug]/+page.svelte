@@ -1,71 +1,22 @@
 <script>
-    import { page } from '$app/state';
     import PageTitle from "$lib/components/parts/PageTitle.svelte";
     
-    // Get the dynamic parameter from the URL
-    const slug = $derived(page.params.slug);
+    // Get route data from the load function
+    let { data } = $props();
     
-    // State for route data
-    let routeData = $state(null);
-    let loading = $state(true);
-    
-    // Fetch route data to get proper title and description
-    async function fetchRouteData() {
-        try {
-            const response = await fetch('/api/dynamic-routes');
-            const data = await response.json();
-            routeData = data.routes.find(route => route.slug === slug);
-        } catch (error) {
-            console.error('Failed to fetch route data:', error);
-            routeData = null;
-        } finally {
-            loading = false;
-        }
-    }
-    
-    // Refetch data when slug changes
-    $effect(() => {
-        if (slug) {
-            loading = true;
-            fetchRouteData();
-        }
-    });
+    // Extract routeData reactively - this will update when data changes
+    const routeData = $derived(data.routeData);
 </script>
-  
-{#if loading}
-    <!-- Loading skeleton UI -->
-    <div class="animate-pulse space-y-4">
-      <div class="h-8 mb-8 w-1/3 bg-muted rounded"></div>
-      <div class="h-4 w-1/2 bg-muted rounded"></div>
-      <div class="h-4 w-1/4 bg-muted rounded"></div>
-      <div class="h-4 w-1/4 bg-muted rounded"></div>
-      <div class="h-4 w-1/4 bg-muted rounded"></div>
-    </div>
-{:else if routeData}
-    <!-- Page content for a valid dynamic route -->
-    <PageTitle title={routeData.title} />
-    <p class="mb-6 text-muted-foreground">{routeData.description}</p>
-    <p class="mb-4">
-        <!-- Explanation of dynamic route usage -->
-        This is a dynamic route with a parameter, slug, that can be used to load data dynamically when a user requests a page like <kbd>/some-folder/[slug]</kbd>.
-    </p>
-    <p>
-        <!-- Reference to dummy data location -->
-        You can find the dummy data in <kbd>/src/routes/api/dynamic-routes/dummy-routes.json</kbd>.
-    </p>
-{:else}
-    <!-- Fallback for unknown or missing route -->
-    <PageTitle title="Page Not Found" />
-    <p>
-        No page found for slug: <strong><kbd>{slug}</kbd></strong>
-    </p>
-    <p class="mb-4">
-        This slug doesn't exist in our routes configuration. Try one of the available routes from the sidebar.
-    </p>
-    <p>
-        Available routes can be found in the sidebar navigation under "Dynamic routing".
-    </p>
-{/if}
+
+<!-- Page content for a valid dynamic route -->
+<PageTitle title={routeData.title} />
+<p class="mb-6 text-muted-foreground">{routeData.description}</p>
+<p class="mb-4">
+    This is a dynamic route with a parameter, slug, that can be used to load data dynamically when a user requests a page like <kbd>/some-folder/[slug]</kbd>.
+</p>
+<p>
+    You can find the dummy data in <kbd>/src/routes/api/dynamic-routes/dummy-routes.json</kbd>.
+</p>
 
 <style>
     kbd {
