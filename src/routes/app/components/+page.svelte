@@ -24,7 +24,7 @@
     import Accordion from '$lib/components/parts/Accordion.svelte';
     import Tooltip from '$lib/components/parts/Tooltip.svelte';
     import Badge from '$lib/components/parts/Badge.svelte';
-    import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Folder, Calendar } from "lucide-svelte";
+    import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Check, Folder, Calendar, TriangleAlert, GitMerge, Banana } from "lucide-svelte";
 
     let formState = $state({
         textfield: 'Hey this is some value',
@@ -158,18 +158,23 @@
     <div class="flex flex-col md:flex-row gap-4 items-center justify-center w-full p-5 border border-1 border-dashed border-border mb-4">
         <div class="w-full max-w-md flex flex-row flex-wrap gap-4">
             <Badge variant="default">
+                <Check size={16} />
                 This is a badge
             </Badge>
             <Badge variant="error">
+                <TriangleAlert size={16} />
                 This is a badge
             </Badge>
             <Badge variant="muted">
+                <Banana size={16} />
                 This is a badge
             </Badge>
             <Badge variant="inverse">
+                <Calendar size={16} />
                 This is a badge
             </Badge>
             <Badge variant="info">
+                <GitMerge size={16} />
                 This is a badge
             </Badge>
         </div>

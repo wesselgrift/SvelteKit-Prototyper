@@ -7,7 +7,7 @@
     const classes = {
         default: `
             flex flex-row gap-1 items-center justify-start
-            border border-border
+            border
             text-xs
             font-medium
             rounded-lg
@@ -33,11 +33,12 @@
             inverse: `
                 bg-inverse
                 text-inverse-foreground
+                border-inverse
             `,
             info: `
                 bg-blue-500
-                text-white
-                border-blue-500
+                text-white 
+                border-blue-500 
             `
         }
     }
