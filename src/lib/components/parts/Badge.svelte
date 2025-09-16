@@ -10,7 +10,7 @@
             border
             text-xs
             font-medium
-            rounded-lg
+            rounded-full
             px-2
             py-1
             w-fit
@@ -36,9 +36,14 @@
                 border-inverse
             `,
             info: `
-                bg-blue-500
-                text-white 
-                border-blue-500 
+                bg-info
+                text-info-foreground
+                border-info
+            `,
+            success: `
+                bg-success
+                text-success-foreground
+                border-success
             `
         }
     }
