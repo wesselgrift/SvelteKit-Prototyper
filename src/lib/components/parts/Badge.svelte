@@ -10,7 +10,7 @@
             border
             text-xs
             font-medium
-            rounded-md
+            rounded-lg
             px-2
             py-0.5
             w-fit
