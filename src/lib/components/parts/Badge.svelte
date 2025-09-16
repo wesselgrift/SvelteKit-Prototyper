@@ -6,13 +6,13 @@
 
     const classes = {
         default: `
-            flex flex-row gap-1 items-center justify-start
+            flex flex-row gap-1.5 items-center justify-start
             border
             text-xs
             font-medium
-            rounded-full
+            rounded-md
             px-2
-            py-1
+            py-0.5
             w-fit
         `,
         variant: {
