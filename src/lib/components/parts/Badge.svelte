@@ -11,7 +11,7 @@
             text-xs
             font-medium
             rounded-lg
-            px-2
+            px-1.5
             py-0.5
             w-fit
         `,
