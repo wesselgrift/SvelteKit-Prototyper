@@ -9,7 +9,7 @@ import { error } from '@sveltejs/kit';
 // The page component can then use the route data to display the page
 export async function load({ params, fetch }) {
     try {
-        const response = await fetch('/api/dynamic-routes');
+        const response = await fetch('/api/data');
         const data = await response.json();
         const routeData = data.routes.find(route => route.slug === params.slug);
         

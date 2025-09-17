@@ -19,7 +19,7 @@
     // Fetch dynamic routes data
     async function fetchRoutes() {
         try {
-            const response = await fetch('/api/dynamic-routes');
+            const response = await fetch('/api/data');
             const data = await response.json();
             dynamicRoutes = data.routes;
         } catch (error) {
