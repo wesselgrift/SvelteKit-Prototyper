@@ -1,7 +1,7 @@
 <script>
     // Import layout components and utilities
-    import Sidebar from "$lib/components/parts/Sidebar.svelte";
-    import Portal from "$lib/components/parts/Portal.svelte";
+    import Sidebar from "$lib/components/parts/Sidebar/Sidebar.svelte";
+    import Portal from "$lib/components/parts/Portal/Portal.svelte";
     
     // Import stores and utilities for UI state management
     import { lockScroll } from "$lib/stores/uiStore";

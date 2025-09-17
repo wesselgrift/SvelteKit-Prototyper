@@ -3,12 +3,12 @@
 	import { navigating } from '$app/state';
 
 	// Import UI components for building the signin form
-	import Label from '$lib/components/parts/Label.svelte';
-	import Input from '$lib/components/parts/Input.svelte';
-	import TextLink from '$lib/components/parts/TextLink.svelte';
-	import Button from '$lib/components/parts/Button.svelte';
-	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Alert from '$lib/components/parts/Alert.svelte';
+	import Label from '$lib/components/parts/Label/Label.svelte';
+	import Input from '$lib/components/parts/Input/Input.svelte';
+	import TextLink from '$lib/components/parts/Textlink/Textlink.svelte';
+	import Button from '$lib/components/parts/Button/Button.svelte';
+	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
+	import Alert from '$lib/components/parts/Alert/Alert.svelte';
 
 	// Form data state variables using Svelte 5's $state rune
 	let email = $state('');                  // User's email input

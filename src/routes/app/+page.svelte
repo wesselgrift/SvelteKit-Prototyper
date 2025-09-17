@@ -1,7 +1,7 @@
 <script>
     // Import user data store and page title component
     import { userProfile } from "$lib/stores/userStore";
-    import PageTitle from "$lib/components/parts/PageTitle.svelte";
+    import PageTitle from "$lib/components/parts/PageTitle/PageTitle.svelte";
 </script>
 
 <!-- Page title component -->

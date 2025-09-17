@@ -3,10 +3,10 @@
     import { viewSidebar } from "$lib/stores/uiStore";
 
 	// Import sidebar-related components
-    import Logo from '$lib/components/parts/Logo.svelte';
-    import SidebarAccountButton from '$lib/components/parts/SidebarAccountButton.svelte';
-    import SidebarContent from '$lib/components/parts/SidebarContent.svelte';
-    import Button from '$lib/components/parts/Button.svelte';
+    import Logo from '$lib/components/parts/Logo/Logo.svelte';
+    import AccountButton from '$lib/components/parts/Sidebar/AccountButton.svelte';
+    import Content from '$lib/components/parts/Sidebar/Content.svelte';
+    import Button from '$lib/components/parts/Button/Button.svelte';
     import { PanelRight } from "lucide-svelte";
 
     // Function to hide the sidebar (used by backdrop and close button)
@@ -38,11 +38,11 @@
     
     <!-- Main sidebar content area (navigation links, etc.) -->
     <div class="p-4 h-full w-full flex flex-col justify-start gap-5">
-        <SidebarContent/>
+        <Content/>
     </div>
     
     <!-- Sidebar footer with account/user information -->
     <div class="w-full flex flex-col p-4 relative">
-        <SidebarAccountButton/>
+        <AccountButton/>
     </div>
 </div>

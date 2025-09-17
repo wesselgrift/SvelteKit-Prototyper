@@ -8,11 +8,11 @@
 
     // Import UI components for building the signup form
 	import PasswordIndicator from '$lib/components/blocks/auth/PasswordIndicator.svelte';
-	import Button from '$lib/components/parts/Button.svelte';
-	import Label from '$lib/components/parts/Label.svelte';
-	import Input from '$lib/components/parts/Input.svelte';
-	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Alert from '$lib/components/parts/Alert.svelte';
+	import Button from '$lib/components/parts/Button/Button.svelte';
+	import Label from '$lib/components/parts/Label/Label.svelte';
+	import Input from '$lib/components/parts/Input/Input.svelte';
+	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
+	import Alert from '$lib/components/parts/Alert/Alert.svelte';
 
 	// Form data state variables using Svelte 5's $state rune
 	let firstName = $state('');              // User's first name input

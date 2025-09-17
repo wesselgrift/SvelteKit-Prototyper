@@ -1,8 +1,8 @@
 <script>
 	// Import the reset password form component and UI elements
 	import ResetPassword from '$lib/components/blocks/auth/ResetPassword.svelte';
-	import Logo from '$lib/components/parts/Logo.svelte';
-	import TextLink from '$lib/components/parts/TextLink.svelte';
+	import Logo from '$lib/components/parts/Logo/Logo.svelte';
+	import TextLink from '$lib/components/parts/Textlink/Textlink.svelte';
 </script>
 
 <!-- Centered layout for password reset form -->

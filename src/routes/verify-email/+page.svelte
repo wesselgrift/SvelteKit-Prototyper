@@ -5,10 +5,10 @@
 	// import { sendVerificationEmail, logout } from '$lib/firebase/auth';
 	
 	// Import UI components
-	import Button from '$lib/components/parts/Button.svelte';
-	import Logo from '$lib/components/parts/Logo.svelte';
-	import Spinner from '$lib/components/parts/Spinner.svelte';
-	import Alert from '$lib/components/parts/Alert.svelte';
+	import Button from '$lib/components/parts/Button/Button.svelte';
+	import Logo from '$lib/components/parts/Logo/Logo.svelte';
+	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
+	import Alert from '$lib/components/parts/Alert/Alert.svelte';
 	import { Check } from 'lucide-svelte';
 
 	// Page state variables

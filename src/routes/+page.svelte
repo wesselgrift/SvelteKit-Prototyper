@@ -1,7 +1,7 @@
 <script>
     // Import reusable components and icons
-    import Logo from "$lib/components/parts/Logo.svelte";
-    import Button from "$lib/components/parts/Button.svelte";
+    import Logo from "$lib/components/parts/Logo/Logo.svelte";
+    import Button from "$lib/components/parts/Button/Button.svelte";
     import { Github } from "lucide-svelte";
 </script>
 

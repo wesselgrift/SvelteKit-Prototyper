@@ -1,9 +1,9 @@
 <script>
 	import EmailPasswordSignup from '$lib/components/blocks/auth/EmailPasswordSignup.svelte';
 	import ContinueWithGoogle from '$lib/components/blocks/auth/ContinueWithGoogle.svelte';
-	import TextLink from '$lib/components/parts/TextLink.svelte';
-	import Separator from '$lib/components/parts/Separator.svelte';
-	import Logo from '$lib/components/parts/Logo.svelte';
+	import TextLink from '$lib/components/parts/Textlink/Textlink.svelte';
+	import Separator from '$lib/components/parts/Separator/Separator.svelte';
+	import Logo from '$lib/components/parts/Logo/Logo.svelte';
 </script>
 
 <div class="w-full lg:flex lg:h-screen">

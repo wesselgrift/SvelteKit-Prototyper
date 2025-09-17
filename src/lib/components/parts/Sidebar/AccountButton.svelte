@@ -4,12 +4,12 @@
     // import { logout } from '$lib/firebase/auth';
 
 	// Import UI components for account menu and modal
-	import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
-	import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
-    import Avatar from '$lib/components/parts/Avatar.svelte';
-    import Separator from '$lib/components/parts/Separator.svelte';
-    import Modal from '$lib/components/parts/Modal.svelte';
-    import Portal from '$lib/components/parts/Portal.svelte';
+	import Dropdown from '$lib/components/parts/Dropdown/Dropdown.svelte';
+	import MenuItem from '$lib/components/parts/Dropdown/MenuItem.svelte';
+    import Avatar from '$lib/components/parts/Avatar/Avatar.svelte';
+    import Separator from '$lib/components/parts/Separator/Separator.svelte';
+    import Modal from '$lib/components/parts/Modal/Modal.svelte';
+    import Portal from '$lib/components/parts/Portal/Portal.svelte';
     import { Ellipsis, LogOut, Settings } from 'lucide-svelte';
 
     // Component state for UI interactions
@@ -76,7 +76,7 @@
 
 <!-- Dropdown menu that appears when account button is clicked -->
 {#if accountPopup }
-	<DropdownMenu trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} position="bottom-14 left-2 w-[calc(100%-1rem)]">
+	<Dropdown trigger={accountPopupTrigger} clickOutside={toggleAccountPopup} flyInFrom={10} position="bottom-14 left-2 w-[calc(100%-1rem)]">
 		
         <!-- Menu items -->
 		<MenuItem disabled={true}>
@@ -94,7 +94,7 @@
             <LogOut size={18} />
         </MenuItem>
 
-	</DropdownMenu>
+	</Dropdown>
 {/if}
 
 <!-- Settings modal that opens when Settings is clicked -->

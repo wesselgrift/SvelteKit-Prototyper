@@ -2,10 +2,10 @@
 	// Import authentication components and UI elements
 	import EmailPasswordSignin from '$lib/components/blocks/auth/EmailPasswordSignin.svelte';
 	import ContinueWithGoogle from '$lib/components/blocks/auth/ContinueWithGoogle.svelte';
-	import TextLink from '$lib/components/parts/TextLink.svelte';
-	import Separator from '$lib/components/parts/Separator.svelte';
-	import Logo from '$lib/components/parts/Logo.svelte';
-	import Spinner from '$lib/components/parts/Spinner.svelte';
+	import TextLink from '$lib/components/parts/Textlink/Textlink.svelte';
+	import Separator from '$lib/components/parts/Separator/Separator.svelte';
+	import Logo from '$lib/components/parts/Logo/Logo.svelte';
+	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
 	import { loading } from '$lib/stores/userStore';
 </script>
 

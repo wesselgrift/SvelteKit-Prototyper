@@ -1,29 +1,29 @@
 <script>
-    import Button from "$lib/components/parts/Button.svelte"
-    import Card from "$lib/components/parts/Card.svelte"
-    import Avatar from "$lib/components/parts/Avatar.svelte"
-    import Alert from "$lib/components/parts/Alert.svelte"
-    import Input from "$lib/components/parts/Input.svelte"
-    import Label from "$lib/components/parts/Label.svelte"
-    import Logo from "$lib/components/parts/Logo.svelte"
-    import Separator from '$lib/components/parts/Separator.svelte';
-    import Spinner from '$lib/components/parts/Spinner.svelte';
-    import TextLink from '$lib/components/parts/TextLink.svelte';
-    import Textarea from '$lib/components/parts/Textarea.svelte';
-    import Checkbox from '$lib/components/parts/Checkbox.svelte';
-    import Portal from '$lib/components/parts/Portal.svelte';
-    import Radiobutton from '$lib/components/parts/Radiobutton.svelte';
-    import Select from '$lib/components/parts/Select.svelte';
-    import Toggle from '$lib/components/parts/Toggle.svelte';
-    import SidebarAccountButton from '$lib/components/parts/SidebarAccountButton.svelte';
-    import PageTitle from '$lib/components/parts/PageTitle.svelte';
-    import DropdownMenu from '$lib/components/parts/DropdownMenu.svelte';
-    import MenuItem from '$lib/components/parts/DropdownMenuItem.svelte';
-    import Tabs from '$lib/components/parts/Tabs.svelte';
-    import Modal from '$lib/components/parts/Modal.svelte';
-    import Accordion from '$lib/components/parts/Accordion.svelte';
-    import Tooltip from '$lib/components/parts/Tooltip.svelte';
-    import Badge from '$lib/components/parts/Badge.svelte';
+    import Button from "$lib/components/parts/Button/Button.svelte"
+    import Card from "$lib/components/parts/Card/Card.svelte"
+    import Avatar from "$lib/components/parts/Avatar/Avatar.svelte"
+    import Alert from "$lib/components/parts/Alert/Alert.svelte"
+    import Input from "$lib/components/parts/Input/Input.svelte"
+    import Label from "$lib/components/parts/Label/Label.svelte"
+    import Logo from "$lib/components/parts/Logo/Logo.svelte"
+    import Separator from '$lib/components/parts/Separator/Separator.svelte';
+    import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
+    import TextLink from '$lib/components/parts/Textlink/Textlink.svelte';
+    import Textarea from '$lib/components/parts/Textarea/Textarea.svelte';
+    import Checkbox from '$lib/components/parts/Checkbox/Checkbox.svelte';
+    import Portal from '$lib/components/parts/Portal/Portal.svelte';
+    import Radiobutton from '$lib/components/parts/RadioButton/RadioButton.svelte';
+    import Select from '$lib/components/parts/Select/Select.svelte';
+    import Toggle from '$lib/components/parts/Toggle/Toggle.svelte';
+    import SidebarAccountButton from '$lib/components/parts/Sidebar/AccountButton.svelte';
+    import PageTitle from '$lib/components/parts/PageTitle/PageTitle.svelte';
+    import Dropdown from '$lib/components/parts/Dropdown/Dropdown.svelte';
+    import MenuItem from '$lib/components/parts/Dropdown/MenuItem.svelte';
+    import Tabs from '$lib/components/parts/Tabs/Tabs.svelte';
+    import Modal from '$lib/components/parts/Modal/Modal.svelte';
+    import Accordion from '$lib/components/parts/Accordion/Accordion.svelte';
+    import Tooltip from '$lib/components/parts/Tooltip/Tooltip.svelte';
+    import Badge from '$lib/components/parts/Badge/Badge.svelte';
     import { X, Maximize2, Download, Ellipsis, Settings, ChevronDown, ChevronUp, Check, Folder, Calendar, TriangleAlert, GitMerge, Banana, Smile } from "lucide-svelte";
 
     let formState = $state({
@@ -285,7 +285,7 @@
             {/if}
         </Button>
         {#if DropDown}
-            <DropdownMenu trigger={DropDownTrigger} clickOutside={toggleDropDown} position="w-64 top-16" flyInFrom={-10}>
+            <Dropdown trigger={DropDownTrigger} clickOutside={toggleDropDown} position="w-64 top-16" flyInFrom={-10}>
                 <MenuItem>
                     <span class="truncate">Settings</span>
                     <Folder size={18} />
@@ -298,7 +298,7 @@
                     <span class="truncate">This is a third menu item</span>
                     <Settings size={18} />
                 </MenuItem>
-            </DropdownMenu>
+            </Dropdown>
         {/if}
     </div>
 

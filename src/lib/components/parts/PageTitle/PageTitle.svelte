@@ -3,7 +3,7 @@
     import { viewSidebar } from "$lib/stores/uiStore";
     
     // Import UI components
-    import Button from "$lib/components/parts/Button.svelte"
+    import Button from "$lib/components/parts/Button/Button.svelte"
     import { PanelLeft } from "lucide-svelte";
 
     // Component props

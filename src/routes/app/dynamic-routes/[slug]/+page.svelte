@@ -1,6 +1,6 @@
 <script>
     // Import the PageTitle component
-    import PageTitle from "$lib/components/parts/PageTitle.svelte";
+    import PageTitle from "$lib/components/parts/PageTitle/PageTitle.svelte";
     
     // Get route data from the load function
     let { data } = $props();

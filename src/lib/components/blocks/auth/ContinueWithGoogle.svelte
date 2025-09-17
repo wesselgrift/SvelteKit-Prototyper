@@ -3,8 +3,8 @@
 	import { navigating } from '$app/state';
 
 	// Import reusable Button component
-	import Button from '$lib/components/parts/Button.svelte';
-	import Spinner from '$lib/components/parts/Spinner.svelte';
+	import Button from '$lib/components/parts/Button/Button.svelte';
+	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
 
     // Loading state for button spinner
     let handlingAuth = $state(false);
