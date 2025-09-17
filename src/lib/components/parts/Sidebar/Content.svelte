@@ -53,8 +53,8 @@
     {:else if dynamicRoutes.length > 0}
         {#each dynamicRoutes as route}
             <a 
-                class="font-medium { page.url.pathname === `/app/dynamic-routes/${route.slug}` ? 'text-primary underline' : '' }" 
-                href="/app/dynamic-routes/{route.slug}" 
+                class="font-medium { page.url.pathname === `/app/some-folder/${route.slug}` ? 'text-primary underline' : '' }" 
+                href="/app/some-folder/{route.slug}" 
                 onclick={handleMenuItemClick}
                 title={route.description}
                 data-sveltekit-preload-data="hover"
