@@ -5,9 +5,11 @@
 	// Import reusable Button component
 	import Button from '$lib/components/parts/Button/Button.svelte';
 	import Spinner from '$lib/components/parts/Spinner/Spinner.svelte';
+    import Alert from '$lib/components/parts/Alert/Alert.svelte';
 
     // Loading state for button spinner
     let handlingAuth = $state(false);
+    let error = $state('');
 
     // Derive loading state based on handlingAuth and navigating state
     // Show spinner while processing login OR while navigating to auth-related pages
@@ -43,6 +45,7 @@
 		Google OAuth button with outline style to differentiate from primary actions
 		Uses the reusable Button component with Google branding
 	-->
+
 	<Button variant="outline" onclick={handleGoogleLogin}>
         {#if isLoading}
             <Spinner size={5}/>
@@ -51,4 +54,11 @@
         {/if}
 		Continue with Google
 	</Button>
+
+    <!-- Show error message if login failed -->
+    {#if error}
+        <Alert variant="error">
+            {error}
+        </Alert>
+    {/if}
 </div>
