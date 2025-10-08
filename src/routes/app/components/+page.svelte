@@ -1,4 +1,9 @@
+<!-- 
+	Component showcase page
+	This page demonstrates all available UI components with working examples
+-->
 <script>
+	// Import all UI components
 	import Button from '$lib/components/parts/Button/Button.svelte';
 	import Card from '$lib/components/parts/Card/Card.svelte';
 	import Avatar from '$lib/components/parts/Avatar/Avatar.svelte';
@@ -24,6 +29,8 @@
 	import Accordion from '$lib/components/parts/Accordion/Accordion.svelte';
 	import Tooltip from '$lib/components/parts/Tooltip/Tooltip.svelte';
 	import Badge from '$lib/components/parts/Badge/Badge.svelte';
+	
+	// Import icons from lucide-svelte
 	import {
 		X,
 		Maximize2,
@@ -41,6 +48,7 @@
 		Smile
 	} from 'lucide-svelte';
 
+	// Form state to demonstrate form element binding
 	let formState = $state({
 		textfield: 'Hey this is some value',
 		textarea: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
@@ -51,15 +59,19 @@
 		toggle: false
 	});
 
+	// Dropdown menu state and trigger element
 	let DropDown = $state(false);
 	let DropDownTrigger = $state();
+	
+	// Modal visibility state
 	let exampleModal = $state(false);
 
+	// Tab items configuration for the Tabs component
 	let tabItems = $state([
 		{
 			title: 'General',
 			id: 'tab1',
-			state: true
+			state: true // Currently active tab
 		},
 		{
 			title: 'Account',
@@ -73,24 +85,29 @@
 		}
 	]);
 
+	// Toggle the dropdown menu open/closed
 	function toggleDropDown(event) {
 		event.stopPropagation();
 		DropDown = !DropDown;
 	}
 
+	// Log form state to console when submitted
 	function handleSubmit() {
 		console.log($state.snapshot(formState));
 	}
 
+	// Tooltip state and delay timer
 	let tooltip = $state(false);
 	let tooltipTimeout;
 
+	// Show tooltip after 400ms delay
 	function handleMouseEnter() {
 		tooltipTimeout = setTimeout(() => {
 			tooltip = true;
 		}, 400);
 	}
 
+	// Hide tooltip and clear delay timer
 	function handleMouseLeave() {
 		clearTimeout(tooltipTimeout);
 		tooltip = false;
@@ -99,7 +116,9 @@
 
 <PageTitle title="Components" />
 
+<!-- Main container: displays all components in a vertical layout with demo boxes -->
 <div class="flex flex-col items-start gap-4">
+	<!-- Card Component Demo -->
 	<h3 class="text-lg text-muted-foreground">Card</h3>
 	<div
 		class="border-1 mb-4 flex w-full items-center justify-center border border-dashed border-border p-5"
@@ -110,10 +129,12 @@
 		</Card>
 	</div>
 
+	<!-- Button Component Demo: shows all button variants, sizes, and icon buttons -->
 	<h3 class="text-lg text-muted-foreground">Button</h3>
 	<div
 		class="border-1 mb-4 flex w-full flex-col items-center justify-center gap-4 border border-dashed border-border p-5"
 	>
+		<!-- Regular size button variants -->
 		<div class="flex w-full flex-col justify-center gap-2 xl:flex-row">
 			<Button variant="primary" width="hug">Button Primary</Button>
 			<Button variant="secondary" width="hug">Button Secondary</Button>
@@ -121,6 +142,7 @@
 			<Button variant="ghost" width="hug">Button Ghost</Button>
 			<Button variant="disabled" width="hug">Button Disabled</Button>
 		</div>
+		<!-- Small size button variants -->
 		<div class="flex w-full flex-col justify-center gap-2 xl:flex-row">
 			<Button variant="primary" size="small" width="hug">Button Primary Small</Button>
 			<Button variant="secondary" size="small" width="hug">Button Secondary Small</Button>
@@ -128,6 +150,7 @@
 			<Button variant="ghost" size="small" width="hug">Button Ghost Small</Button>
 			<Button variant="disabled" size="small" width="hug">Button Disabled Small</Button>
 		</div>
+		<!-- Icon-only buttons -->
 		<div class="flex w-full justify-center gap-2">
 			<Button variant="primary" size="icon" width="hug"><X size={20} /></Button>
 			<Button variant="secondary" size="icon" width="hug"><Maximize2 size={20} /></Button>
@@ -137,6 +160,7 @@
 		</div>
 	</div>
 
+	<!-- Tooltip Component Demo: shows on hover with 400ms delay -->
 	<h3 class="text-lg text-muted-foreground">Tooltip</h3>
 	<div
 		class="border-1 relative mb-4 flex w-full items-center justify-center border border-dashed border-border p-5"
@@ -199,6 +223,7 @@
 		</div>
 	</div>
 
+	<!-- Badge Component Demo: shows all badge variants with icons -->
 	<h3 class="text-lg text-muted-foreground">Badge</h3>
 	<div
 		class="border-1 mb-4 flex w-full flex-col items-center justify-center gap-4 border border-dashed border-border p-5 md:flex-row"
@@ -231,11 +256,13 @@
 		</div>
 	</div>
 
+	<!-- Form Elements Demo: demonstrates all form inputs with two-way binding -->
 	<h3 class="text-lg text-muted-foreground">Form elements</h3>
 	<div
 		class="border-1 mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
 	>
 		<div class="flex w-full max-w-md flex-col items-start gap-4">
+			<!-- Text input with binding -->
 			<div class="flex w-full flex-col gap-1">
 				<Label forId="textExample" label="Text" />
 				<Input
@@ -355,6 +382,7 @@
 		</div>
 	</div>
 
+	<!-- Dropdown Menu Demo: toggle dropdown with click-outside-to-close behavior -->
 	<h3 class="text-lg text-muted-foreground">Dropdown Menu</h3>
 	<div
 		class="border-1 relative mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
@@ -390,6 +418,7 @@
 		{/if}
 	</div>
 
+	<!-- Modal Demo: renders in a portal with overlay, can be closed by clicking outside or X button -->
 	<h3 class="text-lg text-muted-foreground">Modal</h3>
 	<div
 		class="border-1 relative mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
@@ -404,6 +433,7 @@
 		{/if}
 	</div>
 
+	<!-- Tabs Demo: switches content based on active tab state -->
 	<h3 class="text-lg text-muted-foreground">Tabs</h3>
 	<div
 		class="border-1 relative mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
@@ -411,6 +441,7 @@
 		<div class="flex w-full max-w-md flex-col gap-4">
 			<Tabs bind:items={tabItems} />
 
+			<!-- Display content based on which tab is active -->
 			<Card>
 				{#if tabItems.find((item) => item.state).id === 'tab1'}
 					<h3 class="text-md mb-1 font-medium lg:text-lg">General</h3>
@@ -454,6 +485,7 @@
 		<Spinner size={8} />
 	</div>
 
+	<!-- Portal content source: this content is rendered elsewhere in the DOM -->
 	<Portal target="examplePortal">
 		<div class="flex w-full max-w-md flex-col items-start gap-4">
 			<p>
@@ -464,6 +496,7 @@
 		</div>
 	</Portal>
 
+	<!-- Portal Demo: renders content from above Portal component in this target location -->
 	<h3 class="text-lg text-muted-foreground">Portals</h3>
 	<div
 		class="border-1 mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
