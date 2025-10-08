@@ -31,8 +31,7 @@
 <!-- Tooltip container with positioning and styling -->
 <!-- Positioned absolutely to float above other content with high contrast styling -->
 <span class={classes.default + ' ' + position}
-    transition:fly={{
-        delay: 400,                 // Delay before animation starts (allows hover intent)
+    transition:fly={{                 // Delay before animation starts (allows hover intent)
         duration: 150,              // Animation duration in milliseconds
         y: moveY,                   // Vertical slide distance in pixels
         x: moveX,                   // Horizontal slide distance in pixels
