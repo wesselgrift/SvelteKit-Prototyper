@@ -19,6 +19,7 @@
             default: `
                 bg-background
                 text-foreground
+                border-border
             `,
             error: `
                 bg-destructive
