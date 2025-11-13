@@ -18,7 +18,7 @@
 <!-- Mobile-only backdrop overlay that appears behind the sidebar -->
 {#if $viewSidebar}
     <!-- Semi-transparent overlay that covers the screen and closes sidebar when clicked -->
-    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-sidebar/80 justify-center items-center z-30" onclick={closeSidebar}>
+    <div role="presentation" class="fixed block md:hidden left-0 top-0 flex h-dvh w-full bg-black/50 justify-center items-center z-30" onclick={closeSidebar}>
     </div>
 {/if}
 

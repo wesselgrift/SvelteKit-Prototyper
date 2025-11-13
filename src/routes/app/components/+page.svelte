@@ -26,6 +26,7 @@
 	import MenuItem from '$lib/components/parts/Dropdown/MenuItem.svelte';
 	import Tabs from '$lib/components/parts/Tabs/Tabs.svelte';
 	import Modal from '$lib/components/parts/Modal/Modal.svelte';
+	import Drawer from '$lib/components/parts/Drawer/Drawer.svelte';
 	import Accordion from '$lib/components/parts/Accordion/Accordion.svelte';
 	import Tooltip from '$lib/components/parts/Tooltip/Tooltip.svelte';
 	import Badge from '$lib/components/parts/Badge/Badge.svelte';
@@ -66,8 +67,9 @@
 	let DropDown = $state(false);
 	let DropDownTrigger = $state();
 	
-	// Modal visibility state
+	// Modal and Drawer visibility state
 	let exampleModal = $state(false);
+	let exampleDrawer = $state(false);
 
 	// Tab items configuration for the Tabs component
 	let tabItems = $state([
@@ -455,6 +457,21 @@
 				<Modal title="Example modal" closeAction={() => (exampleModal = false)}>
 					<p>This is an example modal</p>
 				</Modal>
+			</Portal>
+		{/if}
+	</div>
+
+    <!-- Modal Demo: renders in a portal with overlay, can be closed by clicking outside or X button -->
+	<h3 class="text-lg text-muted-foreground">Drawer</h3>
+	<div
+		class="border-1 relative mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
+	>
+		<Button variant="outline" width="hug" onclick={() => (exampleDrawer = true)}>Show drawer</Button>
+		{#if exampleDrawer}
+			<Portal target="example-modal">
+				<Drawer title="Example drawer" closeAction={() => (exampleDrawer = false)}>
+					<p>This is an example drawer</p>
+				</Drawer>
 			</Portal>
 		{/if}
 	</div>
