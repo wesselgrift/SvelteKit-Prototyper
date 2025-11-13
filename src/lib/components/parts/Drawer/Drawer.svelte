@@ -107,8 +107,8 @@
     <!-- Main drawer container - the white box that contains the content -->
     <div class={classes.drawer} 
     transition:fly={{
-		duration: 150,
-        delay: 100,
+		duration: 250,
+        delay: 0,
 		...(position === 'right' ? { x: 50 } : { y: 50 }),
 		opacity: 0,
 		easing: cubicOut
