@@ -55,6 +55,12 @@
                 bg-transparent 
                 hover-on-background 
             `,
+            ghostmuted: `
+                bg-transparent 
+                hover-on-background 
+                text-muted-foreground 
+                hover:text-foreground
+            `,
             disabled: `
                 bg-muted 
                 text-muted-foreground/70 
@@ -75,6 +81,10 @@
             `,
             icon: `
                 size-8
+            `,
+            breadcrumb: `
+                h-7     lg:h-8
+                px-1    lg:px-3
             `
         },
         // Width behavior options

@@ -29,6 +29,9 @@
 	import Accordion from '$lib/components/parts/Accordion/Accordion.svelte';
 	import Tooltip from '$lib/components/parts/Tooltip/Tooltip.svelte';
 	import Badge from '$lib/components/parts/Badge/Badge.svelte';
+    import Breadcrumb from '$lib/components/parts/Breadcrumb/Breadcrumb.svelte';
+	import Crumb from '$lib/components/parts/Breadcrumb/Crumb.svelte';
+	import Divider from '$lib/components/parts/Breadcrumb/Divider.svelte';
 	
 	// Import icons from lucide-svelte
 	import {
@@ -203,6 +206,29 @@
 				nostrum officia nobis soluta, laudantium delectus voluptates?
 			</Accordion>
 		</div>
+	</div>
+
+    <h3 class="text-lg text-muted-foreground">Breadcrumb</h3>
+    <div
+		class="border-1 mb-4 flex w-full flex-col items-center justify-center gap-4 border border-dashed border-border p-5"
+	>
+		<Breadcrumb>
+			<Crumb label="Home" href="/app" />
+			<Divider />
+			<Crumb label="Settings" href="/app/settings" />
+			<Divider />
+			<Crumb label="Profile" active="true" />
+		</Breadcrumb>
+
+		<Breadcrumb>
+			<Crumb label="Dashboard" href="/app" />
+			<Divider />
+			<Crumb label="Projects" href="/app/projects" />
+			<Divider />
+			<Crumb label="Project Name" href="/app/projects/123" />
+			<Divider />
+			<Crumb label="Details" active="true" />
+		</Breadcrumb>
 	</div>
 
 	<h3 class="text-lg text-muted-foreground">Alert</h3>
