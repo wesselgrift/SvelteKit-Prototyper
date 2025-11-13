@@ -42,7 +42,8 @@
     let { 
         children,                    // drawer content passed as children
         title,                       // drawer title displayed in header
-        closeAction = () => {}       // Function to call when drawer should close
+        closeAction = () => {},       // Function to call when drawer should close
+        position = 'bottom'           // Position of the drawer (bottom or right)
     } = $props();
 
     // CSS classes for different parts of the drawer
@@ -52,21 +53,19 @@
             fixed 
             left-0 top-0 z-50
             flex 
-            justify-center
-            items-end
+            ${position === 'bottom' ? 'justify-center items-end' : 'justify-end items-start'}
             h-dvh w-full 
             bg-black/50  
         `,
         // The actual drawer container with background and styling
         drawer: `
-            block 
+            flex 
             flex-col 
-            justify-start 
             items-start 
-            w-full
+            ${position === 'bottom' ? 'w-full h-[90vh]' : 'w-full max-w-[50vw] min-w-[360px] h-screen'}
             bg-popover 
             rounded-xl 
-            border border-border 
+            ${position === 'bottom' ? 'rounded-b-none' : 'rounded-none'}
             shadow-2xl 
             shadow-black/10
         `,
@@ -74,6 +73,8 @@
         drawerHeader: `
             px-5 py-4 
             flex 
+            flex-shrink-0
+            self-stretch
             justify-between 
             items-center 
             border-b 
@@ -85,7 +86,8 @@
         `,
         // Scrollable content area of the drawer
         drawerBody: `
-            h-[85vh]
+            flex-1
+            self-stretch
             p-5 
             overflow-y-auto
         `
@@ -107,7 +109,7 @@
     transition:fly={{
 		duration: 150,
         delay: 100,
-		y: 50,
+		...(position === 'right' ? { x: 50 } : { y: 50 }),
 		opacity: 0,
 		easing: cubicOut
 	}}

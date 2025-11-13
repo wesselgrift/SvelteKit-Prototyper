@@ -69,7 +69,8 @@
 	
 	// Modal and Drawer visibility state
 	let exampleModal = $state(false);
-	let exampleDrawer = $state(false);
+	let exampleDrawerBottom = $state(false);
+	let exampleDrawerRight = $state(false);
 
 	// Tab items configuration for the Tabs component
 	let tabItems = $state([
@@ -466,10 +467,18 @@
 	<div
 		class="border-1 relative mb-4 flex w-full flex-row items-center justify-center gap-4 border border-dashed border-border p-5"
 	>
-		<Button variant="outline" width="hug" onclick={() => (exampleDrawer = true)}>Show drawer</Button>
-		{#if exampleDrawer}
-			<Portal target="example-modal">
-				<Drawer title="Example drawer" closeAction={() => (exampleDrawer = false)}>
+		<Button variant="outline" width="hug" onclick={() => (exampleDrawerBottom = true)}>Show bottom drawer</Button>
+		<Button variant="outline" width="hug" onclick={() => (exampleDrawerRight = true)}>Show right drawer</Button>
+		{#if exampleDrawerBottom}
+			<Portal target="example-drawer">
+				<Drawer position="bottom" title="Example drawer" closeAction={() => (exampleDrawerBottom = false)}>
+					<p>This is an example drawer</p>
+				</Drawer>
+			</Portal>
+		{/if}
+		{#if exampleDrawerRight}
+			<Portal target="example-drawer">
+				<Drawer position="right" title="Example drawer" closeAction={() => (exampleDrawerRight = false)}>
 					<p>This is an example drawer</p>
 				</Drawer>
 			</Portal>

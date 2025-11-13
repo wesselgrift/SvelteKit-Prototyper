@@ -58,5 +58,6 @@
         <!-- Portal targets for modals -->
         <Portal name="example-modal"/>
         <Portal name="settings-modal"/>
+        <Portal name="example-drawer"/>
     </div>
 </div>
